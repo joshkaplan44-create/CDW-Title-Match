@@ -1,0 +1,14 @@
+# Raw source data (large files, not tracked)
+CDW Function Title (1).csv
+Persona Values from Zoom.xlsx
+CDW Function Title - Matched.csv
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
