@@ -662,15 +662,15 @@ footer { text-align:center; padding:24px; color:#888; font-size:11px; margin-top
 //  DATA
 // ═══════════════════════════════════════════════════════
 // CDW Brand: primary red #CC0000, dark #1A0606
-const COLORS  = {
+const COLORS = {
   board:'#0077B6', clevel:'#CC0000', vp:'#7C3AED',
   dir:'#C05000',   mgr:'#2E8B57',   non:'#BDBDBD',
   navy:'#1A0606',  blue:'#CC0000',  green:'#2E8B57',
   amber:'#F59E0B', orange:'#C05000',red:'#CC0000',
   teal:'#0077B6',  purple:'#7C3AED'
 };
-const HIER_COLORS = [COLORS.board, COLORS.clevel, COLORS.vp, COLORS.dir, COLORS.mgr, COLORS.non];
-const DEPT?COLORS  = ['#CC0000','#A50000','#7C0000','#C05000','#E07B39','#2E8B57','#0077B6','#7C3AED','#F59E0B','#607D8B'];
+const HIER_COLORS  = [COLORS.board, COLORS.clevel, COLORS.vp, COLORS.dir, COLORS.mgr, COLORS.non];
+const DEPT_COLORS  = ['#CC0000','#A50000','#7C0000','#C05000','#E07B39','#2E8B57','#0077B6','#7C3AED','#F59E0B','#607D8B'];
 
 const ziHier = { 'Board Members':2551,'C-Level':24901,'VP-Level':27503,'Director':84343,'Manager':187255,'Non-Manager':463673 };
 const ziHierMatched = { 'Board Members':643,'C-Level':3795,'VP-Level':26832,'Director':74318,'Manager':162228 };
@@ -934,7 +934,7 @@ makeDonut('chart-hier-overview',
   const bubbleData = depts.map((d,i) => {
     const h = deptHier[d];
     const total = Object.values(h).reduce((a,b)=>a+b);
-    const dirPlus = (h['Director']||0)+(h['VP-Level']||0)+(h['C-Level']||0)+(h['Board Members']\||0);
+    const dirPlus = (h['Director']||0)+(h['VP-Level']||0)+(h['C-Level']||0)+(h['Board Members']||0);
     const vpPlus  = (h['VP-Level']||0)+(h['C-Level']||0)+(h['Board Members']||0);
     return { x:(dirPlus/total*100).toFixed(1), y:vpPlus, r:Math.sqrt(total)/30, label:d, color:DEPT_COLORS[i] };
   });
@@ -942,7 +942,7 @@ makeDonut('chart-hier-overview',
     type:'bubble',
     data:{ datasets: bubbleData.map(b => ({ label:b.label, data:[{x:b.x,y:b.y,r:Math.max(b.r,5)}], backgroundColor:b.color+'BB', borderColor:b.color })) },
     options:{ ...baseOpts, scales:{
-      x:{title:{display:true,text:'% Director+(out of dept)',font:{size:10}},ticks:{font:{size:10},callback:v=>v+'%'},grid:{color:'#eee'}},
+      x:{title:{display:true,text:'% Director+ (out of dept)',font:{size:10}},ticks:{font:{size:10},callback:v=>v+'%'},grid:{color:'#eee'}},
       y:{title:{display:true,text:'VP+ Count',font:{size:10}},ticks:{font:{size:10},callback:v=>fmt(v)},grid:{color:'#eee'}}
     }, plugins:{ legend:{position:'bottom',labels:{font:{size:10},boxWidth:10}}, tooltip:{callbacks:{
       label:ctx=>`${ctx.dataset.label}: ${ctx.parsed.x}% Dir+, ${fmt(ctx.parsed.y)} VP+`
@@ -1032,7 +1032,7 @@ makeDonut('chart-hier-matched',
   html += '</tbody>';
   table.innerHTML = html;
 
-  table.querySelectorAll('tbody tr').forEach row => {
+  table.querySelectorAll('tbody tr').forEach(row => {
     row.addEventListener('click', function() {
       const tier = this.dataset.tier;
       if (selectedRow === this) {
@@ -1303,6 +1303,7 @@ buildTitlesChart();
 // Score slider
 const sliderThresholds = Object.keys(sliderData).map(Number).sort((a,b)=>b-a);
 let sliderChart = null;
+
 function updateSlider(val) {
   val = parseInt(val);
   document.getElementById('slider-val').textContent = val+'%';
@@ -1325,7 +1326,7 @@ function updateSlider(val) {
     options:{ ...baseOpts,
       plugins:{ legend:{position:'bottom',labels:{font:{size:11},boxWidth:10}},
         tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${fmt(ctx.raw)}`}} },
-      scales: {
+      scales:{
         y:{ticks:{font:{size:10},callback:v=>fmt(v)},grid:{color:'#eee'}},
         x:{ticks:{font:{size:10}},grid:{display:false}}
       }
