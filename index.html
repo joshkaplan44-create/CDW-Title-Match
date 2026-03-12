@@ -297,6 +297,7 @@ footer { text-align:center; padding:24px; color:#888; font-size:11px; margin-top
   <button onclick="showPage('titles',this)">🏷 Top Titles</button>
   <button onclick="showPage('quality',this)">✅ Match Quality</button>
   <button onclick="showPage('canonical',this)">🎯 Canonical Schema</button>
+  <button onclick="showPage('nextsteps',this)">🚀 What's Next</button>
 </nav>
 
 <main>
@@ -310,7 +311,7 @@ footer { text-align:center; padding:24px; color:#888; font-size:11px; margin-top
     <div style="position:absolute;bottom:-60px;right:80px;width:160px;height:160px;border-radius:50%;background:rgba(204,0,0,0.06);"></div>
     <div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;opacity:0.55;margin-bottom:12px;">CDW · Data Strategy · March 2026</div>
     <h2 style="font-size:clamp(22px,3.5vw,34px);font-weight:900;line-height:1.2;margin-bottom:16px;max-width:700px;">Turning 790,000 Job Title Variations Into a Single Source of Truth</h2>
-    <p style="font-size:14px;opacity:0.82;line-height:1.8;max-width:680px;margin-bottom:24px;">CDW's contact database contained over 790,000 unique, uncleaned job title strings — free-text entries riddled with abbreviations, typos, phone numbers, and inconsistent formatting. This project standardized every title against Zoom's canonical persona schema, creating a clean, structured foundation for identity resolution and golden record construction.</p>
+    <p style="font-size:14px;opacity:0.82;line-height:1.8;max-width:680px;margin-bottom:24px;">CDW's contact database contained over 790,000 unique, uncleaned job title strings — free-text entries riddled with abbreviations, typos, phone numbers, and inconsistent formatting. This project standardized every title against Zoom's canonical persona schema, creating a clean, structured foundation for the <strong style="color:#FF9999;">Golden Contact Identifier (GCI)</strong> — CDW's enterprise identity spine for resolving contacts into trusted golden records across all systems.</p>
     <div style="display:flex;gap:12px;flex-wrap:wrap;">
       <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:10px 18px;text-align:center;">
         <div style="font-size:20px;font-weight:800;">790,226</div>
@@ -405,6 +406,12 @@ footer { text-align:center; padding:24px; color:#888; font-size:11px; margin-top
       <div style="font-size:22px;margin-bottom:8px;">✅</div>
       <div style="font-size:13px;font-weight:700;color:var(--cdw-dark);margin-bottom:5px;">Match Quality</div>
       <div style="font-size:11px;color:var(--grey);line-height:1.6;">Confidence score distributions, threshold analysis, and a lookup table to manually review and validate specific matches.</div>
+    </button>
+
+    <button onclick="showPage('nextsteps', document.querySelector('nav button:nth-child(9)'))" style="background:linear-gradient(135deg,#0a1628,#0d2240);border:1.5px solid #1a3a5c;border-radius:12px;padding:18px 20px;text-align:left;cursor:pointer;transition:all 0.2s;box-shadow:var(--card-shadow);font-family:inherit;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 6px 18px rgba(0,40,80,0.25)';" onmouseout="this.style.transform='';this.style.boxShadow='var(--card-shadow)';">
+      <div style="font-size:22px;margin-bottom:8px;">🚀</div>
+      <div style="font-size:13px;font-weight:700;color:white;margin-bottom:5px;">What's Next</div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.7);line-height:1.6;">How to operationalize this work inside the GCI pipeline — publishing the standardization table, integrating at ingestion, closing the NEI gap, and unlocking downstream persona capabilities.</div>
     </button>
 
   </div>
@@ -877,6 +884,167 @@ footer { text-align:center; padding:24px; color:#888; font-size:11px; margin-top
       <span class="search-count" id="canonical-count">745 titles</span>
     </div>
     <div id="canonical-grid" style="display:flex;flex-wrap:wrap;gap:6px;max-height:480px;overflow-y:auto;margin-top:6px;"></div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════ WHAT'S NEXT ══════════════════════ -->
+<div id="page-nextsteps" class="page">
+
+  <!-- Header -->
+  <div style="background:linear-gradient(135deg,#0a1628 0%,#0d2240 60%,#0a3060 100%);border-radius:14px;padding:40px 48px;margin-bottom:28px;color:white;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-30px;right:-30px;width:180px;height:180px;border-radius:50%;background:rgba(0,119,182,0.12);"></div>
+    <div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;opacity:0.55;margin-bottom:12px;">From Analysis to Operation</div>
+    <h2 style="font-size:clamp(20px,3vw,30px);font-weight:900;line-height:1.2;margin-bottom:14px;max-width:680px;">Operationalizing Title Standardization Inside the GCI Pipeline</h2>
+    <p style="font-size:13px;opacity:0.82;line-height:1.8;max-width:680px;">This matching exercise produced a validated standardization table — but the real value is realized when that table becomes a permanent, automated step inside CDW's <strong>Golden Contact Identifier (GCI)</strong> pipeline, so that every new contact entering the system is standardized at ingestion rather than after the fact.</p>
+  </div>
+
+  <!-- What is GCI callout -->
+  <div style="background:#f0f7ff;border:1.5px solid #b8d9f5;border-radius:12px;padding:20px 24px;margin-bottom:24px;display:flex;gap:16px;align-items:flex-start;">
+    <div style="font-size:28px;flex-shrink:0;">🏛</div>
+    <div>
+      <div style="font-size:13px;font-weight:700;color:#0a2040;margin-bottom:6px;">What is the GCI?</div>
+      <div style="font-size:12px;color:#3a5a7a;line-height:1.8;">The <strong>Golden Contact Identifier (GCI)</strong> is CDW's enterprise identity spine — an abstraction layer that resolves the same individual across CRM, marketing platforms, digital interactions, events, and analytics into a single, trusted canonical identity. It does not replace Salesforce or any operational system; it provides the connective tissue that links records across systems, ensuring that downstream analytics, personas, and activation always operate against the same understanding of who a contact is. Title standardization is a critical input to this process — a clean, structured job title dramatically improves identity resolution accuracy, persona assignment, and buying committee modeling.</div>
+    </div>
+  </div>
+
+  <!-- Where we are now -->
+  <div class="section-title">📍 Where We Are Now</div>
+  <div class="kpi-row" style="margin-bottom:24px;">
+    <div class="kpi green">
+      <div class="kpi-label">Title-Matched Records</div>
+      <div class="kpi-value">267,816</div>
+      <div class="kpi-sub">33.9% · direct cosine match ≥ 60%</div>
+    </div>
+    <div class="kpi teal">
+      <div class="kpi-label">Hierarchy-Matched Records</div>
+      <div class="kpi-value">58,737</div>
+      <div class="kpi-sub">~7.4% · matched via Zoom hierarchy lookup</div>
+    </div>
+    <div class="kpi amber">
+      <div class="kpi-label">Combined Coverage</div>
+      <div class="kpi-value">~41%</div>
+      <div class="kpi-sub">326,553 records with a canonical persona</div>
+    </div>
+    <div class="kpi red">
+      <div class="kpi-label">Remaining Gap</div>
+      <div class="kpi-value">~59%</div>
+      <div class="kpi-sub">463,673 records still NEI — addressable over time</div>
+    </div>
+  </div>
+
+  <!-- 4-step plan -->
+  <div class="section-title">🗺 The Path Forward</div>
+  <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:28px;">
+
+    <!-- Step 1 -->
+    <div style="background:white;border-radius:12px;box-shadow:var(--card-shadow);overflow:hidden;display:flex;">
+      <div style="width:6px;background:#CC0000;flex-shrink:0;"></div>
+      <div style="padding:20px 24px;flex:1;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <div style="width:30px;height:30px;border-radius:50%;background:#CC0000;color:white;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
+          <div style="font-size:14px;font-weight:700;color:var(--cdw-dark);">Publish the Standardization Lookup Table</div>
+          <div style="margin-left:auto;background:#fff0f0;color:#CC0000;border-radius:20px;padding:3px 12px;font-size:10px;font-weight:700;white-space:nowrap;">Ready Now</div>
+        </div>
+        <div style="font-size:12px;color:var(--grey);line-height:1.8;margin-left:42px;">The matching output already exists as a structured table: <strong style="color:var(--cdw-dark);">raw CDW title → canonical Zoom title → match score</strong>. This needs to be formalized as a versioned, governed lookup asset — a flat table (or database view) that maps every matched raw title string to its canonical equivalent. This table becomes the foundation for all downstream standardization logic and should be stored in the same data layer as other GCI reference assets.</div>
+        <div style="margin-left:42px;margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="background:#fff0f0;color:#CC0000;border:1px solid #ffd5d5;border-radius:6px;padding:4px 10px;font-size:11px;font-weight:600;">267,816 matched rows ready to export</span>
+          <span style="background:#f5f5f5;color:#555;border:1px solid #ddd;border-radius:6px;padding:4px 10px;font-size:11px;">Fields: raw_title, canonical_title, match_score, department, job_function, management_level</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div style="background:white;border-radius:12px;box-shadow:var(--card-shadow);overflow:hidden;display:flex;">
+      <div style="width:6px;background:#0077B6;flex-shrink:0;"></div>
+      <div style="padding:20px 24px;flex:1;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <div style="width:30px;height:30px;border-radius:50%;background:#0077B6;color:white;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
+          <div style="font-size:14px;font-weight:700;color:var(--cdw-dark);">Integrate into GCI Source Ingestion &amp; Standardization (Phase 1)</div>
+          <div style="margin-left:auto;background:#f0f8ff;color:#0077B6;border-radius:20px;padding:3px 12px;font-size:10px;font-weight:700;white-space:nowrap;">Next Step</div>
+        </div>
+        <div style="font-size:12px;color:var(--grey);line-height:1.8;margin-left:42px;">The GCI lifecycle's first phase — <em>Source Ingestion &amp; Standardization</em> — is where incoming contact records are cleaned and normalized before entering identity resolution. The title standardization table should be applied here as a <strong style="color:var(--cdw-dark);">pre-resolution enrichment step</strong>: when a new CDW contact record is ingested with a raw job title string, the pipeline performs a table lookup and, if a match exists, appends the canonical title, department, job function, and management level as structured attributes on the record. This happens before identity resolution, which means the IDR engine has clean persona signals to work with from the start.</div>
+        <div style="margin-left:42px;margin-top:12px;background:#f0f8ff;border-radius:8px;padding:12px 16px;border-left:3px solid #0077B6;">
+          <div style="font-size:11px;font-weight:700;color:#0077B6;margin-bottom:4px;">GCI Design Principle — Standardize at Ingestion, Not Downstream</div>
+          <div style="font-size:11px;color:#3a5a7a;line-height:1.7;">GCI's architecture is explicit: source data is made <em>comparable and usable</em> at ingestion time, without overwriting the original field. The raw title is preserved for lineage; the canonical title is added as a governed, derived attribute. This keeps identity logic clean and prevents downstream tools from re-solving a problem that should only be solved once.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div style="background:white;border-radius:12px;box-shadow:var(--card-shadow);overflow:hidden;display:flex;">
+      <div style="width:6px;background:#2E8B57;flex-shrink:0;"></div>
+      <div style="padding:20px 24px;flex:1;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <div style="width:30px;height:30px;border-radius:50%;background:#2E8B57;color:white;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
+          <div style="font-size:14px;font-weight:700;color:var(--cdw-dark);">Address the Remaining ~59% (NEI Records)</div>
+          <div style="margin-left:auto;background:#f0fff4;color:#2E8B57;border-radius:20px;padding:3px 12px;font-size:10px;font-weight:700;white-space:nowrap;">Iterative</div>
+        </div>
+        <div style="font-size:12px;color:var(--grey);line-height:1.8;margin-left:42px;">The 463,673 records below the 60% confidence threshold are not lost — they represent a solvable quality problem. Strategies for closing this gap over time include:</div>
+        <div style="margin-left:42px;margin-top:10px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;">
+          <div style="background:#f8fff8;border:1px solid #c3e6cb;border-radius:8px;padding:12px;">
+            <div style="font-size:11px;font-weight:700;color:#2E8B57;margin-bottom:5px;">🔧 Threshold Tuning</div>
+            <div style="font-size:11px;color:var(--grey);line-height:1.6;">Lower the 60% threshold selectively for high-confidence function categories, or apply tiered thresholds by department to recover more matches without sacrificing quality.</div>
+          </div>
+          <div style="background:#f8fff8;border:1px solid #c3e6cb;border-radius:8px;padding:12px;">
+            <div style="font-size:11px;font-weight:700;color:#2E8B57;margin-bottom:5px;">🔁 ZoomInfo Enrichment</div>
+            <div style="font-size:11px;color:var(--grey);line-height:1.6;">For NEI records with sufficient identity signals, use ZoomInfo's enrichment API to retrieve a standardized title directly — bypassing the fuzzy match entirely for records where ZI has coverage.</div>
+          </div>
+          <div style="background:#f8fff8;border:1px solid #c3e6cb;border-radius:8px;padding:12px;">
+            <div style="font-size:11px;font-weight:700;color:#2E8B57;margin-bottom:5px;">📋 Manual Review Queue</div>
+            <div style="font-size:11px;color:var(--grey);line-height:1.6;">Surface the highest-frequency NEI raw titles (those appearing 100+ times) for a targeted human review pass. A small effort on the most common patterns yields disproportionate coverage gains.</div>
+          </div>
+          <div style="background:#f8fff8;border:1px solid #c3e6cb;border-radius:8px;padding:12px;">
+            <div style="font-size:11px;font-weight:700;color:#2E8B57;margin-bottom:5px;">📐 Schema Expansion</div>
+            <div style="font-size:11px;color:var(--grey);line-height:1.6;">Some NEI titles may represent legitimate CDW-specific roles not covered by the current 745 Zoom titles. Identify clusters and propose additions to the canonical schema in coordination with the ZoomInfo contract.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div style="background:white;border-radius:12px;box-shadow:var(--card-shadow);overflow:hidden;display:flex;">
+      <div style="width:6px;background:#7C3AED;flex-shrink:0;"></div>
+      <div style="padding:20px 24px;flex:1;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+          <div style="width:30px;height:30px;border-radius:50%;background:#7C3AED;color:white;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div>
+          <div style="font-size:14px;font-weight:700;color:var(--cdw-dark);">Unlock Downstream GCI Capabilities</div>
+          <div style="margin-left:auto;background:#f5f0ff;color:#7C3AED;border-radius:20px;padding:3px 12px;font-size:10px;font-weight:700;white-space:nowrap;">Downstream Value</div>
+        </div>
+        <div style="font-size:12px;color:var(--grey);line-height:1.8;margin-left:42px;margin-bottom:12px;">Once canonical titles are flowing through the GCI pipeline at ingestion, they become a structured signal available to every downstream system and capability — without any additional integration work per platform:</div>
+        <div style="margin-left:42px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;">
+          <div style="background:#f9f7ff;border:1px solid #d8c8f5;border-radius:8px;padding:12px;">
+            <div style="font-size:11px;font-weight:700;color:#7C3AED;margin-bottom:4px;">🧠 Persona Intelligence</div>
+            <div style="font-size:11px;color:var(--grey);line-height:1.6;">Department + Job Function + Management Level from the canonical schema feed directly into GCI's persona model, enabling structured audience segments without manual classification.</div>
+          </div>
+          <div style="background:#f9f7ff;border:1px solid #d8c8f5;border-radius:8px;padding:12px;">
+            <div style="font-size:11px;font-weight:700;color:#7C3AED;margin-bottom:4px;">🏢 Buying Committee Modeling</div>
+            <div style="font-size:11px;color:var(--grey);line-height:1.6;">Standardized management levels allow GCI to identify decision-makers, influencers, and end-users within an account — a prerequisite for account-based marketing and PMAI.</div>
+          </div>
+          <div style="background:#f9f7ff;border:1px solid #d8c8f5;border-radius:8px;padding:12px;">
+            <div style="font-size:11px;font-weight:700;color:#7C3AED;margin-bottom:4px;">🎯 Identity Resolution Quality</div>
+            <div style="font-size:11px;color:var(--grey);line-height:1.6;">A clean canonical title dramatically improves probabilistic matching accuracy — two records with the same name, company, and canonical title are far stronger merge candidates than those with mismatched free-text strings.</div>
+          </div>
+          <div style="background:#f9f7ff;border:1px solid #d8c8f5;border-radius:8px;padding:12px;">
+            <div style="font-size:11px;font-weight:700;color:#7C3AED;margin-bottom:4px;">📊 MARKO &amp; AI Orchestration</div>
+            <div style="font-size:11px;color:var(--grey);line-height:1.6;">Structured persona attributes enable AI-assisted orchestration tools like MARKO to make role-aware content and timing decisions without ad-hoc title parsing at the application layer.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Where this fits in the GCI lifecycle -->
+  <div class="section-title">🔗 Where This Fits in the GCI Lifecycle</div>
+  <div class="card" style="margin-bottom:24px;">
+    <h3 style="margin-bottom:4px;">GCI End-to-End Lifecycle — Title Standardization Touch Points</h3>
+    <div class="sub">Title standardization contributes at two distinct phases of the GCI pipeline</div>
+    <div style="display:flex;flex-direction:column;gap:0;margin-top:20px;position:relative;">
+      <div style="position:absolute;left:20px;top:0;bottom:0;width:2px;background:var(--border);"></div>
+      <!-- Phase rows -->
+      <div id="lifecycle-steps"></div>
+    </div>
   </div>
 
 </div>
@@ -1685,6 +1853,52 @@ const CANONICAL_TITLES = ["Clinical Operations Board Member","Clinical Operation
       initCanonicalDonut();
     }
   };
+})();
+
+// ── What's Next: GCI Lifecycle Visualization ────────────────────────────
+(function initLifecycle(){
+  const steps = [
+    { num:'1', color:'#CC0000', label:'Source Ingestion & Standardization', tag:'Title Standardization Applied Here',
+      text:'Raw CDW contact records enter the pipeline. The title standardization table is applied as a lookup — mapping each raw job title to its canonical Zoom equivalent and appending structured Department, Job Function, and Management Level attributes. The original title is preserved for lineage.',
+      highlight:true },
+    { num:'2', color:'#888', label:'Eligibility & Filtering', tag:'',
+      text:'Records are evaluated against eligibility rules — account and contact type filters, internal record exclusion, and time-window constraints. Standardized title attributes improve filter accuracy by enabling role-based eligibility logic.' },
+    { num:'3', color:'#888', label:'Identity Resolution', tag:'',
+      text:'Eligible records enter the IDR engine. A clean canonical title dramatically improves probabilistic matching confidence — two records sharing the same name, company, and canonical title are far stronger merge candidates than records with mismatched free-text strings.' },
+    { num:'4', color:'#888', label:'Golden Contact Construction', tag:'',
+      text:'Survivorship logic selects authoritative attribute values per Golden Contact. The canonical title — now a governed, structured field — participates in survivorship alongside email, name, and firmographic attributes, producing a clean Master Contact Dimension.' },
+    { num:'5', color:'#0077B6', label:'Enrichment Layer (ZoomInfo)', tag:'Augments Standardization Coverage',
+      text:'ZoomInfo enrichment is applied at the Golden Contact level. For the ~59% of records that could not be matched via cosine similarity, ZI direct enrichment can supply canonical title, department, and persona data — progressively closing the NEI gap without re-running the matching pipeline.',
+      highlight:true },
+    { num:'6', color:'#888', label:'Interaction & Revenue Attribution', tag:'',
+      text:'Interactions are linked to ContactMasterIDs. Persona-tagged golden contacts enable role-aware engagement attribution — surfacing which personas are engaging, converting, and driving revenue.' },
+    { num:'7', color:'#7C3AED', label:'Downstream Consumption', tag:'Personas · Buying Committees · MARKO · Analytics',
+      text:'Canonical title attributes flow to Salesforce (role visibility), Adobe (persona-based activation and suppression), PMAI, MARKO, and analytics tools — without any additional per-platform integration. The standardization work done once upstream is consumed everywhere downstream.',
+      highlight:true },
+  ];
+
+  const container = document.getElementById('lifecycle-steps');
+  if(!container) return;
+
+  steps.forEach(s => {
+    const div = document.createElement('div');
+    div.style.cssText = 'display:flex;gap:16px;padding:0 0 20px 0;position:relative;';
+    const dotColor = s.highlight ? s.color : '#ccc';
+    const bgColor  = s.highlight ? (s.color==='#CC0000'?'#fff8f8':s.color==='#0077B6'?'#f0f8ff':'#f9f7ff') : 'transparent';
+    const border   = s.highlight ? `1px solid ${s.color==='#CC0000'?'#ffd5d5':s.color==='#0077B6'?'#b8d9f5':'#d8c8f5'}` : 'none';
+    div.innerHTML = `
+      <div style="width:40px;flex-shrink:0;display:flex;justify-content:center;">
+        <div style="width:20px;height:20px;border-radius:50%;background:${dotColor};color:white;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;margin-top:2px;">${s.num}</div>
+      </div>
+      <div style="flex:1;background:${bgColor};border:${border};border-radius:10px;padding:${s.highlight?'14px 18px':'8px 0'};margin-bottom:4px;">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:${s.highlight?'8px':'4px'};">
+          <span style="font-size:13px;font-weight:700;color:${s.highlight?s.color:'#666'};">${s.label}</span>
+          ${s.tag?`<span style="background:${s.color};color:white;border-radius:20px;padding:2px 10px;font-size:10px;font-weight:700;">${s.tag}</span>`:''}
+        </div>
+        <div style="font-size:11px;color:${s.highlight?'#444':'#999'};line-height:1.7;">${s.text}</div>
+      </div>`;
+    container.appendChild(div);
+  });
 })();
 
 </script>
