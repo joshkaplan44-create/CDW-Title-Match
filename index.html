@@ -318,8 +318,8 @@ footer { text-align:center; padding:24px; color:#888; font-size:11px; margin-top
         <div style="font-size:10px;opacity:0.65;margin-top:2px;letter-spacing:0.5px;">Records Processed</div>
       </div>
       <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:10px 18px;text-align:center;">
-        <div style="font-size:20px;font-weight:800;">33.9%</div>
-        <div style="font-size:10px;opacity:0.65;margin-top:2px;letter-spacing:0.5px;">Match Rate</div>
+        <div style="font-size:20px;font-weight:800;">41.3%</div>
+        <div style="font-size:10px;opacity:0.65;margin-top:2px;letter-spacing:0.5px;">Total Coverage (2-phase)</div>
       </div>
       <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:10px 18px;text-align:center;">
         <div style="font-size:20px;font-weight:800;">745</div>
@@ -352,11 +352,11 @@ footer { text-align:center; padding:24px; color:#888; font-size:11px; margin-top
         </div>
         <div style="display:flex;gap:12px;align-items:flex-start;">
           <div style="width:28px;height:28px;border-radius:50%;background:var(--green);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
-          <div style="font-size:12px;color:var(--grey);line-height:1.7;"><strong style="color:var(--cdw-dark);">Matched each title via cosine similarity</strong>, assigning the best-fitting canonical title to every record that scored ≥ 60%. Titles below threshold were flagged as Not Enough Information (NEI).</div>
+          <div style="font-size:12px;color:var(--grey);line-height:1.7;"><strong style="color:var(--cdw-dark);">Phase 1 — matched each title via cosine similarity</strong>, assigning the best-fitting canonical title to every record scoring ≥ 60% (267,816 records, 33.9%). Records below threshold were not discarded — they were passed to Phase 2.</div>
         </div>
         <div style="display:flex;gap:12px;align-items:flex-start;">
           <div style="width:28px;height:28px;border-radius:50%;background:var(--purple);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div>
-          <div style="font-size:12px;color:var(--grey);line-height:1.7;"><strong style="color:var(--cdw-dark);">Mapped matched titles to Zoom's hierarchy</strong> — Department, Job Function, and Management Level — enabling structured segmentation across all matched records.</div>
+          <div style="font-size:12px;color:var(--grey);line-height:1.7;"><strong style="color:var(--cdw-dark);">Phase 2 — applied a hierarchy keyword classifier</strong> to the 522,410 Phase 1 NEI records, recovering an additional 58,737 (7.4%) into Zoom's management-level tiers (Manager, Director, VP-Level, C-Level, Board Members). Combined coverage: <strong style="color:var(--cdw-dark);">326,553 records (41.3%)</strong>.</div>
         </div>
       </div>
     </div>
@@ -424,8 +424,9 @@ footer { text-align:center; padding:24px; color:#888; font-size:11px; margin-top
   <div class="highlight-row">
     <div class="highlight-badge">📅 <span>Processed <strong>March 2026</strong></span></div>
     <div class="highlight-badge">⏱ <span>Completed in <strong>8.9 seconds</strong> via TF-IDF vectorization</span></div>
-    <div class="highlight-badge">🎯 <span>Threshold: <strong>≥ 60%</strong> cosine similarity</span></div>
-    <div class="highlight-badge">📚 <span><strong>745</strong> canonical Zoom personas</span></div>
+    <div class="highlight-badge">🎯 <span>Phase 1: <strong>≥ 60%</strong> cosine similarity · 267,816 matched</span></div>
+    <div class="highlight-badge">🏢 <span>Phase 2: <strong>hierarchy matching</strong> · +58,737 recovered</span></div>
+    <div class="highlight-badge">📚 <span><strong>745</strong> canonical Zoom personas · <strong>41.3%</strong> total coverage</span></div>
   </div>
 
   <div class="kpi-row">
@@ -435,19 +436,24 @@ footer { text-align:center; padding:24px; color:#888; font-size:11px; margin-top
       <div class="kpi-sub">From CDW Function Title (1).csv</div>
     </div>
     <div class="kpi green">
-      <div class="kpi-label">Successfully Matched</div>
+      <div class="kpi-label">Phase 1 · Title Matched</div>
       <div class="kpi-value counter" data-target="267816">0</div>
-      <div class="kpi-sub">33.9% · score ≥ 60%</div>
-    </div>
-    <div class="kpi red">
-      <div class="kpi-label">Not Enough Information</div>
-      <div class="kpi-value counter" data-target="522410">0</div>
-      <div class="kpi-sub">66.1% · below threshold</div>
+      <div class="kpi-sub">33.9% · cosine similarity ≥ 60%</div>
     </div>
     <div class="kpi teal">
-      <div class="kpi-label">Hierarchy Assigned</div>
+      <div class="kpi-label">Phase 2 · Hierarchy Recovered</div>
+      <div class="kpi-value counter" data-target="58737">0</div>
+      <div class="kpi-sub">7.4% · 11.2% of Phase 1 NEI pool</div>
+    </div>
+    <div class="kpi amber">
+      <div class="kpi-label">Combined Coverage</div>
       <div class="kpi-value counter" data-target="326553">0</div>
-      <div class="kpi-sub">41.3% of total records</div>
+      <div class="kpi-sub">41.3% · personas assigned across 2 phases</div>
+    </div>
+    <div class="kpi red">
+      <div class="kpi-label">Remaining NEI</div>
+      <div class="kpi-value counter" data-target="463673">0</div>
+      <div class="kpi-sub">58.7% · no reliable match either phase</div>
     </div>
   </div>
 
@@ -459,7 +465,7 @@ footer { text-align:center; padding:24px; color:#888; font-size:11px; margin-top
     </div>
     <div class="card">
       <h3>Match Rate</h3>
-      <div class="sub">Matched vs. Not Enough Information</div>
+      <div class="sub">Phase 1 title match · Phase 2 hierarchy recovery · Remaining NEI</div>
       <canvas id="chart-donut-overview"></canvas>
       <div class="legend" id="overview-donut-legend"></div>
     </div>
@@ -529,9 +535,9 @@ footer { text-align:center; padding:24px; color:#888; font-size:11px; margin-top
     </div>
     <div class="insight-card orange">
       <div class="insight-icon">📬</div>
-      <div class="insight-title">522K NEI Records: Recoverable Goldmine</div>
-      <div class="insight-stat">88,504</div>
-      <div class="insight-text">Of the 522,410 "Not Enough Information" records, 88,504 scored 50–59% — just below the confidence threshold. These are high-recovery candidates that warrant manual review or a ZoomInfo enrichment pass. Lowering the threshold to 55% would recover ~20-25% more contacts without significantly reducing quality.</div>
+      <div class="insight-title">464K Remaining NEI: Still Recoverable</div>
+      <div class="insight-stat">463,673</div>
+      <div class="insight-text">Phase 2 hierarchy matching already recovered 58,737 records (11.2%) from the original 522,410 NEI pool. Of the 463,673 remaining, 88,504 scored 50–59% in Phase 1 — just below threshold — and are high-recovery candidates for manual review or a ZoomInfo enrichment pass. Lowering the threshold to 55% would recover an additional 20–25% without significantly reducing quality.</div>
     </div>
   </div>
 
@@ -1249,10 +1255,11 @@ setTimeout(runCounters, 200);
 // ═══════════════════════════════════════════════════════
 (function() {
   const steps = [
-    { label:'Total CDW Records', val:790226, color:'var(--navy)', w:'100%', note:'↓ Abbreviation expansion + TF-IDF normalization' },
-    { label:'Cosine Similarity Scored', val:790226, color:'#2563a8', w:'100%', note:'↓ Score ≥ 60% threshold applied' },
-    { label:'Matched (≥60%)', val:267816, color:'var(--green)', w:'34%', note:'↓ ZI hierarchy keyword classifier on NEI records' },
-    { label:'Hierarchy Assigned', val:326553, color:'var(--teal)', w:'41%', note:null }
+    { label:'Total CDW Records', val:790226, color:'var(--navy)', w:'100%', note:'↓ Phase 1: Abbreviation expansion + TF-IDF cosine similarity' },
+    { label:'Phase 1 · Title Matched (≥60%)', val:267816, color:'var(--green)', w:'34%', note:'↓ Phase 1 NEI pool passed to Phase 2 hierarchy classifier' },
+    { label:'Phase 2 · Hierarchy Recovered', val:58737, color:'var(--teal)', w:'8%', note:'↓ Combined: Phase 1 + Phase 2' },
+    { label:'Total Coverage (Both Phases)', val:326553, color:'#0077B6', w:'41%', note:'↓ No match in either phase' },
+    { label:'Remaining NEI', val:463673, color:'#aaa', w:'59%', note:null }
   ];
   const el = document.getElementById('funnel-steps');
   steps.forEach((s,i) => {
@@ -1267,8 +1274,8 @@ setTimeout(runCounters, 200);
 //  OVERVIEW CHARTS
 // ═══════════════════════════════════════════════════════
 makeDonut('chart-donut-overview',
-  ['Matched (≥60%)', 'Not Enough Information'],
-  [267816, 522410], [COLORS.green, '#E0E0E0']
+  ['Phase 1: Title Matched', 'Phase 2: Hierarchy Recovered', 'Remaining NEI'],
+  [267816, 58737, 463673], [COLORS.green, COLORS.teal, '#E0E0E0']
 );
 
 let scoreViewMode = 'count';
