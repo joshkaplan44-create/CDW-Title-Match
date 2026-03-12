@@ -33,7 +33,7 @@ header {
 .cdw-logo {
   display: flex; align-items: center; gap: 16px;
 }
-.cdw-logo svg { width: 80px; height: auto; flex-shrink: 0; }
+.cdw-logo img { height: 52px; width: auto; flex-shrink: 0; background: white; border-radius: 8px; padding: 4px 10px; }
 .cdw-logo-text { display: flex; flex-direction: column; }
 header h1 { font-size: clamp(14px, 2.5vw, 20px); font-weight: 700; letter-spacing: -0.3px; }
 header p  { font-size: 12px; opacity: 0.70; margin-top: 3px; }
@@ -279,12 +279,7 @@ footer { text-align:center; padding:24px; color:#888; font-size:11px; margin-top
 
 <header>
   <div class="cdw-logo">
-    <!-- CDW wordmark SVG (signature red on dark) -->
-    <svg viewBox="0 0 120 48" xmlns="http://www.w3.org/2000/svg" aria-label="CDW">
-      <text x="4" y="40" font-family="Arial Black, Impact, sans-serif" font-size="46" font-weight="900"
-            fill="#CC0000" letter-spacing="-2">CDW</text>
-      <line x1="4" y1="46" x2="116" y2="46" stroke="#CC0000" stroke-width="3"/>
-    </svg>
+    <img src="pngfind.com-office-depot-png-4448879.png" alt="CDW"/>
     <div class="cdw-logo-text">
       <h1>Job Title Matching Dashboard</h1>
       <p>Persona standardization using Zoom canonical model &nbsp;·&nbsp; March 2026</p>
@@ -300,6 +295,7 @@ footer { text-align:center; padding:24px; color:#888; font-size:11px; margin-top
   <button onclick="showPage('industry',this)">🏭 Industry / Dept</button>
   <button onclick="showPage('titles',this)">🏷 Top Titles</button>
   <button onclick="showPage('quality',this)">✅ Match Quality</button>
+  <button onclick="showPage('canonical',this)">🎯 Canonical Schema</button>
 </nav>
 
 <main>
@@ -652,6 +648,126 @@ footer { text-align:center; padding:24px; color:#888; font-size:11px; margin-top
       </table>
     </div>
   </div>
+</div>
+
+<!-- ══════════════════════ CANONICAL SCHEMA ══════════════════════ -->
+<div id="page-canonical" class="page">
+
+  <!-- Hero reduction story -->
+  <div style="background:linear-gradient(135deg,var(--cdw-dark) 0%,#3a0a0a 60%,#550000 100%);border-radius:12px;padding:32px 36px;margin-bottom:22px;color:white;">
+    <div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;opacity:0.6;margin-bottom:10px;">Title Standardization Story</div>
+    <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:center;">
+      <div style="text-align:center;">
+        <div style="font-size:clamp(32px,5vw,52px);font-weight:900;line-height:1;">790,100</div>
+        <div style="font-size:12px;opacity:0.75;margin-top:6px;letter-spacing:0.5px;">Unique Raw Job Titles</div>
+        <div style="font-size:11px;opacity:0.5;margin-top:3px;">in CDW contact database</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+        <div style="font-size:28px;opacity:0.5;">→</div>
+        <div style="background:var(--cdw-red);border-radius:20px;padding:6px 14px;font-size:11px;font-weight:700;letter-spacing:0.5px;white-space:nowrap;">1,060× reduction</div>
+        <div style="font-size:28px;opacity:0.5;">→</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:clamp(32px,5vw,52px);font-weight:900;line-height:1;color:#FF9999;">745</div>
+        <div style="font-size:12px;opacity:0.75;margin-top:6px;letter-spacing:0.5px;">Canonical Zoom Titles</div>
+        <div style="font-size:11px;opacity:0.5;margin-top:3px;">clean, structured schema</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:22px;font-size:13px;opacity:0.8;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7;">
+      Over 790,000 messy, inconsistent job title variations — abbreviations, typos, phone numbers embedded in titles, and free-text noise — collapsed into a clean, structured schema of just 745 standardized titles using TF-IDF vectorization and cosine similarity matching.
+    </div>
+  </div>
+
+  <!-- KPI row -->
+  <div class="kpi-row" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
+    <div class="kpi red">
+      <div class="kpi-label">Raw Unique Titles</div>
+      <div class="kpi-value">790,100</div>
+      <div class="kpi-sub">Messy, unstandardized input</div>
+    </div>
+    <div class="kpi green">
+      <div class="kpi-label">Canonical Zoom Titles</div>
+      <div class="kpi-value">745</div>
+      <div class="kpi-sub">Clean structured output</div>
+    </div>
+    <div class="kpi teal">
+      <div class="kpi-label">Job Functions</div>
+      <div class="kpi-value">148</div>
+      <div class="kpi-sub">Distinct function areas</div>
+    </div>
+    <div class="kpi amber">
+      <div class="kpi-label">Management Levels</div>
+      <div class="kpi-value">5</div>
+      <div class="kpi-sub">Board · C-Suite · VP · Dir · Mgr</div>
+    </div>
+    <div class="kpi purple">
+      <div class="kpi-label">Reduction Factor</div>
+      <div class="kpi-value">1,060×</div>
+      <div class="kpi-sub">Fewer titles to manage</div>
+    </div>
+  </div>
+
+  <!-- Schema structure + level breakdown side by side -->
+  <div class="grid-65-35" style="margin-bottom:18px;">
+    <div class="card">
+      <h3>Schema Structure</h3>
+      <div class="sub">Each of 148 job functions maps to 5 management levels → 745 total titles</div>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px;">
+        <div style="font-size:12px;color:var(--grey);margin-bottom:4px;font-weight:600;">Formula: <span style="color:var(--cdw-dark);">148 Functions × 5 Levels = 740 titles + 5 edge-case titles = 745</span></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:8px;">
+          <div style="background:#fff0f0;border-radius:8px;padding:12px;text-align:center;border:1px solid #ffd5d5;">
+            <div style="font-size:11px;color:var(--grey);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Board Member</div>
+            <div style="font-size:20px;font-weight:700;color:var(--cdw-red);">148</div>
+            <div style="font-size:10px;color:var(--grey);">titles</div>
+          </div>
+          <div style="background:#f0f8ff;border-radius:8px;padding:12px;text-align:center;border:1px solid #cce5ff;">
+            <div style="font-size:11px;color:var(--grey);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">C Level Exec</div>
+            <div style="font-size:20px;font-weight:700;color:var(--teal);">148</div>
+            <div style="font-size:10px;color:var(--grey);">titles</div>
+          </div>
+          <div style="background:#f0fff4;border-radius:8px;padding:12px;text-align:center;border:1px solid #c3e6cb;">
+            <div style="font-size:11px;color:var(--grey);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">VP Level Exec</div>
+            <div style="font-size:20px;font-weight:700;color:var(--green);">148</div>
+            <div style="font-size:10px;color:var(--grey);">titles</div>
+          </div>
+          <div style="background:#fff9f0;border-radius:8px;padding:12px;text-align:center;border:1px solid #fde8c3;">
+            <div style="font-size:11px;color:var(--grey);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Director</div>
+            <div style="font-size:20px;font-weight:700;color:var(--amber);">148</div>
+            <div style="font-size:10px;color:var(--grey);">titles</div>
+          </div>
+          <div style="background:#f5f0ff;border-radius:8px;padding:12px;text-align:center;border:1px solid #d8c8f5;">
+            <div style="font-size:11px;color:var(--grey);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Manager</div>
+            <div style="font-size:20px;font-weight:700;color:var(--purple);">148</div>
+            <div style="font-size:10px;color:var(--grey);">titles</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+      <canvas id="chart-canonical-donut" style="max-height:200px;"></canvas>
+      <div id="canonical-legend" style="margin-top:12px;font-size:11px;color:var(--grey);"></div>
+    </div>
+  </div>
+
+  <!-- Searchable titles grid -->
+  <div class="card">
+    <h3>All 745 Canonical Zoom Titles</h3>
+    <div class="sub">Browse or search the complete canonical schema — 148 job functions × 5 management levels</div>
+    <div class="search-bar" style="margin-top:14px;">
+      <input type="text" id="canonical-search" placeholder="Search titles or functions (e.g. 'Marketing', 'Director', 'IT')" oninput="filterCanonical()"/>
+      <select id="canonical-level-filter" onchange="filterCanonical()">
+        <option value="">All Levels</option>
+        <option>Board Member</option>
+        <option>C Level Exec</option>
+        <option>VP Level Exec</option>
+        <option>Director</option>
+        <option>Manager</option>
+      </select>
+      <span class="search-count" id="canonical-count">745 titles</span>
+    </div>
+    <div id="canonical-grid" style="display:flex;flex-wrap:wrap;gap:6px;max-height:480px;overflow-y:auto;margin-top:6px;"></div>
+  </div>
+
 </div>
 
 </main>
@@ -1379,6 +1495,87 @@ makeDonut('chart-score-matched',
     tb.appendChild(tr);
   });
 })();
+
+// ── Canonical Titles Data ────────────────────────────────────────────────
+const CANONICAL_TITLES = ["Clinical Operations Board Member","Clinical Operations C Level Exec","Clinical Operations Director","Clinical Operations Manager","Clinical Operations VP Level Exec","Clinical Systems Board Member","Clinical Systems C Level Exec","Clinical Systems Director","Clinical Systems Manager","Clinical Systems VP Level Exec","Content Marketing Board Member","Content Marketing C Level Exec","Content Marketing Director","Content Marketing Manager","Content Marketing VP Level Exec","Doctors / Physicians Board Member","Doctors / Physicians C Level Exec","Doctors / Physicians Director","Doctors / Physicians Manager","Doctors / Physicians VP Level Exec","eCommerce Board Member","eCommerce C Level Exec","eCommerce Director","eCommerce Manager","eCommerce VP Level Exec","eDiscovery Board Member","eDiscovery C Level Exec","eDiscovery Director","eDiscovery Manager","eDiscovery VP Level Exec","Engineering & Technical Board Member","Engineering & Technical C Level Exec","Engineering & Technical Director","Engineering & Technical Manager","Engineering & Technical VP Level Exec","Industrial Engineering Board Member","Industrial Engineering C Level Exec","Industrial Engineering Director","Industrial Engineering Manager","Industrial Engineering VP Level Exec","Information Security Board Member","Information Security C Level Exec","Information Security Director","Information Security Manager","Information Security VP Level Exec","Information Technology Board Member","Information Technology C Level Exec","Information Technology Director","Information Technology Manager","Information Technology VP Level Exec","Infrastructure Board Member","Infrastructure C Level Exec","Infrastructure Director","Infrastructure Manager","Infrastructure VP Level Exec","IT Asset Management Board Member","IT Asset Management C Level Exec","IT Asset Management Director","IT Asset Management Manager","IT Asset Management VP Level Exec","IT Audit / IT Compliance Board Member","IT Audit / IT Compliance C Level Exec","IT Audit / IT Compliance Director","IT Audit / IT Compliance Manager","IT Audit / IT Compliance VP Level Exec","IT Operations Board Member","IT Operations C Level Exec","IT Operations Director","IT Operations Manager","IT Operations VP Level Exec","IT Procurement Board Member","IT Procurement C Level Exec","IT Procurement Director","IT Procurement Manager","IT Procurement VP Level Exec","IT Strategy Board Member","IT Strategy C Level Exec","IT Strategy Director","IT Strategy Manager","IT Strategy VP Level Exec","IT Training Board Member","IT Training C Level Exec","IT Training Director","IT Training Manager","IT Training VP Level Exec","Legal Board Member","Legal C Level Exec","Legal Counsel Board Member","Legal Counsel C Level Exec","Legal Counsel Director","Legal Counsel Manager","Legal Counsel VP Level Exec","Legal Director","Legal Manager","Legal Operations Board Member","Legal Operations C Level Exec","Legal Operations Director","Legal Operations Manager","Legal Operations VP Level Exec","Legal VP Level Exec","Marketing Analytics / Insights Board Member","Marketing Analytics / Insights C Level Exec","Marketing Analytics / Insights Director","Marketing Analytics / Insights Manager","Marketing Analytics / Insights VP Level Exec","Marketing Board Member","Marketing C Level Exec","Marketing Communications Board Member","Marketing Communications C Level Exec","Marketing Communications Director","Marketing Communications Manager","Marketing Communications VP Level Exec","Marketing Director","Marketing Manager","Marketing Operations Board Member","Marketing Operations C Level Exec","Marketing Operations Director","Marketing Operations Manager","Marketing Operations VP Level Exec","Marketing VP Level Exec","Mobile Development Board Member","Mobile Development C Level Exec","Mobile Development Director","Mobile Development Manager","Mobile Development VP Level Exec","Networking Board Member","Networking C Level Exec","Networking Director","Networking Manager","Networking VP Level Exec","Physical Security Board Member","Physical Security C Level Exec","Physical Security Director","Physical Security Manager","Physical Security VP Level Exec","Privacy Board Member","Privacy C Level Exec","Privacy Director","Privacy Manager","Privacy VP Level Exec","Product Development Board Member","Product Development C Level Exec","Product Development Director","Product Development Manager","Product Development VP Level Exec","Product Management Board Member","Product Management C Level Exec","Product Management Director","Product Management Manager","Product Management VP Level Exec","Product Marketing Board Member","Product Marketing C Level Exec","Product Marketing Director","Product Marketing Manager","Product Marketing VP Level Exec","Project & Program Management Board Member","Project & Program Management C Level Exec","Project & Program Management Director","Project & Program Management Manager","Project & Program Management VP Level Exec","Project Development Board Member","Project Development C Level Exec","Project Development Director","Project Development Manager","Project Development VP Level Exec","Project Management Board Member","Project Management C Level Exec","Project Management Director","Project Management Manager","Project Management VP Level Exec","Public Relations (PR) Board Member","Public Relations (PR) C Level Exec","Public Relations (PR) Director","Public Relations (PR) Manager","Public Relations (PR) VP Level Exec","Quality Assurance Board Member","Quality Assurance C Level Exec","Quality Assurance Director","Quality Assurance Manager","Quality Assurance VP Level Exec","Quality Management Board Member","Quality Management C Level Exec","Quality Management Director","Quality Management Manager","Quality Management VP Level Exec","Real Estate Board Member","Real Estate C Level Exec","Real Estate Director","Real Estate Manager","Real Estate VP Level Exec","Research & Development Board Member","Research & Development C Level Exec","Research & Development Director","Research & Development Manager","Research & Development VP Level Exec","Retail / Store Systems Board Member","Retail / Store Systems C Level Exec","Retail / Store Systems Director","Retail / Store Systems Manager","Retail / Store Systems VP Level Exec","Revenue Operations Board Member","Revenue Operations C Level Exec","Revenue Operations Director","Revenue Operations Manager","Revenue Operations VP Level Exec","Risk Board Member","Risk C Level Exec","Risk Director","Risk Manager","Risk VP Level Exec","Safety Board Member","Safety C Level Exec","Safety Director","Safety Manager","Safety VP Level Exec","Sales Enablement Board Member","Sales Enablement C Level Exec","Sales Enablement Director","Sales Enablement Manager","Sales Enablement VP Level Exec","Sales Engineering Board Member","Sales Engineering C Level Exec","Sales Engineering Director","Sales Engineering Manager","Sales Engineering VP Level Exec","Sales Operations Board Member","Sales Operations C Level Exec","Sales Operations Director","Sales Operations Manager","Sales Operations VP Level Exec","Sales Training Board Member","Sales Training C Level Exec","Sales Training Director","Sales Training Manager","Sales Training VP Level Exec","Scrum Master / Agile Coach Board Member","Scrum Master / Agile Coach C Level Exec","Scrum Master / Agile Coach Director","Scrum Master / Agile Coach Manager","Scrum Master / Agile Coach VP Level Exec","Search Engine Optimization / Pay Per Click Board Member","Search Engine Optimization / Pay Per Click C Level Exec","Search Engine Optimization / Pay Per Click Director","Search Engine Optimization / Pay Per Click Manager","Search Engine Optimization / Pay Per Click VP Level Exec","Servers Board Member","Servers C Level Exec","Servers Director","Servers Manager","Servers VP Level Exec","Shared Services Board Member","Shared Services C Level Exec","Shared Services Director","Shared Services Manager","Shared Services VP Level Exec","Social Media Marketing Board Member","Social Media Marketing C Level Exec","Social Media Marketing Director","Social Media Marketing Manager","Social Media Marketing VP Level Exec","Software Development Board Member","Software Development C Level Exec","Software Development Director","Software Development Manager","Software Development VP Level Exec","Sourcing / Procurement Board Member","Sourcing / Procurement C Level Exec","Sourcing / Procurement Director","Sourcing / Procurement Manager","Sourcing / Procurement VP Level Exec","Storage & Disaster Recovery Board Member","Storage & Disaster Recovery C Level Exec","Storage & Disaster Recovery Director","Storage & Disaster Recovery Manager","Storage & Disaster Recovery VP Level Exec","Store Operations Board Member","Store Operations C Level Exec","Store Operations Director","Store Operations Manager","Store Operations VP Level Exec","Strategic Communications Board Member","Strategic Communications C Level Exec","Strategic Communications Director","Strategic Communications Manager","Strategic Communications VP Level Exec","Supply Chain Board Member","Supply Chain C Level Exec","Supply Chain Director","Supply Chain Manager","Supply Chain VP Level Exec","Support / Technical Services Board Member","Support / Technical Services C Level Exec","Support / Technical Services Director","Support / Technical Services Manager","Support / Technical Services VP Level Exec","Technical Marketing Board Member","Technical Marketing C Level Exec","Technical Marketing Director","Technical Marketing Manager","Technical Marketing VP Level Exec","Technology Operations Board Member","Technology Operations C Level Exec","Technology Operations Director","Technology Operations Manager","Technology Operations VP Level Exec","Telecommunications Board Member","Telecommunications C Level Exec","Telecommunications Director","Telecommunications Manager","Telecommunications VP Level Exec","Test / Quality Assurance Board Member","Test / Quality Assurance C Level Exec","Test / Quality Assurance Director","Test / Quality Assurance Manager","Test / Quality Assurance VP Level Exec","UI / UX Board Member","UI / UX C Level Exec","UI / UX Director","UI / UX Manager","UI / UX VP Level Exec","Virtualization Board Member","Virtualization C Level Exec","Virtualization Director","Virtualization Manager","Virtualization VP Level Exec","Web Development Board Member","Web Development C Level Exec","Web Development Director","Web Development Manager","Web Development VP Level Exec","Workforce Management Board Member","Workforce Management C Level Exec","Workforce Management Director","Workforce Management Manager","Workforce Management VP Level Exec","Account Management Board Member","Account Management C Level Exec","Account Management Director","Account Management Manager","Account Management VP Level Exec","Accounting Board Member","Accounting C Level Exec","Accounting Director","Accounting Manager","Accounting VP Level Exec","Acquisitions Board Member","Acquisitions C Level Exec","Acquisitions Director","Acquisitions Manager","Acquisitions VP Level Exec","Advertising Board Member","Advertising C Level Exec","Advertising Director","Advertising Manager","Advertising VP Level Exec","Application Development Board Member","Application Development C Level Exec","Application Development Director","Application Development Manager","Application Development VP Level Exec","Artificial Intelligence / Machine Learning Board Member","Artificial Intelligence / Machine Learning C Level Exec","Artificial Intelligence / Machine Learning Director","Artificial Intelligence / Machine Learning Manager","Artificial Intelligence / Machine Learning VP Level Exec","Brand Management Board Member","Brand Management C Level Exec","Brand Management Director","Brand Management Manager","Brand Management VP Level Exec","Business Development Board Member","Business Development C Level Exec","Business Development Director","Business Development Manager","Business Development VP Level Exec","Business Intelligence Board Member","Business Intelligence C Level Exec","Business Intelligence Director","Business Intelligence Manager","Business Intelligence VP Level Exec","Business Service Management / ITSM Board Member","Business Service Management / ITSM C Level Exec","Business Service Management / ITSM Director","Business Service Management / ITSM Manager","Business Service Management / ITSM VP Level Exec","Call Center Board Member","Call Center C Level Exec","Call Center Director","Call Center Manager","Call Center VP Level Exec","Channel Sales Board Member","Channel Sales C Level Exec","Channel Sales Director","Channel Sales Manager","Channel Sales VP Level Exec","Chiropractics Board Member","Chiropractics C Level Exec","Chiropractics Director","Chiropractics Manager","Chiropractics VP Level Exec","Cloud / Mobility Board Member","Cloud / Mobility C Level Exec","Cloud / Mobility Director","Cloud / Mobility Manager","Cloud / Mobility VP Level Exec","Collaboration & Web Apps Board Member","Collaboration & Web Apps C Level Exec","Collaboration & Web Apps Director","Collaboration & Web Apps Manager","Collaboration & Web Apps VP Level Exec","Compensation & Benefits Board Member","Compensation & Benefits C Level Exec","Compensation & Benefits Director","Compensation & Benefits Manager","Compensation & Benefits VP Level Exec","Compliance Board Member","Compliance C Level Exec","Compliance Director","Compliance Manager","Compliance VP Level Exec","Construction Board Member","Construction C Level Exec","Construction Director","Construction Manager","Construction VP Level Exec","Contracts Board Member","Contracts C Level Exec","Contracts Director","Contracts Manager","Contracts VP Level Exec","Corporate Secretary Board Member","Corporate Secretary C Level Exec","Corporate Secretary Director","Corporate Secretary Manager","Corporate Secretary VP Level Exec","Corporate Strategy Board Member","Corporate Strategy C Level Exec","Corporate Strategy Director","Corporate Strategy Manager","Corporate Strategy VP Level Exec","Customer Experience Board Member","Customer Experience C Level Exec","Customer Experience Director","Customer Experience Manager","Customer Experience VP Level Exec","Customer Marketing Board Member","Customer Marketing C Level Exec","Customer Marketing Director","Customer Marketing Manager","Customer Marketing VP Level Exec","Customer Retention & Development Board Member","Customer Retention & Development C Level Exec","Customer Retention & Development Director","Customer Retention & Development Manager","Customer Retention & Development VP Level Exec","Customer Service / Support Board Member","Customer Service / Support C Level Exec","Customer Service / Support Director","Customer Service / Support Manager","Customer Service / Support VP Level Exec","Customer Success Board Member","Customer Success C Level Exec","Customer Success Director","Customer Success Manager","Customer Success VP Level Exec","Data Center Board Member","Data Center C Level Exec","Data Center Director","Data Center Manager","Data Center VP Level Exec","Data Science Board Member","Data Science C Level Exec","Data Science Director","Data Science Manager","Data Science VP Level Exec","Data Warehouse Board Member","Data Warehouse C Level Exec","Data Warehouse Director","Data Warehouse Manager","Data Warehouse VP Level Exec","Database Administration Board Member","Database Administration C Level Exec","Database Administration Director","Database Administration Manager","Database Administration VP Level Exec","Demand Generation Board Member","Demand Generation C Level Exec","Demand Generation Director","Demand Generation Manager","Demand Generation VP Level Exec","DevOps Board Member","DevOps C Level Exec","DevOps Director","DevOps Manager","DevOps VP Level Exec","Digital Marketing Board Member","Digital Marketing C Level Exec","Digital Marketing Director","Digital Marketing Manager","Digital Marketing VP Level Exec","Digital Transformation Board Member","Digital Transformation C Level Exec","Digital Transformation Director","Digital Transformation Manager","Digital Transformation VP Level Exec","Emerging Technology / Innovation Board Member","Emerging Technology / Innovation C Level Exec","Emerging Technology / Innovation Director","Emerging Technology / Innovation Manager","Emerging Technology / Innovation VP Level Exec","Employee & Labor Relations Board Member","Employee & Labor Relations C Level Exec","Employee & Labor Relations Director","Employee & Labor Relations Manager","Employee & Labor Relations VP Level Exec","Engineering & Technical Executive Board Member","Engineering & Technical Executive C Level Exec","Engineering & Technical Executive Director","Engineering & Technical Executive Manager","Engineering & Technical Executive VP Level Exec","Enterprise Architecture Board Member","Enterprise Architecture C Level Exec","Enterprise Architecture Director","Enterprise Architecture Manager","Enterprise Architecture VP Level Exec","Enterprise Resource Planning Board Member","Enterprise Resource Planning C Level Exec","Enterprise Resource Planning Director","Enterprise Resource Planning Manager","Enterprise Resource Planning VP Level Exec","Event Marketing Board Member","Event Marketing C Level Exec","Event Marketing Director","Event Marketing Manager","Event Marketing VP Level Exec","Executive Board Member","Executive C Level Exec","Executive Director","Executive Manager","Executive VP Level Exec","Facilities Management Board Member","Facilities Management C Level Exec","Facilities Management Director","Facilities Management Manager","Facilities Management VP Level Exec","Field Marketing Board Member","Field Marketing C Level Exec","Field Marketing Director","Field Marketing Manager","Field Marketing VP Level Exec","Finance Board Member","Finance C Level Exec","Finance Director","Finance Executive Board Member","Finance Executive C Level Exec","Finance Executive Director","Finance Executive Manager","Finance Executive VP Level Exec","Finance Manager","Finance VP Level Exec","Financial Planning & Analysis Board Member","Financial Planning & Analysis C Level Exec","Financial Planning & Analysis Director","Financial Planning & Analysis Manager","Financial Planning & Analysis VP Level Exec","Financial Reporting Board Member","Financial Reporting C Level Exec","Financial Reporting Director","Financial Reporting Manager","Financial Reporting VP Level Exec","Financial Strategy Board Member","Financial Strategy C Level Exec","Financial Strategy Director","Financial Strategy Manager","Financial Strategy VP Level Exec","Financial Systems Board Member","Financial Systems C Level Exec","Financial Systems Director","Financial Systems Manager","Financial Systems VP Level Exec","Governance Board Member","Governance C Level Exec","Governance Director","Governance Manager","Governance VP Level Exec","Governmental Affairs & Regulatory Law Board Member","Governmental Affairs & Regulatory Law C Level Exec","Governmental Affairs & Regulatory Law Director","Governmental Affairs & Regulatory Law Manager","Governmental Affairs & Regulatory Law VP Level Exec","Graphic Design Board Member","Graphic Design C Level Exec","Graphic Design Director","Graphic Design Manager","Graphic Design VP Level Exec","Help Desk / Desktop Services Board Member","Help Desk / Desktop Services C Level Exec","Help Desk / Desktop Services Director","Help Desk / Desktop Services Manager","Help Desk / Desktop Services VP Level Exec","HR / Financial / ERP Systems Board Member","HR / Financial / ERP Systems C Level Exec","HR / Financial / ERP Systems Director","HR / Financial / ERP Systems Manager","HR / Financial / ERP Systems VP Level Exec","Human Resource Information System Board Member","Human Resource Information System C Level Exec","Human Resource Information System Director","Human Resource Information System Manager","Human Resource Information System VP Level Exec","Human Resources Board Member","Human Resources C Level Exec","Human Resources Director","Human Resources Executive Board Member","Human Resources Executive C Level Exec","Human Resources Executive Director","Human Resources Executive Manager","Human Resources Executive VP Level Exec","Human Resources Manager","Human Resources VP Level Exec","Information Technology Executive Board Member","Information Technology Executive C Level Exec","Information Technology Executive Director","Information Technology Executive Manager","Information Technology Executive VP Level Exec","Inside Sales Board Member","Inside Sales C Level Exec","Inside Sales Director","Inside Sales Manager","Inside Sales VP Level Exec","Intellectual Property & Patent Board Member","Intellectual Property & Patent C Level Exec","Intellectual Property & Patent Director","Intellectual Property & Patent Manager","Intellectual Property & Patent VP Level Exec","Internal Audit & Control Board Member","Internal Audit & Control C Level Exec","Internal Audit & Control Director","Internal Audit & Control Manager","Internal Audit & Control VP Level Exec","Investor Relations Board Member","Investor Relations C Level Exec","Investor Relations Director","Investor Relations Manager","Investor Relations VP Level Exec","Labor & Employment Board Member","Labor & Employment C Level Exec","Labor & Employment Director","Labor & Employment Manager","Labor & Employment VP Level Exec","Lawyer / Attorney Board Member","Lawyer / Attorney C Level Exec","Lawyer / Attorney Director","Lawyer / Attorney Manager","Lawyer / Attorney VP Level Exec","Lead Generation Board Member","Lead Generation C Level Exec","Lead Generation Director","Lead Generation Manager","Lead Generation VP Level Exec","Learning & Development Board Member","Learning & Development C Level Exec","Learning & Development Director","Learning & Development Manager","Learning & Development VP Level Exec","Legal Executive Board Member","Legal Executive C Level Exec","Legal Executive Director","Legal Executive Manager","Legal Executive VP Level Exec","Logistics Board Member","Logistics C Level Exec","Logistics Director","Logistics Manager","Logistics VP Level Exec","Marketing Executive Board Member","Marketing Executive C Level Exec","Marketing Executive Director","Marketing Executive Manager","Marketing Executive VP Level Exec","Medical Education & Training Board Member","Medical Education & Training C Level Exec","Medical Education & Training Director","Medical Education & Training Manager","Medical Education & Training VP Level Exec","Medical Research Board Member","Medical Research C Level Exec","Medical Research Director","Medical Research Manager","Medical Research VP Level Exec","Mergers & Acquisitions Board Member","Mergers & Acquisitions C Level Exec","Mergers & Acquisitions Director","Mergers & Acquisitions Manager","Mergers & Acquisitions VP Level Exec","Office Operations Board Member","Office Operations C Level Exec","Office Operations Director","Office Operations Manager","Office Operations VP Level Exec","Operations Board Member","Operations C Level Exec","Operations Director","Operations Executive Board Member","Operations Executive C Level Exec","Operations Executive Director","Operations Executive Manager","Operations Executive VP Level Exec","Operations Manager","Operations VP Level Exec","Organizational Development Board Member","Organizational Development C Level Exec","Organizational Development Director","Organizational Development Manager","Organizational Development VP Level Exec","Partnerships Board Member","Partnerships C Level Exec","Partnerships Director","Partnerships Manager","Partnerships VP Level Exec","Recruiting & Talent Acquisition Board Member","Recruiting & Talent Acquisition C Level Exec","Recruiting & Talent Acquisition Director","Recruiting & Talent Acquisition Manager","Recruiting & Talent Acquisition VP Level Exec","Revenue Operations Board Member","Revenue Operations C Level Exec","Revenue Operations Director","Revenue Operations Manager","Revenue Operations VP Level Exec","Sales Board Member","Sales C Level Exec","Sales Director","Sales Executive Board Member","Sales Executive C Level Exec","Sales Executive Director","Sales Executive Manager","Sales Executive VP Level Exec","Sales Manager","Sales VP Level Exec","Talent Management Board Member","Talent Management C Level Exec","Talent Management Director","Talent Management Manager","Talent Management VP Level Exec"];
+
+// ── Canonical page rendering ─────────────────────────────────────────────
+(function initCanonical(){
+  // Build the title grid
+  function renderGrid(list){
+    const levelColors = {
+      'Board Member':  {bg:'#fff0f0',color:'#CC0000',border:'#ffd5d5'},
+      'C Level Exec':  {bg:'#f0f8ff',color:'#0077B6',border:'#cce5ff'},
+      'VP Level Exec': {bg:'#f0fff4',color:'#2E8B57',border:'#c3e6cb'},
+      'Director':      {bg:'#fff9f0',color:'#d97706',border:'#fde8c3'},
+      'Manager':       {bg:'#f5f0ff',color:'#7C3AED',border:'#d8c8f5'},
+    };
+    const levels = Object.keys(levelColors);
+    const grid = document.getElementById('canonical-grid');
+    if(!grid) return;
+    grid.innerHTML = '';
+    list.forEach(t => {
+      const lv = levels.find(l => t.endsWith(' '+l)) || '';
+      const c = levelColors[lv] || {bg:'#f5f5f5',color:'#555',border:'#ddd'};
+      const chip = document.createElement('span');
+      chip.style.cssText = `display:inline-block;padding:4px 11px;border-radius:20px;font-size:11px;font-weight:500;background:${c.bg};color:${c.color};border:1px solid ${c.border};white-space:nowrap;cursor:default;`;
+      chip.title = t;
+      chip.textContent = t;
+      grid.appendChild(chip);
+    });
+    document.getElementById('canonical-count').textContent = list.length + ' titles';
+  }
+
+  window.filterCanonical = function(){
+    const q = (document.getElementById('canonical-search').value||'').toLowerCase();
+    const lv = document.getElementById('canonical-level-filter').value;
+    const filtered = CANONICAL_TITLES.filter(t =>
+      (!q || t.toLowerCase().includes(q)) &&
+      (!lv || t.endsWith(' '+lv))
+    );
+    renderGrid(filtered);
+  };
+
+  // Donut chart for level distribution
+  function initCanonicalDonut(){
+    const el = document.getElementById('chart-canonical-donut');
+    if(!el) return;
+    const levels = ['Board Member','C Level Exec','VP Level Exec','Director','Manager'];
+    const counts = levels.map(lv => CANONICAL_TITLES.filter(t=>t.endsWith(' '+lv)).length);
+    const colors = ['#CC0000','#0077B6','#2E8B57','#F59E0B','#7C3AED'];
+    new Chart(el, {
+      type:'doughnut',
+      data:{ labels:levels, datasets:[{data:counts, backgroundColor:colors, borderWidth:2, borderColor:'#fff'}] },
+      options:{
+        responsive:true, maintainAspectRatio:true,
+        plugins:{
+          legend:{display:false},
+          tooltip:{callbacks:{label:c=>' '+c.label+': '+c.raw+' titles'}}
+        },
+        cutout:'62%'
+      }
+    });
+    const legend = document.getElementById('canonical-legend');
+    if(legend){
+      legend.innerHTML = levels.map((l,i)=>
+        `<span style="display:inline-flex;align-items:center;gap:4px;margin:3px 6px;"><span style="width:10px;height:10px;border-radius:50%;background:${colors[i]};display:inline-block;"></span>${l}: ${counts[i]}</span>`
+      ).join('');
+    }
+  }
+
+  // Initialize on first show of the canonical page
+  let canonicalInit = false;
+  const origShowPage = window.showPage;
+  window.showPage = function(id, btn){
+    origShowPage(id, btn);
+    if(id==='canonical' && !canonicalInit){
+      canonicalInit = true;
+      renderGrid(CANONICAL_TITLES);
+      initCanonicalDonut();
+    }
+  };
+})();
+
 </script>
 </body>
 </html>
