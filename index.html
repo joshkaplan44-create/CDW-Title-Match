@@ -17,10 +17,10 @@
   --cdw-red2:   #a30000;           /* darker red for hover states */
   /* Supporting palette */
   --navy:   #150404; --blue:  #CC0000; --lblue: #FFE5E5;
-  --teal:   #0077B6; --green: #2E8B57; --amber: #F59E0B;
-  --orange: #E07B39; --red:   #CC0000; --grey:  #5c5454;
+   --green: #7C0000; --amber: #9a0000;
+  --orange: #6b0000; --red:   #CC0000; --grey:  #5c5454;
   --light:  #f7f7f7; --white: #FFFFFF; --border:#e8e8e8;
-  --purple: #7C3AED;
+  --purple: #4a0000;
   /* CDW card shadow — matches cdw.com article cards */
   --card-shadow: rgba(0,0,0,0.08) 0px 3px 31px 17px;
   --card-shadow-sm: rgba(80,67,67,0.08) 0px 8px 24px 0px, rgba(80,67,67,0.04) 0px 0px 8px 0px;
@@ -91,15 +91,15 @@ main { padding: 28px 32px; max-width: 1400px; margin: 0 auto; }
   transition: transform 0.15s, box-shadow 0.15s; cursor: default;
   position: relative; overflow: hidden;
 }
-.kpi::after { content:''; position:absolute; top:-20px; right:-20px; width:80px; height:80px; border-radius:50%; background:rgba(0,0,0,0.02); }
-.kpi:hover { transform: translateY(-2px); box-shadow: rgba(0,0,0,0.12) 0px 6px 36px 4px; }
-.kpi.green  { border-left-color: var(--green); }
-.kpi.amber  { border-left-color: var(--amber); }
-.kpi.red    { border-left-color: var(--cdw-red); }
-.kpi.teal   { border-left-color: var(--teal); }
-.kpi.purple { border-left-color: var(--purple); }
-.kpi.orange { border-left-color: var(--orange); }
-.kpi-label  { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--grey); margin-bottom: 8px; font-weight: 600; font-family: 'Source Sans 3', 'Source Sans Pro', Verdana, sans-serif; }
+
+.kpi:hover { box-shadow: rgba(80,67,67,0.13) 0px 10px 28px 0px; }
+
+
+
+
+
+
+.kpi-label  { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--grey); margin-bottom: 8px; font-weight: 600; font-family: 'Source Sans 3', 'Source Sans Pro', Verdana, sans-serif; }
 .kpi-value  { font-family: 'Poppins', Verdana, sans-serif; font-size: clamp(22px, 3.5vw, 30px); font-weight: 700; color: #150404; line-height: 1; }
 .kpi-sub    { font-size: 12px; color: var(--grey); margin-top: 6px; }
 
@@ -134,9 +134,9 @@ main { padding: 28px 32px; max-width: 1400px; margin: 0 auto; }
 /* ── Heatmap ── */
 .heatmap-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius:6px; }
 table.heatmap { width: 100%; border-collapse: collapse; font-size: 11px; min-width:500px; }
-table.heatmap th { background: var(--cdw-dark); color: white; padding: 8px 10px; text-align: center; font-size: 10px; position:sticky; top:0; }
+table.heatmap th { background: var(--cdw-dark); color: white; padding: 8px 10px; text-align: center; font-size: 12px; position:sticky; top:0; }
 table.heatmap th:first-child { text-align: left; min-width: 115px; }
-table.heatmap td { padding: 7px 10px; text-align: center; border: 1px solid var(--border); font-size: 11px; transition: filter 0.15s; cursor:pointer; }
+table.heatmap td { padding: 7px 10px; text-align: center; border: 1px solid var(--border); font-size: 12px; transition: filter 0.15s; cursor:pointer; }
 table.heatmap td:first-child { text-align: left; font-weight: 600; color: var(--navy); background: #F0F4F8 !important; }
 table.heatmap tr:hover td { filter: brightness(0.93); }
 table.heatmap tr.hl td { outline:2px solid var(--blue); }
@@ -159,13 +159,13 @@ table.heatmap tr.hl td { outline:2px solid var(--blue); }
   box-shadow:var(--card-shadow-sm); border-top:4px solid var(--cdw-red);
   transition: transform 0.15s, box-shadow 0.15s;
 }
-.insight-card:hover { transform:translateY(-2px); box-shadow: rgba(0,0,0,0.12) 0px 6px 36px 4px; }
-.insight-card.teal   { border-top-color: var(--teal); }
-.insight-card.green  { border-top-color: var(--green); }
-.insight-card.amber  { border-top-color: var(--amber); }
-.insight-card.orange { border-top-color: var(--orange); }
-.insight-card.purple { border-top-color: var(--purple); }
-.insight-card.red    { border-top-color: var(--red); }
+.insight-card:hover { box-shadow: rgba(80,67,67,0.13) 0px 10px 28px 0px; }
+
+
+
+
+
+
 .insight-icon { font-size: 26px; margin-bottom: 8px; }
 .insight-title { font-size:15px; font-weight:700; color:#150404; margin-bottom:6px; font-family:'Source Sans 3','Source Sans Pro',Verdana,sans-serif; }
 .insight-stat  { font-family:'Poppins',Verdana,sans-serif; font-size:24px; font-weight:700; color:#150404; margin:8px 0 4px; }
@@ -202,16 +202,16 @@ table.heatmap tr.hl td { outline:2px solid var(--blue); }
   border:none; padding:6px 14px; cursor:pointer; font-size:11px;
   font-family:inherit; background:white; color:var(--grey); transition:all 0.2s;
 }
-.toggle-btn button.active { background:var(--cdw-red); color:white; }
+.toggle-btn button.active { background:#150404; color:white; }
 
 /* ── Pills ── */
 .pill { display:inline-block; padding:3px 10px; border-radius:12px; font-size:11px; font-weight:600; margin:2px; }
-.pill-board  { background:#E2EFDA; color:#375623; }
-.pill-clevel { background:#FCE4D6; color:#833C00; }
-.pill-vp     { background:#DDEBF7; color:#1F4E79; }
-.pill-dir    { background:#EDE7F6; color:#4527A0; }
-.pill-mgr    { background:#E8F5E9; color:#1B5E20; }
-.pill-non    { background:#F5F5F5; color:#555; }
+.pill-board  { background:#f5eeee; color:#870000; }
+.pill-clevel { background:#fde8e8; color:#CC0000; font-weight:600; }
+.pill-vp     { background:#f0e8e8; color:#4a0000; }
+.pill-dir    { background:#efe8e8; color:#3a0a0a; }
+.pill-mgr    { background:#f8f0f0; color:#5c3030; }
+.pill-non    { background:#f5f5f5; color:#666; }
 
 /* ── Highlight badges ── */
 .highlight-row { display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 18px; }
@@ -232,7 +232,7 @@ table.heatmap tr.hl td { outline:2px solid var(--blue); }
 
 /* ── Callout box ── */
 .callout {
-  background:#fff6f6;
+  background:#fafafa;
   border-left:4px solid var(--cdw-red); border-radius:12px;
   padding:18px 22px; margin-bottom:20px; font-size:15px; line-height:1.8;
 }
@@ -255,7 +255,7 @@ table.data-table th {
 table.data-table th:hover { background:var(--cdw-red); }
 table.data-table th span { margin-left:4px; opacity:0.6; }
 table.data-table td { padding:9px 12px; border-bottom:1px solid #ebebeb; }
-table.data-table tr:hover td { background:#fff5f5; }
+table.data-table tr:hover td { background:#fafafa; }
 .table-wrap { overflow-x:auto; border-radius:8px; max-height:360px; overflow-y:auto; }
 
 /* ── Comparison tool ── */
@@ -307,15 +307,15 @@ footer strong { color:rgba(255,255,255,0.85); }
 </header>
 
 <nav id="main-nav">
-  <button class="active" onclick="showPage('home',this)">🏠 Home</button>
-  <button onclick="showPage('overview',this)">📈 Overview</button>
-  <button onclick="showPage('insights',this)">💡 Key Insights</button>
-  <button onclick="showPage('hierarchy',this)">🏢 ZI Hierarchy</button>
-  <button onclick="showPage('industry',this)">🏭 Industry / Dept</button>
-  <button onclick="showPage('titles',this)">🏷 Top Titles</button>
-  <button onclick="showPage('quality',this)">✅ Match Quality</button>
-  <button onclick="showPage('canonical',this)">🎯 Canonical Schema</button>
-  <button onclick="showPage('nextsteps',this)">🚀 What's Next</button>
+  <button class="active" onclick="showPage('home',this)">Home</button>
+  <button onclick="showPage('overview',this)">Overview</button>
+  <button onclick="showPage('insights',this)">Key Insights</button>
+  <button onclick="showPage('hierarchy',this)">ZI Hierarchy</button>
+  <button onclick="showPage('industry',this)">Industry / Dept</button>
+  <button onclick="showPage('titles',this)">Top Titles</button>
+  <button onclick="showPage('quality',this)">Match Quality</button>
+  <button onclick="showPage('canonical',this)">Canonical Schema</button>
+  <button onclick="showPage('nextsteps',this)">What's Next</button>
 </nav>
 
 <main>
@@ -324,28 +324,27 @@ footer strong { color:rgba(255,255,255,0.85); }
 <div id="page-home" class="page active">
 
   <!-- Hero -->
-  <div style="background:linear-gradient(135deg,var(--cdw-dark) 0%,#3a0a0a 60%,#550000 100%);border-radius:14px;padding:44px 48px;margin-bottom:28px;color:white;position:relative;overflow:hidden;">
-    <div style="position:absolute;top:-40px;right:-40px;width:220px;height:220px;border-radius:50%;background:rgba(204,0,0,0.08);"></div>
-    <div style="position:absolute;bottom:-60px;right:80px;width:160px;height:160px;border-radius:50%;background:rgba(204,0,0,0.06);"></div>
-    <div style="font-size:12px;text-transform:uppercase;letter-spacing:2px;opacity:0.6;margin-bottom:14px;font-family:'Source Sans 3','Source Sans Pro',Verdana,sans-serif;font-weight:600;">CDW · Data Strategy · March 2026</div>
+  <div style="background:#150404;border-radius:12px;padding:44px 48px;margin-bottom:32px;color:white;">
+    
+    <div style="font-size:13px;text-transform:uppercase;letter-spacing:1.5px;opacity:0.5;margin-bottom:16px;font-family:'Source Sans 3','Source Sans Pro',Verdana,sans-serif;font-weight:400;">CDW · Data Strategy · March 2026</div>
     <h2 style="font-family:'Poppins',Verdana,sans-serif;font-size:clamp(24px,3.5vw,38px);font-weight:700;line-height:1.2;margin-bottom:16px;max-width:700px;letter-spacing:-0.5px;">Turning 790,000 Job Title Variations Into a Single Source of Truth</h2>
-    <p style="font-size:14px;opacity:0.82;line-height:1.8;max-width:680px;margin-bottom:24px;">CDW's contact database contained over 790,000 unique, uncleaned job title strings — free-text entries riddled with abbreviations, typos, phone numbers, and inconsistent formatting. This project standardized every title against Zoom's canonical persona schema, creating a clean, structured foundation for the <strong style="color:#FF9999;">Golden Contact Identifier (GCI)</strong> — CDW's enterprise identity spine for resolving contacts into trusted golden records across all systems.</p>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;">
-      <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:10px 18px;text-align:center;">
-        <div style="font-size:20px;font-weight:800;">790,226</div>
-        <div style="font-size:10px;opacity:0.65;margin-top:2px;letter-spacing:0.5px;">Records Processed</div>
+    <p style="font-size:14px;opacity:0.82;line-height:1.8;max-width:680px;margin-bottom:24px;">CDW's contact database contained over 790,000 unique, uncleaned job title strings — free-text entries riddled with abbreviations, typos, phone numbers, and inconsistent formatting. This project standardized every title against Zoom's canonical persona schema, creating a clean, structured foundation for the <strong style="color:rgba(255,255,255,0.95);">Golden Contact Identifier (GCI)</strong> — CDW's enterprise identity spine for resolving contacts into trusted golden records across all systems.</p>
+    <div style="display:flex;gap:0;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.1);padding-top:24px;margin-top:4px;">
+      <div style="padding:0 32px 0 0;margin-right:32px;border-right:1px solid rgba(255,255,255,0.12);">
+        <div style="font-family:'Poppins',Verdana,sans-serif;font-size:28px;font-weight:700;line-height:1;">790,226</div>
+        <div style="font-size:13px;opacity:0.55;margin-top:4px;font-weight:400;">Records processed</div>
       </div>
-      <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:10px 18px;text-align:center;">
-        <div style="font-size:20px;font-weight:800;">41.3%</div>
-        <div style="font-size:10px;opacity:0.65;margin-top:2px;letter-spacing:0.5px;">Total Coverage (2-phase)</div>
+      <div style="padding:0 32px 0 0;margin-right:32px;border-right:1px solid rgba(255,255,255,0.12);">
+        <div style="font-family:'Poppins',Verdana,sans-serif;font-size:28px;font-weight:700;line-height:1;">41.3%</div>
+        <div style="font-size:13px;opacity:0.55;margin-top:4px;font-weight:400;">Title match coverage</div>
       </div>
-      <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:10px 18px;text-align:center;">
-        <div style="font-size:20px;font-weight:800;">745</div>
-        <div style="font-size:10px;opacity:0.65;margin-top:2px;letter-spacing:0.5px;">Canonical Titles</div>
+      <div style="padding:0 32px 0 0;margin-right:32px;border-right:1px solid rgba(255,255,255,0.12);">
+        <div style="font-family:'Poppins',Verdana,sans-serif;font-size:28px;font-weight:700;line-height:1;">745</div>
+        <div style="font-size:13px;opacity:0.55;margin-top:4px;font-weight:400;">Canonical title targets</div>
       </div>
-      <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:10px 18px;text-align:center;">
-        <div style="font-size:20px;font-weight:800;">8.9s</div>
-        <div style="font-size:10px;opacity:0.65;margin-top:2px;letter-spacing:0.5px;">Total Runtime</div>
+      <div style="padding:0;">
+        <div style="font-family:'Poppins',Verdana,sans-serif;font-size:28px;font-weight:700;line-height:1;">8.9s</div>
+        <div style="font-size:13px;opacity:0.55;margin-top:4px;font-weight:400;">Total processing time</div>
       </div>
     </div>
   </div>
@@ -361,19 +360,19 @@ footer strong { color:rgba(255,255,255,0.85); }
       <h3 style="font-family:'Source Sans 3','Source Sans Pro',Verdana,sans-serif;font-size:16px;font-weight:600;margin-bottom:12px;color:#150404;">What We Did</h3>
       <div style="display:flex;flex-direction:column;gap:12px;margin-top:4px;">
         <div style="display:flex;gap:12px;align-items:flex-start;">
-          <div style="width:28px;height:28px;border-radius:50%;background:var(--cdw-red);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
+          <div style="width:24px;height:24px;border-radius:50%;background:#150404;color:white;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Source Sans 3',Verdana,sans-serif;">1</div>
           <div style="font-size:12px;color:var(--grey);line-height:1.7;"><strong style="color:var(--cdw-dark);">Built a canonical schema</strong> by combining Zoom's Job Function and Management Level fields into 745 structured titles spanning 148 functions and 5 seniority levels.</div>
         </div>
         <div style="display:flex;gap:12px;align-items:flex-start;">
-          <div style="width:28px;height:28px;border-radius:50%;background:var(--teal);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
+          <div style="width:24px;height:24px;border-radius:50%;background:#150404;color:white;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Source Sans 3',Verdana,sans-serif;">2</div>
           <div style="font-size:12px;color:var(--grey);line-height:1.7;"><strong style="color:var(--cdw-dark);">Vectorized all 790K raw CDW titles</strong> using TF-IDF to represent each title mathematically based on the importance of its component words.</div>
         </div>
         <div style="display:flex;gap:12px;align-items:flex-start;">
-          <div style="width:28px;height:28px;border-radius:50%;background:var(--green);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
+          <div style="width:24px;height:24px;border-radius:50%;background:#150404;color:white;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Source Sans 3',Verdana,sans-serif;">3</div>
           <div style="font-size:12px;color:var(--grey);line-height:1.7;"><strong style="color:var(--cdw-dark);">Phase 1 — matched each title via cosine similarity</strong>, assigning the best-fitting canonical title to every record scoring ≥ 60% (267,816 records, 33.9%). Records below threshold were not discarded — they were passed to Phase 2.</div>
         </div>
         <div style="display:flex;gap:12px;align-items:flex-start;">
-          <div style="width:28px;height:28px;border-radius:50%;background:var(--purple);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div>
+          <div style="width:24px;height:24px;border-radius:50%;background:#150404;color:white;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Source Sans 3',Verdana,sans-serif;">4</div>
           <div style="font-size:12px;color:var(--grey);line-height:1.7;"><strong style="color:var(--cdw-dark);">Phase 2 — applied a hierarchy keyword classifier</strong> to the 522,410 Phase 1 NEI records, recovering an additional 58,737 (7.4%) into Zoom's management-level tiers (Manager, Director, VP-Level, C-Level, Board Members). Combined coverage: <strong style="color:var(--cdw-dark);">326,553 records (41.3%)</strong>.</div>
         </div>
       </div>
@@ -385,51 +384,51 @@ footer strong { color:rgba(255,255,255,0.85); }
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:8px;">
 
     <button onclick="showPage('overview', document.querySelector('nav button:nth-child(2)'))" style="background:white;border-radius:16px;padding:22px 22px;text-align:left;cursor:pointer;transition:all 0.2s;box-shadow:rgba(80,67,67,0.08) 0px 8px 24px 0px,rgba(80,67,67,0.04) 0px 0px 8px 0px;font-family:inherit;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='rgba(0,0,0,0.14) 0px 8px 36px 4px';" onmouseout="this.style.transform='';this.style.boxShadow='rgba(80,67,67,0.08) 0px 8px 24px 0px,rgba(80,67,67,0.04) 0px 0px 8px 0px';">
-      <div style="font-size:22px;margin-bottom:8px;">📈</div>
+      <div style="width:32px;height:3px;background:#CC0000;border-radius:2px;margin-bottom:14px;"></div>
       <div style="font-family:'Poppins',Verdana,sans-serif;font-size:14px;font-weight:700;color:#150404;margin-bottom:6px;">Overview</div>
       <div style="font-size:11px;color:var(--grey);line-height:1.6;">High-level KPIs, the full match pipeline funnel, and a breakdown of results by match score and department.</div>
     </button>
 
     <button onclick="showPage('insights', document.querySelector('nav button:nth-child(3)'))" style="background:white;border-radius:16px;padding:22px 22px;text-align:left;cursor:pointer;transition:all 0.2s;box-shadow:rgba(80,67,67,0.08) 0px 8px 24px 0px,rgba(80,67,67,0.04) 0px 0px 8px 0px;font-family:inherit;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='rgba(0,0,0,0.14) 0px 8px 36px 4px';" onmouseout="this.style.transform='';this.style.boxShadow='rgba(80,67,67,0.08) 0px 8px 24px 0px,rgba(80,67,67,0.04) 0px 0px 8px 0px';">
-      <div style="font-size:22px;margin-bottom:8px;">💡</div>
+      <div style="width:32px;height:3px;background:#CC0000;border-radius:2px;margin-bottom:14px;"></div>
       <div style="font-family:'Poppins',Verdana,sans-serif;font-size:14px;font-weight:700;color:#150404;margin-bottom:6px;">Key Insights</div>
-      <div style="font-size:11px;color:var(--grey);line-height:1.6;">Actionable findings from the matching results — where we got the strongest signal and where data quality limits coverage.</div>
+      <div style="font-size:11px;color:var(--grey);line-height:1.6;">A breakdown of match results — where the methodology performs best and where data quality creates gaps.</div>
     </button>
 
     <button onclick="showPage('canonical', document.querySelector('nav button:nth-child(9)'))" style="background:white;border-radius:16px;padding:22px 22px;text-align:left;cursor:pointer;transition:all 0.2s;box-shadow:rgba(80,67,67,0.08) 0px 8px 24px 0px,rgba(80,67,67,0.04) 0px 0px 8px 0px;font-family:inherit;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='rgba(0,0,0,0.14) 0px 8px 36px 4px';" onmouseout="this.style.transform='';this.style.boxShadow='rgba(80,67,67,0.08) 0px 8px 24px 0px,rgba(80,67,67,0.04) 0px 0px 8px 0px';">
-      <div style="font-size:22px;margin-bottom:8px;">🎯</div>
+      <div style="width:32px;height:3px;background:#CC0000;border-radius:2px;margin-bottom:14px;"></div>
       <div style="font-family:'Poppins',Verdana,sans-serif;font-size:14px;font-weight:700;color:#150404;margin-bottom:6px;">Canonical Schema</div>
       <div style="font-size:11px;color:var(--grey);line-height:1.6;">The full methodology behind building the 745-title Zoom schema and the complete searchable list of canonical titles.</div>
     </button>
 
     <button onclick="showPage('hierarchy', document.querySelector('nav button:nth-child(4)'))" style="background:white;border-radius:16px;padding:22px 22px;text-align:left;cursor:pointer;transition:all 0.2s;box-shadow:rgba(80,67,67,0.08) 0px 8px 24px 0px,rgba(80,67,67,0.04) 0px 0px 8px 0px;font-family:inherit;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='rgba(0,0,0,0.14) 0px 8px 36px 4px';" onmouseout="this.style.transform='';this.style.boxShadow='rgba(80,67,67,0.08) 0px 8px 24px 0px,rgba(80,67,67,0.04) 0px 0px 8px 0px';">
-      <div style="font-size:22px;margin-bottom:8px;">🏢</div>
+      <div style="width:32px;height:3px;background:#CC0000;border-radius:2px;margin-bottom:14px;"></div>
       <div style="font-family:'Poppins',Verdana,sans-serif;font-size:14px;font-weight:700;color:#150404;margin-bottom:6px;">ZI Hierarchy</div>
       <div style="font-size:11px;color:var(--grey);line-height:1.6;">How matched contacts distribute across Zoom's structured Department → Job Function → Management Level taxonomy.</div>
     </button>
 
     <button onclick="showPage('industry', document.querySelector('nav button:nth-child(5)'))" style="background:white;border-radius:16px;padding:22px 22px;text-align:left;cursor:pointer;transition:all 0.2s;box-shadow:rgba(80,67,67,0.08) 0px 8px 24px 0px,rgba(80,67,67,0.04) 0px 0px 8px 0px;font-family:inherit;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='rgba(0,0,0,0.14) 0px 8px 36px 4px';" onmouseout="this.style.transform='';this.style.boxShadow='rgba(80,67,67,0.08) 0px 8px 24px 0px,rgba(80,67,67,0.04) 0px 0px 8px 0px';">
-      <div style="font-size:22px;margin-bottom:8px;">🏭</div>
+      <div style="width:32px;height:3px;background:#CC0000;border-radius:2px;margin-bottom:14px;"></div>
       <div style="font-family:'Poppins',Verdana,sans-serif;font-size:14px;font-weight:700;color:#150404;margin-bottom:6px;">Industry / Dept</div>
       <div style="font-size:11px;color:var(--grey);line-height:1.6;">Match coverage broken down by CDW industry segment and Zoom department — showing where personas are densest.</div>
     </button>
 
     <button onclick="showPage('titles', document.querySelector('nav button:nth-child(6)'))" style="background:white;border-radius:16px;padding:22px 22px;text-align:left;cursor:pointer;transition:all 0.2s;box-shadow:rgba(80,67,67,0.08) 0px 8px 24px 0px,rgba(80,67,67,0.04) 0px 0px 8px 0px;font-family:inherit;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='rgba(0,0,0,0.14) 0px 8px 36px 4px';" onmouseout="this.style.transform='';this.style.boxShadow='rgba(80,67,67,0.08) 0px 8px 24px 0px,rgba(80,67,67,0.04) 0px 0px 8px 0px';">
-      <div style="font-size:22px;margin-bottom:8px;">🏷</div>
+      <div style="width:32px;height:3px;background:#CC0000;border-radius:2px;margin-bottom:14px;"></div>
       <div style="font-family:'Poppins',Verdana,sans-serif;font-size:14px;font-weight:700;color:#150404;margin-bottom:6px;">Top Titles</div>
       <div style="font-size:11px;color:var(--grey);line-height:1.6;">The most frequently matched canonical titles in CDW's database, ranked by volume with score distribution detail.</div>
     </button>
 
     <button onclick="showPage('quality', document.querySelector('nav button:nth-child(7)'))" style="background:white;border-radius:16px;padding:22px 22px;text-align:left;cursor:pointer;transition:all 0.2s;box-shadow:rgba(80,67,67,0.08) 0px 8px 24px 0px,rgba(80,67,67,0.04) 0px 0px 8px 0px;font-family:inherit;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='rgba(0,0,0,0.14) 0px 8px 36px 4px';" onmouseout="this.style.transform='';this.style.boxShadow='rgba(80,67,67,0.08) 0px 8px 24px 0px,rgba(80,67,67,0.04) 0px 0px 8px 0px';">
-      <div style="font-size:22px;margin-bottom:8px;">✅</div>
+      <div style="width:32px;height:3px;background:#CC0000;border-radius:2px;margin-bottom:14px;"></div>
       <div style="font-family:'Poppins',Verdana,sans-serif;font-size:14px;font-weight:700;color:#150404;margin-bottom:6px;">Match Quality</div>
       <div style="font-size:11px;color:var(--grey);line-height:1.6;">Confidence score distributions, threshold analysis, and a lookup table to manually review and validate specific matches.</div>
     </button>
 
-    <button onclick="showPage('nextsteps', document.querySelector('nav button:nth-child(9)'))" style="background:linear-gradient(135deg,#0a1628,#0d2240);border:1.5px solid #1a3a5c;border-radius:12px;padding:18px 20px;text-align:left;cursor:pointer;transition:all 0.2s;box-shadow:var(--card-shadow);font-family:inherit;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 6px 18px rgba(0,40,80,0.25)';" onmouseout="this.style.transform='';this.style.boxShadow='var(--card-shadow)';">
-      <div style="font-size:22px;margin-bottom:8px;">🚀</div>
+    <button onclick="showPage('nextsteps', document.querySelector('nav button:nth-child(9)'))" style="background:#150404;border:1.5px solid #1a3a5c;border-radius:12px;padding:18px 20px;text-align:left;cursor:pointer;transition:all 0.2s;box-shadow:var(--card-shadow);font-family:inherit;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 6px 18px rgba(0,40,80,0.25)';" onmouseout="this.style.transform='';this.style.boxShadow='var(--card-shadow)';">
+      <div style="width:32px;height:3px;background:rgba(255,255,255,0.4);border-radius:2px;margin-bottom:14px;"></div>
       <div style="font-size:13px;font-weight:700;color:white;margin-bottom:5px;">What's Next</div>
-      <div style="font-size:11px;color:rgba(255,255,255,0.7);line-height:1.6;">How to operationalize this work inside the GCI pipeline — publishing the standardization table, integrating at ingestion, closing the NEI gap, and unlocking downstream persona capabilities.</div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.7);line-height:1.6;">How to operationalize this work inside the GCI pipeline — publishing the standardization table, integrating at ingestion, closing the NEI gap, and enabling downstream persona capabilities.</div>
     </button>
 
   </div>
@@ -440,11 +439,11 @@ footer strong { color:rgba(255,255,255,0.85); }
 <div id="page-overview" class="page">
 
   <div class="highlight-row">
-    <div class="highlight-badge">📅 <span>Processed <strong>March 2026</strong></span></div>
-    <div class="highlight-badge">⏱ <span>Completed in <strong>8.9 seconds</strong> via TF-IDF vectorization</span></div>
-    <div class="highlight-badge">🎯 <span>Phase 1: <strong>≥ 60%</strong> cosine similarity · 267,816 matched</span></div>
-    <div class="highlight-badge">🏢 <span>Phase 2: <strong>hierarchy matching</strong> · +58,737 recovered</span></div>
-    <div class="highlight-badge">📚 <span><strong>745</strong> canonical Zoom personas · <strong>41.3%</strong> total coverage</span></div>
+    <div class="highlight-badge"><span>Processed <strong>March 2026</strong></span></div>
+    <div class="highlight-badge"><span>Completed in <strong>8.9 seconds</strong> via TF-IDF vectorization</span></div>
+    <div class="highlight-badge"><span>Phase 1: <strong>≥ 60%</strong> cosine similarity · 267,816 matched</span></div>
+    <div class="highlight-badge"><span>Phase 2: <strong>hierarchy matching</strong> · +58,737 recovered</span></div>
+    <div class="highlight-badge"><span><strong>745</strong> canonical Zoom personas · <strong>41.3%</strong> total coverage</span></div>
   </div>
 
   <div class="kpi-row">
@@ -514,7 +513,7 @@ footer strong { color:rgba(255,255,255,0.85); }
 
 <!-- ══════════════════════ KEY INSIGHTS ══════════════════════ -->
 <div id="page-insights" class="page">
-  <div class="section-title">💡 Key Business Insights</div>
+  <div class="section-title">Key Business Insights</div>
 
   <div class="callout">
     <strong>What this data tells us:</strong> CDW's contact base of 790k records spans technology buyers, finance leaders, operations managers, and executive decision-makers. The matching pipeline identified 267,816 high-confidence personas (33.9%), with an additional 58,737 hierarchy-classified contacts recovered from the NEI pool — giving you meaningful seniority intelligence on 41.3% of the total contact universe.
@@ -522,44 +521,44 @@ footer strong { color:rgba(255,255,255,0.85); }
 
   <div class="insight-grid">
     <div class="insight-card">
-      <div class="insight-icon">💻</div>
+      
       <div class="insight-title">IT Dominates the Contact Base</div>
       <div class="insight-stat">47.1%</div>
       <div class="insight-text">Information Technology accounts for 125,823 matched contacts — nearly half the entire matched population. This reflects CDW's core positioning as a technology solutions provider, where IT buyers are the primary audience. Manager (87K) and Director (31K) density here is unmatched by any other department.</div>
     </div>
     <div class="insight-card teal">
-      <div class="insight-icon">💰</div>
+      
       <div class="insight-title">Finance: Rich in Director-Level Contacts</div>
       <div class="insight-stat">26.8%</div>
       <div class="insight-text">Finance has a Director ratio of 26.8% — higher than the cross-department average of ~27.8%. With 7,575 Directors and 3,622 VP-Level contacts, Finance is the second-richest department for senior outreach, ideal for CFO/FP&A product positioning such as cloud finance tools and software licensing.</div>
     </div>
     <div class="insight-card green">
-      <div class="insight-icon">🏛</div>
+      
       <div class="insight-title">C-Suite Dept Has Unusual Manager Density</div>
       <div class="insight-stat">12,435</div>
       <div class="insight-text">The "C-Suite / Executive" department contains 12,435 Manager-level contacts — counterintuitively high. This suggests many contacts use executive-adjacent titles (e.g., "Executive Operations Manager") that map to the C-Suite function. These are high-influence gatekeepers worth prioritizing for outreach.</div>
     </div>
     <div class="insight-card amber">
-      <div class="insight-icon">⚖️</div>
+      
       <div class="insight-title">Legal & Compliance: Elevated VP Ratio</div>
       <div class="insight-stat">13.0%</div>
       <div class="insight-text">Legal & Compliance has a VP-level penetration of 13.0% (811 VPs out of 6,237) — one of the highest VP ratios across all departments. Combined with 2,361 Directors, this makes Legal a surprisingly strong channel for senior-level compliance technology and governance solution conversations.</div>
     </div>
     <div class="insight-card purple">
-      <div class="insight-icon">🏥</div>
+      
       <div class="insight-title">Medical & Health: Small But Senior</div>
       <div class="insight-stat">1.8%</div>
       <div class="insight-text">Medical & Health represents only 1.8% of matched records (4,856), but features a strong Manager/Director blend (2,603 Mgr / 1,716 Dir). For CDW Healthcare, this sector presents high revenue-per-contact potential. The relatively small universe also suggests significant upside in list expansion for this vertical.</div>
     </div>
     <div class="insight-card orange">
-      <div class="insight-icon">📬</div>
+      
       <div class="insight-title">464K Remaining NEI: Still Recoverable</div>
       <div class="insight-stat">463,673</div>
       <div class="insight-text">Phase 2 hierarchy matching already recovered 58,737 records (11.2%) from the original 522,410 NEI pool. Of the 463,673 remaining, 88,504 scored 50–59% in Phase 1 — just below threshold — and are high-recovery candidates for manual review or a ZoomInfo enrichment pass. Lowering the threshold to 55% would recover an additional 20–25% without significantly reducing quality.</div>
     </div>
   </div>
 
-  <div class="section-title" style="margin-top:8px">📊 Industry Penetration Analysis</div>
+  <div class="section-title" style="margin-top:8px">Industry Penetration Analysis</div>
   <div class="grid-2">
     <div class="card">
       <h3>Department Match Rate vs. Senior Density</h3>
@@ -639,7 +638,7 @@ footer strong { color:rgba(255,255,255,0.85); }
 
 <!-- ══════════════════════ INDUSTRY / DEPT ══════════════════════ -->
 <div id="page-industry" class="page">
-  <div class="section-title">🏭 Industry / Department Breakdown</div>
+  <div class="section-title">Industry / Department Breakdown</div>
 
   <div class="grid-65-35">
     <div class="card">
@@ -681,10 +680,10 @@ footer strong { color:rgba(255,255,255,0.85); }
 
 <!-- ══════════════════════ TOP TITLES ══════════════════════ -->
 <div id="page-titles" class="page">
-  <div class="section-title">🏷 Top Canonical Titles</div>
+  <div class="section-title">Top Canonical Titles</div>
 
   <div class="search-bar">
-    <input type="text" id="title-search" placeholder="🔍  Search titles..." oninput="filterTitles()"/>
+    <input type="text" id="title-search" placeholder="Search titles..." oninput="filterTitles()"/>
     <select id="title-hier-filter" onchange="filterTitles()">
       <option value="">All Hierarchy Levels</option>
       <option value="Manager">Manager</option>
@@ -739,7 +738,7 @@ footer strong { color:rgba(255,255,255,0.85); }
 
 <!-- ══════════════════════ MATCH QUALITY ══════════════════════ -->
 <div id="page-quality" class="page">
-  <div class="section-title">✅ Match Quality Analysis</div>
+  <div class="section-title">Match Quality Analysis</div>
 
   <div class="kpi-row">
     <div class="kpi green"><div class="kpi-label">High Confidence (≥80%)</div><div class="kpi-value counter" data-target="88864">0</div><div class="kpi-sub">11.2% of all records</div></div>
@@ -810,7 +809,7 @@ footer strong { color:rgba(255,255,255,0.85); }
         <div style="font-size:28px;opacity:0.5;">→</div>
       </div>
       <div style="text-align:center;">
-        <div style="font-size:clamp(32px,5vw,52px);font-weight:900;line-height:1;color:#FF9999;">745</div>
+        <div style="font-size:clamp(32px,5vw,52px);font-weight:900;line-height:1;color:#rgba(255,255,255,0.95);">745</div>
         <div style="font-size:12px;opacity:0.75;margin-top:6px;letter-spacing:0.5px;">Canonical Zoom Titles</div>
         <div style="font-size:11px;opacity:0.5;margin-top:3px;">clean, structured schema</div>
       </div>
@@ -925,7 +924,7 @@ footer strong { color:rgba(255,255,255,0.85); }
 
   <!-- What is GCI callout -->
   <div style="background:#f0f7ff;border:1.5px solid #b8d9f5;border-radius:12px;padding:20px 24px;margin-bottom:24px;display:flex;gap:16px;align-items:flex-start;">
-    <div style="font-size:28px;flex-shrink:0;">🏛</div>
+    <div style="display:none;">
     <div>
       <div style="font-size:13px;font-weight:700;color:#0a2040;margin-bottom:6px;">What is the GCI?</div>
       <div style="font-size:12px;color:#3a5a7a;line-height:1.8;">The <strong>Golden Contact Identifier (GCI)</strong> is CDW's enterprise identity spine — an abstraction layer that resolves the same individual across CRM, marketing platforms, digital interactions, events, and analytics into a single, trusted canonical identity. It does not replace Salesforce or any operational system; it provides the connective tissue that links records across systems, ensuring that downstream analytics, personas, and activation always operate against the same understanding of who a contact is. Title standardization is a critical input to this process — a clean, structured job title dramatically improves identity resolution accuracy, persona assignment, and buying committee modeling.</div>
@@ -933,7 +932,7 @@ footer strong { color:rgba(255,255,255,0.85); }
   </div>
 
   <!-- Where we are now -->
-  <div class="section-title">📍 Where We Are Now</div>
+  <div class="section-title">Where We Are Now</div>
   <div class="kpi-row" style="margin-bottom:24px;">
     <div class="kpi green">
       <div class="kpi-label">Title-Matched Records</div>
@@ -958,7 +957,7 @@ footer strong { color:rgba(255,255,255,0.85); }
   </div>
 
   <!-- 4-step plan -->
-  <div class="section-title">🗺 The Path Forward</div>
+  <div class="section-title">The Path Forward</div>
   <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:28px;">
 
     <!-- Step 1 -->
@@ -980,16 +979,16 @@ footer strong { color:rgba(255,255,255,0.85); }
 
     <!-- Step 2 -->
     <div style="background:white;border-radius:12px;box-shadow:var(--card-shadow);overflow:hidden;display:flex;">
-      <div style="width:6px;background:#0077B6;flex-shrink:0;"></div>
+      <div style="width:6px;background:#150404;flex-shrink:0;"></div>
       <div style="padding:20px 24px;flex:1;">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-          <div style="width:30px;height:30px;border-radius:50%;background:#0077B6;color:white;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
+          <div style="width:30px;height:30px;border-radius:50%;background:#150404;color:white;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
           <div style="font-size:14px;font-weight:700;color:var(--cdw-dark);">Integrate into GCI Source Ingestion &amp; Standardization (Phase 1)</div>
-          <div style="margin-left:auto;background:#f0f8ff;color:#0077B6;border-radius:20px;padding:3px 12px;font-size:10px;font-weight:700;white-space:nowrap;">Next Step</div>
+          <div style="margin-left:auto;background:#f5f0f0;color:#CC0000;border-radius:4px;padding:3px 10px;font-size:11px;font-weight:600;white-space:nowrap;letter-spacing:0.3px;">Next Step</div>
         </div>
         <div style="font-size:12px;color:var(--grey);line-height:1.8;margin-left:42px;">The GCI lifecycle's first phase — <em>Source Ingestion &amp; Standardization</em> — is where incoming contact records are cleaned and normalized before entering identity resolution. The title standardization table should be applied here as a <strong style="color:var(--cdw-dark);">pre-resolution enrichment step</strong>: when a new CDW contact record is ingested with a raw job title string, the pipeline performs a table lookup and, if a match exists, appends the canonical title, department, job function, and management level as structured attributes on the record. This happens before identity resolution, which means the IDR engine has clean persona signals to work with from the start.</div>
-        <div style="margin-left:42px;margin-top:12px;background:#f0f8ff;border-radius:8px;padding:12px 16px;border-left:3px solid #0077B6;">
-          <div style="font-size:11px;font-weight:700;color:#0077B6;margin-bottom:4px;">GCI Design Principle — Standardize at Ingestion, Not Downstream</div>
+        <div style="margin-left:42px;margin-top:12px;background:#f9f6f6;border-radius:8px;padding:12px 16px;border-left:3px solid var(--cdw-red);">
+          <div style="font-size:12px;font-weight:600;color:#150404;margin-bottom:4px;">GCI Design Principle — Standardize at Ingestion, Not Downstream</div>
           <div style="font-size:11px;color:#3a5a7a;line-height:1.7;">GCI's architecture is explicit: source data is made <em>comparable and usable</em> at ingestion time, without overwriting the original field. The raw title is preserved for lineage; the canonical title is added as a governed, derived attribute. This keeps identity logic clean and prevents downstream tools from re-solving a problem that should only be solved once.</div>
         </div>
       </div>
@@ -997,29 +996,29 @@ footer strong { color:rgba(255,255,255,0.85); }
 
     <!-- Step 3 -->
     <div style="background:white;border-radius:12px;box-shadow:var(--card-shadow);overflow:hidden;display:flex;">
-      <div style="width:6px;background:#2E8B57;flex-shrink:0;"></div>
+      <div style="width:6px;background:#7C0000;flex-shrink:0;"></div>
       <div style="padding:20px 24px;flex:1;">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-          <div style="width:30px;height:30px;border-radius:50%;background:#2E8B57;color:white;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
+          <div style="width:30px;height:30px;border-radius:50%;background:#7C0000;color:white;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
           <div style="font-size:14px;font-weight:700;color:var(--cdw-dark);">Address the Remaining ~59% (NEI Records)</div>
-          <div style="margin-left:auto;background:#f0fff4;color:#2E8B57;border-radius:20px;padding:3px 12px;font-size:10px;font-weight:700;white-space:nowrap;">Iterative</div>
+          <div style="margin-left:auto;background:#f0fff4;color:#7C0000;border-radius:20px;padding:3px 12px;font-size:10px;font-weight:700;white-space:nowrap;">Iterative</div>
         </div>
         <div style="font-size:12px;color:var(--grey);line-height:1.8;margin-left:42px;">The 463,673 records below the 60% confidence threshold are not lost — they represent a solvable quality problem. Strategies for closing this gap over time include:</div>
         <div style="margin-left:42px;margin-top:10px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;">
           <div style="background:#f8fff8;border:1px solid #c3e6cb;border-radius:8px;padding:12px;">
-            <div style="font-size:11px;font-weight:700;color:#2E8B57;margin-bottom:5px;">🔧 Threshold Tuning</div>
+            <div style="font-size:11px;font-weight:700;color:#7C0000;margin-bottom:5px;">Threshold Tuning</div>
             <div style="font-size:11px;color:var(--grey);line-height:1.6;">Lower the 60% threshold selectively for high-confidence function categories, or apply tiered thresholds by department to recover more matches without sacrificing quality.</div>
           </div>
           <div style="background:#f8fff8;border:1px solid #c3e6cb;border-radius:8px;padding:12px;">
-            <div style="font-size:11px;font-weight:700;color:#2E8B57;margin-bottom:5px;">🔁 ZoomInfo Enrichment</div>
+            <div style="font-size:11px;font-weight:700;color:#7C0000;margin-bottom:5px;">ZoomInfo Enrichment</div>
             <div style="font-size:11px;color:var(--grey);line-height:1.6;">For NEI records with sufficient identity signals, use ZoomInfo's enrichment API to retrieve a standardized title directly — bypassing the fuzzy match entirely for records where ZI has coverage.</div>
           </div>
           <div style="background:#f8fff8;border:1px solid #c3e6cb;border-radius:8px;padding:12px;">
-            <div style="font-size:11px;font-weight:700;color:#2E8B57;margin-bottom:5px;">📋 Manual Review Queue</div>
+            <div style="font-size:11px;font-weight:700;color:#7C0000;margin-bottom:5px;">Manual Review Queue</div>
             <div style="font-size:11px;color:var(--grey);line-height:1.6;">Surface the highest-frequency NEI raw titles (those appearing 100+ times) for a targeted human review pass. A small effort on the most common patterns yields disproportionate coverage gains.</div>
           </div>
           <div style="background:#f8fff8;border:1px solid #c3e6cb;border-radius:8px;padding:12px;">
-            <div style="font-size:11px;font-weight:700;color:#2E8B57;margin-bottom:5px;">📐 Schema Expansion</div>
+            <div style="font-size:11px;font-weight:700;color:#7C0000;margin-bottom:5px;">Schema Expansion</div>
             <div style="font-size:11px;color:var(--grey);line-height:1.6;">Some NEI titles may represent legitimate CDW-specific roles not covered by the current 745 Zoom titles. Identify clusters and propose additions to the canonical schema in coordination with the ZoomInfo contract.</div>
           </div>
         </div>
@@ -1028,29 +1027,29 @@ footer strong { color:rgba(255,255,255,0.85); }
 
     <!-- Step 4 -->
     <div style="background:white;border-radius:12px;box-shadow:var(--card-shadow);overflow:hidden;display:flex;">
-      <div style="width:6px;background:#7C3AED;flex-shrink:0;"></div>
+      <div style="width:6px;background:#4a0000;flex-shrink:0;"></div>
       <div style="padding:20px 24px;flex:1;">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-          <div style="width:30px;height:30px;border-radius:50%;background:#7C3AED;color:white;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div>
+          <div style="width:30px;height:30px;border-radius:50%;background:#4a0000;color:white;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div>
           <div style="font-size:14px;font-weight:700;color:var(--cdw-dark);">Unlock Downstream GCI Capabilities</div>
-          <div style="margin-left:auto;background:#f5f0ff;color:#7C3AED;border-radius:20px;padding:3px 12px;font-size:10px;font-weight:700;white-space:nowrap;">Downstream Value</div>
+          <div style="margin-left:auto;background:#f5f0ff;color:#4a0000;border-radius:20px;padding:3px 12px;font-size:10px;font-weight:700;white-space:nowrap;">Downstream Value</div>
         </div>
         <div style="font-size:12px;color:var(--grey);line-height:1.8;margin-left:42px;margin-bottom:12px;">Once canonical titles are flowing through the GCI pipeline at ingestion, they become a structured signal available to every downstream system and capability — without any additional integration work per platform:</div>
         <div style="margin-left:42px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;">
           <div style="background:#f9f7ff;border:1px solid #d8c8f5;border-radius:8px;padding:12px;">
-            <div style="font-size:11px;font-weight:700;color:#7C3AED;margin-bottom:4px;">🧠 Persona Intelligence</div>
+            <div style="font-size:11px;font-weight:700;color:#4a0000;margin-bottom:4px;">Persona Intelligence</div>
             <div style="font-size:11px;color:var(--grey);line-height:1.6;">Department + Job Function + Management Level from the canonical schema feed directly into GCI's persona model, enabling structured audience segments without manual classification.</div>
           </div>
           <div style="background:#f9f7ff;border:1px solid #d8c8f5;border-radius:8px;padding:12px;">
-            <div style="font-size:11px;font-weight:700;color:#7C3AED;margin-bottom:4px;">🏢 Buying Committee Modeling</div>
+            <div style="font-size:11px;font-weight:700;color:#4a0000;margin-bottom:4px;">Buying Committee Modeling</div>
             <div style="font-size:11px;color:var(--grey);line-height:1.6;">Standardized management levels allow GCI to identify decision-makers, influencers, and end-users within an account — a prerequisite for account-based marketing and PMAI.</div>
           </div>
           <div style="background:#f9f7ff;border:1px solid #d8c8f5;border-radius:8px;padding:12px;">
-            <div style="font-size:11px;font-weight:700;color:#7C3AED;margin-bottom:4px;">🎯 Identity Resolution Quality</div>
+            <div style="font-size:11px;font-weight:700;color:#4a0000;margin-bottom:4px;">Identity Resolution Quality</div>
             <div style="font-size:11px;color:var(--grey);line-height:1.6;">A clean canonical title dramatically improves probabilistic matching accuracy — two records with the same name, company, and canonical title are far stronger merge candidates than those with mismatched free-text strings.</div>
           </div>
           <div style="background:#f9f7ff;border:1px solid #d8c8f5;border-radius:8px;padding:12px;">
-            <div style="font-size:11px;font-weight:700;color:#7C3AED;margin-bottom:4px;">📊 MARKO &amp; AI Orchestration</div>
+            <div style="font-size:11px;font-weight:700;color:#CC0000;margin-bottom:4px;">MARKO &amp; AI Orchestration</div>
             <div style="font-size:11px;color:var(--grey);line-height:1.6;">Structured persona attributes enable AI-assisted orchestration tools like MARKO to make role-aware content and timing decisions without ad-hoc title parsing at the application layer.</div>
           </div>
         </div>
@@ -1060,7 +1059,7 @@ footer strong { color:rgba(255,255,255,0.85); }
   </div>
 
   <!-- Where this fits in the GCI lifecycle -->
-  <div class="section-title">🔗 Where This Fits in the GCI Lifecycle</div>
+  <div class="section-title">Where This Fits in the GCI Lifecycle</div>
   <div class="card" style="margin-bottom:24px;">
     <h3 style="margin-bottom:4px;">GCI End-to-End Lifecycle — Title Standardization Touch Points</h3>
     <div class="sub">Title standardization contributes at two distinct phases of the GCI pipeline</div>
@@ -1074,7 +1073,7 @@ footer strong { color:rgba(255,255,255,0.85); }
 </div>
 
 </main>
-<footer>CDW Title Matching Project &nbsp;·&nbsp; March 2026 &nbsp;·&nbsp; Generated with Claude &nbsp;·&nbsp; Data: 790,226 records</footer>
+<footer>CDW Title Matching Project &nbsp;·&nbsp; March 2026 &nbsp;·&nbsp; CDW Data Strategy · March 2026 &nbsp;·&nbsp; Data: 790,226 records</footer>
 
 <script>
 // ═══════════════════════════════════════════════════════
@@ -1082,14 +1081,14 @@ footer strong { color:rgba(255,255,255,0.85); }
 // ═══════════════════════════════════════════════════════
 // CDW Brand: primary red #CC0000, dark #1A0606
 const COLORS = {
-  board:'#0077B6', clevel:'#CC0000', vp:'#7C3AED',
-  dir:'#C05000',   mgr:'#2E8B57',   non:'#BDBDBD',
-  navy:'#1A0606',  blue:'#CC0000',  green:'#2E8B57',
-  amber:'#F59E0B', orange:'#C05000',red:'#CC0000',
-  teal:'#0077B6',  purple:'#7C3AED'
+  board:'#150404', clevel:'#CC0000', vp:'#4a0000',
+  dir:'#C05000',   mgr:'#7C0000',   non:'#BDBDBD',
+  navy:'#1A0606',  blue:'#CC0000',  green:'#7C0000',
+  amber:'#9a0000', orange:'#C05000',red:'#CC0000',
+  teal:'#150404',  purple:'#4a0000'
 };
 const HIER_COLORS  = [COLORS.board, COLORS.clevel, COLORS.vp, COLORS.dir, COLORS.mgr, COLORS.non];
-const DEPT_COLORS  = ['#CC0000','#A50000','#7C0000','#C05000','#E07B39','#2E8B57','#0077B6','#7C3AED','#F59E0B','#607D8B'];
+const DEPT_COLORS  = ['#CC0000','#A50000','#7C0000','#C05000','#6b0000','#7C0000','#150404','#4a0000','#9a0000','#607D8B'];
 
 const ziHier = { 'Board Members':2551,'C-Level':24901,'VP-Level':27503,'Director':84343,'Manager':187255,'Non-Manager':463673 };
 const ziHierMatched = { 'Board Members':643,'C-Level':3795,'VP-Level':26832,'Director':74318,'Manager':162228 };
@@ -1152,7 +1151,7 @@ const titleHierMap = {
   'Executive C Level Exec':'C-Level'
 };
 const guidanceRows = [
-  {band:'90–100%',count:26596,pct:'3.4%',conf:'Very High',bg:'#E8F5E9',color:'#1B5E20',action:'Use directly. Near-exact or exact match.'},
+  {band:'90–100%',count:26596,pct:'3.4%',conf:'Very High',bg:'#E8F5E9',color:'#4a0000',action:'Use directly. Near-exact or exact match.'},
   {band:'80–89%', count:62268,pct:'7.9%',conf:'High',bg:'#E3F2FD',color:'#0D47A1',action:'Use directly. Strong semantic match.'},
   {band:'70–79%', count:91134,pct:'11.5%',conf:'Good',bg:'#FFFDE7',color:'#E65100',action:'Use with confidence. Minor truncation/abbreviation differences.'},
   {band:'60–69%', count:87818,pct:'11.1%',conf:'Acceptable',bg:'#FFF3E0',color:'#BF360C',action:'Use but spot-check a sample. May have partial matches.'},
@@ -1160,14 +1159,14 @@ const guidanceRows = [
   {band:'< 50%',  count:433906,pct:'54.9%',conf:'Insufficient',bg:'#FAFAFA',color:'#555',action:'Flag for data hygiene. Enrich via ZoomInfo or company-level fallback.'}
 ];
 const actionRows = [
-  {dept:'Information Technology',count:'125,823',tier:'Manager',action:'Target IT Managers for tech refreshes, cloud migration, security tools. Run ABM campaigns on IT Directors for enterprise deals.',priority:'🔴 Highest'},
-  {dept:'Finance',count:'28,282',tier:'Director',action:'Engage Finance Directors/VPs for ERP, financial analytics, and cloud-hosted finance platforms. Position CDW as a single-vendor solution.',priority:'🟠 High'},
-  {dept:'C-Suite / Executive',count:'26,685',tier:'Director',action:'Use executive briefings and ROI-focused messaging. High Manager count (12K+) suggests opportunity for bottom-up executive influence plays.',priority:'🟠 High'},
-  {dept:'Engineering & Technical',count:'22,156',tier:'Manager',action:'Focus on DevOps tooling, cloud infrastructure, and developer platforms. Engineers are often "hidden buyers" behind IT decisions.',priority:'🟡 Medium'},
-  {dept:'Sales',count:'18,198',tier:'Manager',action:'CRM, sales enablement, and collaboration tools. Sales Managers (10.6K) are ideal for productivity-focused outreach.',priority:'🟡 Medium'},
-  {dept:'Marketing & eCommerce',count:'14,859',tier:'Manager',action:'MarTech stack conversations: analytics, automation, digital asset management. Marketing Managers dominate this segment.',priority:'🟡 Medium'},
-  {dept:'Legal & Compliance',count:'6,237',tier:'VP',action:'Governance, risk & compliance (GRC) software and secure document management. High VP ratio makes this a premium vertical.',priority:'🟢 Niche'},
-  {dept:'Medical & Health',count:'4,856',tier:'Manager',action:'CDW Healthcare positioning. EMR integrations, HIPAA-compliant cloud solutions. Small but high-value contact set.',priority:'🟢 Niche'},
+  {dept:'Information Technology',count:'125,823',tier:'Manager',action:'Target IT Managers for tech refreshes, cloud migration, security tools. Run ABM campaigns on IT Directors for enterprise deals.',priority:'Highest'},
+  {dept:'Finance',count:'28,282',tier:'Director',action:'Engage Finance Directors/VPs for ERP, financial analytics, and cloud-hosted finance platforms. Position CDW as a single-vendor solution.',priority:'High'},
+  {dept:'C-Suite / Executive',count:'26,685',tier:'Director',action:'Use executive briefings and ROI-focused messaging. High Manager count (12K+) suggests opportunity for bottom-up executive influence plays.',priority:'High'},
+  {dept:'Engineering & Technical',count:'22,156',tier:'Manager',action:'Focus on DevOps tooling, cloud infrastructure, and developer platforms. Engineers are often "hidden buyers" behind IT decisions.',priority:'Medium'},
+  {dept:'Sales',count:'18,198',tier:'Manager',action:'CRM, sales enablement, and collaboration tools. Sales Managers (10.6K) are ideal for productivity-focused outreach.',priority:'Medium'},
+  {dept:'Marketing & eCommerce',count:'14,859',tier:'Manager',action:'MarTech stack conversations: analytics, automation, digital asset management. Marketing Managers dominate this segment.',priority:'Medium'},
+  {dept:'Legal & Compliance',count:'6,237',tier:'VP',action:'Governance, risk & compliance (GRC) software and secure document management. High VP ratio makes this a premium vertical.',priority:'Niche'},
+  {dept:'Medical & Health',count:'4,856',tier:'Manager',action:'CDW Healthcare positioning. EMR integrations, HIPAA-compliant cloud solutions. Small but high-value contact set.',priority:'Niche'},
 ];
 
 // ═══════════════════════════════════════════════════════
@@ -1273,11 +1272,11 @@ setTimeout(runCounters, 200);
 // ═══════════════════════════════════════════════════════
 (function() {
   const steps = [
-    { label:'Total CDW Records', val:790226, color:'var(--navy)', w:'100%', note:'↓ Phase 1: Abbreviation expansion + TF-IDF cosine similarity' },
-    { label:'Phase 1 · Title Matched (≥60%)', val:267816, color:'var(--green)', w:'34%', note:'↓ Phase 1 NEI pool passed to Phase 2 hierarchy classifier' },
-    { label:'Phase 2 · Hierarchy Recovered', val:58737, color:'var(--teal)', w:'8%', note:'↓ Combined: Phase 1 + Phase 2' },
-    { label:'Total Coverage (Both Phases)', val:326553, color:'#0077B6', w:'41%', note:'↓ No match in either phase' },
-    { label:'Remaining NEI', val:463673, color:'#aaa', w:'59%', note:null }
+    { label:'Total CDW Records', val:790226, color:'#150404', w:'100%', note:'↓ Phase 1: Abbreviation expansion + TF-IDF cosine similarity' },
+    { label:'Phase 1 · Title Matched (≥60%)', val:267816, color:'#CC0000', w:'34%', note:'↓ Phase 1 NEI pool passed to Phase 2 hierarchy classifier' },
+    { label:'Phase 2 · Hierarchy Recovered', val:58737, color:'#870000', w:'8%', note:'↓ Combined: Phase 1 + Phase 2' },
+    { label:'Total Coverage (Both Phases)', val:326553, color:'#A50000', w:'41%', note:'↓ No match in either phase' },
+    { label:'Remaining NEI', val:463673, color:'#c8bfbf', w:'59%', note:null }
   ];
   const el = document.getElementById('funnel-steps');
   steps.forEach((s,i) => {
@@ -1392,8 +1391,8 @@ makeDonut('chart-hier-overview',
   chartInstances['chart-recovery'] = new Chart(document.getElementById('chart-recovery'), {
     type:'bar',
     data:{ labels:tiers, datasets:[
-      {label:'From Canonical Match',data:matched,backgroundColor:COLORS.blue+'CC',borderRadius:3},
-      {label:'From Keyword Classifier (NEI)',data:keyword,backgroundColor:COLORS.teal+'CC',borderRadius:3}
+      {label:'From Canonical Match',data:matched,backgroundColor:'#CC0000CC',borderRadius:3},
+      {label:'From Keyword Classifier (NEI)',data:keyword,backgroundColor:'#870000CC',borderRadius:3}
     ]},
     options:{ ...baseOpts, scales:{
       x:{stacked:false,ticks:{font:{size:11}},grid:{display:false}},
@@ -1610,7 +1609,7 @@ function drawPyramid(dept, color) {
     options:{ ...baseOpts, indexAxis:'y',
       plugins:{ legend:{display:false},
         tooltip:{callbacks:{label:ctx=>` ${fmt(ctx.raw)} (${fmtPct(ctx.raw,total)})`}},
-        title:{display:true,text:dept,font:{size:13,weight:'bold',family:'Source Sans 3, Source Sans Pro, Segoe UI, Arial'},color:'#1F4E79'} },
+        title:{display:true,text:dept,font:{size:13,weight:'bold',family:'Source Sans 3, Source Sans Pro, Segoe UI, Arial'},color:'#150404'} },
       scales:{
         x:{ticks:{font:{size:10},callback:v=>fmt(v)},grid:{color:'#eee'}},
         y:{ticks:{font:{size:11}},grid:{display:false}}
@@ -1809,10 +1808,10 @@ const CANONICAL_TITLES = ["Clinical Operations Board Member","Clinical Operation
   function renderGrid(list){
     const levelColors = {
       'Board Member':  {bg:'#fff0f0',color:'#CC0000',border:'#ffd5d5'},
-      'C Level Exec':  {bg:'#f0f8ff',color:'#0077B6',border:'#cce5ff'},
-      'VP Level Exec': {bg:'#f0fff4',color:'#2E8B57',border:'#c3e6cb'},
+      'C Level Exec':  {bg:'#f0f8ff',color:'#150404',border:'#cce5ff'},
+      'VP Level Exec': {bg:'#f0fff4',color:'#7C0000',border:'#c3e6cb'},
       'Director':      {bg:'#fff9f0',color:'#d97706',border:'#fde8c3'},
-      'Manager':       {bg:'#f5f0ff',color:'#7C3AED',border:'#d8c8f5'},
+      'Manager':       {bg:'#f5f0ff',color:'#4a0000',border:'#d8c8f5'},
     };
     const levels = Object.keys(levelColors);
     const grid = document.getElementById('canonical-grid');
@@ -1846,7 +1845,7 @@ const CANONICAL_TITLES = ["Clinical Operations Board Member","Clinical Operation
     if(!el) return;
     const levels = ['Board Member','C Level Exec','VP Level Exec','Director','Manager'];
     const counts = levels.map(lv => CANONICAL_TITLES.filter(t=>t.endsWith(' '+lv)).length);
-    const colors = ['#CC0000','#0077B6','#2E8B57','#F59E0B','#7C3AED'];
+    const colors = ['#CC0000','#150404','#7C0000','#9a0000','#4a0000'];
     new Chart(el, {
       type:'doughnut',
       data:{ labels:levels, datasets:[{data:counts, backgroundColor:colors, borderWidth:2, borderColor:'#fff'}] },
@@ -1892,12 +1891,12 @@ const CANONICAL_TITLES = ["Clinical Operations Board Member","Clinical Operation
       text:'Eligible records enter the IDR engine. A clean canonical title dramatically improves probabilistic matching confidence — two records sharing the same name, company, and canonical title are far stronger merge candidates than records with mismatched free-text strings.' },
     { num:'4', color:'#888', label:'Golden Contact Construction', tag:'',
       text:'Survivorship logic selects authoritative attribute values per Golden Contact. The canonical title — now a governed, structured field — participates in survivorship alongside email, name, and firmographic attributes, producing a clean Master Contact Dimension.' },
-    { num:'5', color:'#0077B6', label:'Enrichment Layer (ZoomInfo)', tag:'Augments Standardization Coverage',
+    { num:'5', color:'#150404', label:'Enrichment Layer (ZoomInfo)', tag:'Augments Standardization Coverage',
       text:'ZoomInfo enrichment is applied at the Golden Contact level. For the ~59% of records that could not be matched via cosine similarity, ZI direct enrichment can supply canonical title, department, and persona data — progressively closing the NEI gap without re-running the matching pipeline.',
       highlight:true },
     { num:'6', color:'#888', label:'Interaction & Revenue Attribution', tag:'',
       text:'Interactions are linked to ContactMasterIDs. Persona-tagged golden contacts enable role-aware engagement attribution — surfacing which personas are engaging, converting, and driving revenue.' },
-    { num:'7', color:'#7C3AED', label:'Downstream Consumption', tag:'Personas · Buying Committees · MARKO · Analytics',
+    { num:'7', color:'#4a0000', label:'Downstream Consumption', tag:'Personas · Buying Committees · MARKO · Analytics',
       text:'Canonical title attributes flow to Salesforce (role visibility), Adobe (persona-based activation and suppression), PMAI, MARKO, and analytics tools — without any additional per-platform integration. The standardization work done once upstream is consumed everywhere downstream.',
       highlight:true },
   ];
@@ -1909,8 +1908,8 @@ const CANONICAL_TITLES = ["Clinical Operations Board Member","Clinical Operation
     const div = document.createElement('div');
     div.style.cssText = 'display:flex;gap:16px;padding:0 0 20px 0;position:relative;';
     const dotColor = s.highlight ? s.color : '#ccc';
-    const bgColor  = s.highlight ? (s.color==='#CC0000'?'#fff8f8':s.color==='#0077B6'?'#f0f8ff':'#f9f7ff') : 'transparent';
-    const border   = s.highlight ? `1px solid ${s.color==='#CC0000'?'#ffd5d5':s.color==='#0077B6'?'#b8d9f5':'#d8c8f5'}` : 'none';
+    const bgColor  = s.highlight ? (s.color==='#CC0000'?'#fff8f8':s.color==='#150404'?'#f0f8ff':'#f9f7ff') : 'transparent';
+    const border   = s.highlight ? `1px solid ${s.color==='#CC0000'?'#ffd5d5':s.color==='#150404'?'#b8d9f5':'#d8c8f5'}` : 'none';
     div.innerHTML = `
       <div style="width:40px;flex-shrink:0;display:flex;justify-content:center;">
         <div style="width:20px;height:20px;border-radius:50%;background:${dotColor};color:white;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;margin-top:2px;">${s.num}</div>
