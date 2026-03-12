@@ -707,40 +707,40 @@ footer { text-align:center; padding:24px; color:#888; font-size:11px; margin-top
     </div>
   </div>
 
-  <!-- Schema structure + level breakdown side by side -->
+  <!-- How we built the schema -->
   <div class="grid-65-35" style="margin-bottom:18px;">
     <div class="card">
-      <h3>Schema Structure</h3>
-      <div class="sub">Each of 148 job functions maps to 5 management levels → 745 total titles</div>
-      <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px;">
-        <div style="font-size:12px;color:var(--grey);margin-bottom:4px;font-weight:600;">Formula: <span style="color:var(--cdw-dark);">148 Functions × 5 Levels = 740 titles + 5 edge-case titles = 745</span></div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:8px;">
-          <div style="background:#fff0f0;border-radius:8px;padding:12px;text-align:center;border:1px solid #ffd5d5;">
-            <div style="font-size:11px;color:var(--grey);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Board Member</div>
-            <div style="font-size:20px;font-weight:700;color:var(--cdw-red);">148</div>
-            <div style="font-size:10px;color:var(--grey);">titles</div>
-          </div>
-          <div style="background:#f0f8ff;border-radius:8px;padding:12px;text-align:center;border:1px solid #cce5ff;">
-            <div style="font-size:11px;color:var(--grey);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">C Level Exec</div>
-            <div style="font-size:20px;font-weight:700;color:var(--teal);">148</div>
-            <div style="font-size:10px;color:var(--grey);">titles</div>
-          </div>
-          <div style="background:#f0fff4;border-radius:8px;padding:12px;text-align:center;border:1px solid #c3e6cb;">
-            <div style="font-size:11px;color:var(--grey);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">VP Level Exec</div>
-            <div style="font-size:20px;font-weight:700;color:var(--green);">148</div>
-            <div style="font-size:10px;color:var(--grey);">titles</div>
-          </div>
-          <div style="background:#fff9f0;border-radius:8px;padding:12px;text-align:center;border:1px solid #fde8c3;">
-            <div style="font-size:11px;color:var(--grey);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Director</div>
-            <div style="font-size:20px;font-weight:700;color:var(--amber);">148</div>
-            <div style="font-size:10px;color:var(--grey);">titles</div>
-          </div>
-          <div style="background:#f5f0ff;border-radius:8px;padding:12px;text-align:center;border:1px solid #d8c8f5;">
-            <div style="font-size:11px;color:var(--grey);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Manager</div>
-            <div style="font-size:20px;font-weight:700;color:var(--purple);">148</div>
-            <div style="font-size:10px;color:var(--grey);">titles</div>
+      <h3>How We Built the Canonical Schema</h3>
+      <div class="sub">A 3-step pipeline to collapse 790,100 messy titles into 745 clean, structured Zoom personas</div>
+      <div style="display:flex;flex-direction:column;gap:0;margin-top:18px;">
+
+        <!-- Step 1 -->
+        <div style="display:flex;gap:16px;align-items:flex-start;padding-bottom:20px;border-left:2px solid var(--cdw-red);margin-left:14px;padding-left:20px;position:relative;">
+          <div style="position:absolute;left:-10px;top:0;width:20px;height:20px;border-radius:50%;background:var(--cdw-red);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--cdw-dark);margin-bottom:5px;">Construct the Canonical Title List from Zoom Fields</div>
+            <div style="font-size:12px;color:var(--grey);line-height:1.7;">Zoom's data schema exposes two structured persona fields: <strong style="color:var(--cdw-dark);">Job Function</strong> and <strong style="color:var(--cdw-dark);">Management Level</strong>. We concatenated these two fields — e.g. <em>"Information Technology"</em> + <em>"Director"</em> → <em>"Information Technology Director"</em> — to produce a clean grid of standardized titles. The list was then filtered down to the 148 job functions most relevant to CDW's B2B technology audience, yielding <strong style="color:var(--cdw-red);">745 canonical titles</strong> spanning 5 seniority levels.</div>
           </div>
         </div>
+
+        <!-- Step 2 -->
+        <div style="display:flex;gap:16px;align-items:flex-start;padding-bottom:20px;border-left:2px solid var(--teal);margin-left:14px;padding-left:20px;position:relative;">
+          <div style="position:absolute;left:-10px;top:0;width:20px;height:20px;border-radius:50%;background:var(--teal);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--cdw-dark);margin-bottom:5px;">Vectorize All Titles with TF-IDF</div>
+            <div style="font-size:12px;color:var(--grey);line-height:1.7;">Every CDW raw title and every canonical title was converted into a <strong style="color:var(--cdw-dark);">TF-IDF vector</strong> (Term Frequency–Inverse Document Frequency) — a mathematical representation that weights each word by how distinctive it is across the full title corpus. Common words like "of" or "the" receive low weight; meaningful terms like "Security", "DevOps", or "Director" receive high weight. This produced a 790,100-row sparse matrix that captured the semantic content of each title numerically.</div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div style="display:flex;gap:16px;align-items:flex-start;padding-bottom:4px;border-left:2px solid var(--green);margin-left:14px;padding-left:20px;position:relative;">
+          <div style="position:absolute;left:-10px;top:0;width:20px;height:20px;border-radius:50%;background:var(--green);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--cdw-dark);margin-bottom:5px;">Match via Cosine Similarity (≥ 60% threshold)</div>
+            <div style="font-size:12px;color:var(--grey);line-height:1.7;">Each raw CDW title vector was compared against all 745 canonical title vectors using <strong style="color:var(--cdw-dark);">cosine similarity</strong> — measuring the angle between vectors to determine how closely two titles align in meaning regardless of exact wording. The best-scoring canonical title was assigned if its similarity score met or exceeded a <strong style="color:var(--cdw-dark);">60% threshold</strong>. Titles scoring below 60% were marked <em>Not Enough Information (NEI)</em>. The entire 790K-record match ran in <strong style="color:var(--green);">8.9 seconds</strong> via optimised sparse matrix operations.</div>
+          </div>
+        </div>
+
       </div>
     </div>
     <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
