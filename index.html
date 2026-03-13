@@ -49,11 +49,27 @@ header {
 .cdw-logo-text { display: flex; flex-direction: column; }
 header h1 { font-family: 'Source Sans 3', 'Source Sans Pro', Verdana, sans-serif; font-size: clamp(13px, 2vw, 17px); font-weight: 600; letter-spacing: 0; color: #150404; }
 header p  { font-size: 13px; color: #7a7070; margin-top: 1px; font-weight: 400; }
-.badge {
-  background: var(--cdw-red); border-radius: 8px; padding: 10px 20px;
-  font-size: 14px; white-space: nowrap; font-weight: 600;
-  color: white; border: none; font-family: 'Source Sans 3', 'Source Sans Pro', Verdana, sans-serif;
-  letter-spacing: 0;
+.header-stats {
+  display: flex; gap: 0; align-items: stretch;
+  background: var(--cdw-red); border-radius: 8px; overflow: hidden;
+}
+.header-stat {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 8px 18px; border-right: 1px solid rgba(255,255,255,0.18);
+  font-family: 'Source Sans 3', 'Source Sans Pro', Verdana, sans-serif;
+  min-width: 80px;
+}
+.header-stat:last-child { border-right: none; }
+.header-stat-value {
+  font-family: 'Poppins', Verdana, sans-serif; font-size: 16px; font-weight: 700;
+  color: white; line-height: 1.1;
+}
+.header-stat-label {
+  font-size: 10px; color: rgba(255,255,255,0.7); margin-top: 2px;
+  text-transform: uppercase; letter-spacing: 0.5px; font-weight: 400; white-space: nowrap;
+}
+@media (max-width: 768px) {
+  .header-stats { display: none; }
 }
 
 /* ── Nav — matches cdw.com secondary nav exactly ── */
@@ -303,7 +319,24 @@ footer strong { color:rgba(255,255,255,0.85); }
       <p>Persona standardization using Zoom canonical model &nbsp;·&nbsp; March 2026</p>
     </div>
   </div>
-  <div class="badge">790,226 records processed</div>
+  <div class="header-stats">
+    <div class="header-stat">
+      <div class="header-stat-value">790,226</div>
+      <div class="header-stat-label">Records</div>
+    </div>
+    <div class="header-stat">
+      <div class="header-stat-value">41.3%</div>
+      <div class="header-stat-label">Coverage</div>
+    </div>
+    <div class="header-stat">
+      <div class="header-stat-value">745</div>
+      <div class="header-stat-label">Canonical Titles</div>
+    </div>
+    <div class="header-stat">
+      <div class="header-stat-value">326,553</div>
+      <div class="header-stat-label">Matched</div>
+    </div>
+  </div>
 </header>
 
 <nav id="main-nav">
