@@ -216,6 +216,7 @@
 
 <nav id="main-nav">
   <button class="active" onclick="showPage('home',this)">Home</button>
+  <button onclick="showPage('results',this)">Latest Run</button>
   <button onclick="showPage('pipeline',this)">Pipeline</button>
   <button onclick="showPage('idr',this)">Identity Resolution</button>
   <button onclick="showPage('zi',this)">ZoomInfo</button>
@@ -288,6 +289,143 @@
       <h3 style="margin-bottom:12px">ZoomInfo Match Distribution</h3>
       <div style="height:220px"><canvas id="chart-zi-home"></canvas></div>
     </div>
+  </div>
+
+</div>
+
+<!-- ════════════ LATEST RUN ════════════ -->
+<div id="page-results" class="page">
+
+  <div class="hero">
+    <div class="hero-eyebrow">GCI Pipeline &middot; Latest Run &middot; March 2026</div>
+    <div class="hero-title">Run Results &amp; Statistics</div>
+    <div class="hero-desc">Full output metrics from the most recent GCI pipeline execution — covering contact resolution, blocking effectiveness, data coverage, quality signals, and net new contact discovery.</div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-num">21.6M</div><div class="hero-lbl">Records in</div></div>
+      <div class="hero-stat"><div class="hero-num">18.4M</div><div class="hero-lbl">GCIs out</div></div>
+      <div class="hero-stat"><div class="hero-num">14.59%</div><div class="hero-lbl">Reduction</div></div>
+      <div class="hero-stat"><div class="hero-num">97.12%</div><div class="hero-lbl">Clean data</div></div>
+    </div>
+  </div>
+
+  <!-- 1. Contact Resolution -->
+  <div class="sec">1 &mdash; Contact Resolution</div>
+  <div class="kpi-row" style="margin-bottom:10px">
+    <div class="kpi"><div class="kpi-lbl">Source Records In</div><div class="kpi-value">21,589,760</div><div class="kpi-sub">Raw contacts across all 4 source systems</div></div>
+    <div class="kpi"><div class="kpi-lbl">GCIs Created</div><div class="kpi-value">18,440,888</div><div class="kpi-sub">Unique golden contacts after deduplication</div></div>
+    <div class="kpi"><div class="kpi-lbl">Records Removed</div><div class="kpi-value">3,148,872</div><div class="kpi-sub">14.59% duplicate reduction</div></div>
+    <div class="kpi"><div class="kpi-lbl">Avg Collapse Ratio</div><div class="kpi-value">1.10x</div><div class="kpi-sub">Avg source records per golden contact</div></div>
+  </div>
+  <div class="card" style="margin-bottom:24px">
+    <p style="font-size:14px;color:var(--grey);line-height:1.8">Zingg's ML model compared candidate record pairs and resolved 21.6M raw contacts into <strong>18.4M unique golden identities</strong> — eliminating 3.1M duplicate records. The <strong>1.10x average collapse ratio</strong> means that on average, each golden contact maps to 1.1 source records. A low collapse ratio like this is expected and healthy: CDW's contact universe is largely unique, with deduplication targeting only the genuine duplicates created by cross-system overlap (e.g. the same person in both Salesforce and eAccount).</p>
+  </div>
+
+  <!-- 2. Blocking Effectiveness -->
+  <div class="sec">2 &mdash; Blocking Effectiveness (EntityID)</div>
+  <div class="g2" style="margin-bottom:24px">
+    <div class="kpi-row" style="margin-bottom:0;grid-template-columns:1fr 1fr">
+      <div class="kpi" style="border-left-color:#1a7a3a"><div class="kpi-lbl">Records With EntityID</div><div class="kpi-value" style="color:#1a7a3a">20,145,794</div><div class="kpi-sub">99.73% — fully eligible for ML blocking</div></div>
+      <div class="kpi" style="border-left-color:#b0b0b0"><div class="kpi-lbl">Records Without EntityID</div><div class="kpi-value" style="color:#888">54,206</div><div class="kpi-sub">0.27% — excluded from deduplication pairing</div></div>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:10px">What is EntityID?</h3>
+      <p style="font-size:14px;color:var(--grey);line-height:1.8">EntityID is the <strong>primary blocking key</strong> used to group candidate record pairs before ML comparison. Rather than comparing every record to every other record (computationally infeasible at 21M scale), Zingg uses EntityID to narrow down which pairs are even candidates. <strong>99.73% coverage</strong> means virtually all records participated in deduplication — the 54K without an EntityID were isolated and could not be matched or merged.</p>
+    </div>
+  </div>
+
+  <!-- 3. Data Coverage -->
+  <div class="sec">3 &mdash; Data Coverage</div>
+  <div class="kpi-row" style="margin-bottom:10px">
+    <div class="kpi"><div class="kpi-lbl">GCIs with Titles</div><div class="kpi-value">6,489,536</div><div class="kpi-sub">35.19% — standardized job title assigned</div></div>
+    <div class="kpi"><div class="kpi-lbl">GCIs with Personas</div><div class="kpi-value">4,880,130</div><div class="kpi-sub">26.46% — buyer persona classified</div></div>
+    <div class="kpi"><div class="kpi-lbl">ZoomInfo Enriched</div><div class="kpi-value">6,282,826</div><div class="kpi-sub">34.07% — ZoomInfo data appended</div></div>
+  </div>
+  <div class="g3" style="margin-bottom:24px">
+    <div class="card">
+      <h3 style="margin-bottom:8px">Title Coverage (35.19%)</h3>
+      <p style="font-size:13px;color:var(--grey);line-height:1.75">6.49M GCIs have a standardized canonical title assigned via the fuzzy title matching pipeline. Coverage is bounded by the quality of raw title data — records with blank, malformed, or highly unusual titles cannot be matched. The 35% rate reflects the portion of CDW's contact universe that carries usable job title information.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:8px">Persona Coverage (26.46%)</h3>
+      <p style="font-size:13px;color:var(--grey);line-height:1.75">4.88M GCIs have been assigned one of 7 buyer personas (Decision Maker, Champion, Technical Advisor, etc.). Persona classification is downstream of title matching — a GCI must have a standardized canonical title before a persona can be inferred. The 26.46% rate represents the addressable universe for persona-based GTM segmentation.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:8px">ZoomInfo Coverage (34.07%)</h3>
+      <p style="font-size:13px;color:var(--grey);line-height:1.75">6.28M GCIs were enriched with ZoomInfo data including verified email, phone, title, department, and company. ZoomInfo match rate is gated by contact quality and ZoomInfo's own database coverage — records without a valid email or name cannot be matched. The 34% rate is consistent with industry benchmarks for B2B contact enrichment at this scale.</p>
+    </div>
+  </div>
+
+  <!-- 4. Data Quality -->
+  <div class="sec">4 &mdash; Data Quality</div>
+  <div class="g2" style="margin-bottom:24px">
+    <div class="card">
+      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:16px">
+        <div class="score-band" style="background:#e8f5ee;color:#1a5c32">
+          <div class="sb-left"><div class="sb-band">Clean GCIs</div><div class="sb-action">No collision — single source cluster or verified merge</div></div>
+          <div class="sb-right"><div class="sb-count">17,910,333</div><div class="sb-pct">97.12%</div></div>
+        </div>
+        <div class="score-band" style="background:#fdf0f0;color:#8b1a1a">
+          <div class="sb-left"><div class="sb-band">GCIs with Collisions</div><div class="sb-action">Two or more conflicting source records merged to same GCI</div></div>
+          <div class="sb-right"><div class="sb-count">530,555</div><div class="sb-pct">2.88%</div></div>
+        </div>
+      </div>
+      <div style="height:10px;border-radius:6px;background:#f0eaea;overflow:hidden;margin-bottom:6px">
+        <div style="height:10px;background:#1a7a3a;border-radius:6px;width:97.12%"></div>
+      </div>
+      <div style="font-size:11px;color:var(--grey);text-align:right">97.12% clean</div>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:10px">What is a Collision?</h3>
+      <p style="font-size:14px;color:var(--grey);line-height:1.8;margin-bottom:12px">A <strong>collision</strong> occurs when two source records are assigned to the same GCI but appear to represent different people — a false positive merge. At <strong>2.88%</strong>, the collision rate is well within acceptable thresholds for an ML-based identity resolution system at this scale.</p>
+      <p style="font-size:14px;color:var(--grey);line-height:1.8">Collisions are flagged for review rather than automatically corrected, preserving auditability. The <strong>97.12% clean rate</strong> reflects the precision of the Zingg model's match scoring and the blocking strategy used to constrain candidate pair generation.</p>
+    </div>
+  </div>
+
+  <!-- 5. Net New Contacts -->
+  <div class="sec">5 &mdash; Net New Contacts</div>
+  <div class="g2" style="margin-bottom:24px">
+    <div class="kpi-row" style="margin-bottom:0;grid-template-columns:1fr 1fr">
+      <div class="kpi"><div class="kpi-lbl">Net New GCIs</div><div class="kpi-value">2,020,367</div><div class="kpi-sub">New golden contacts not in the prior run</div></div>
+      <div class="kpi"><div class="kpi-lbl">Net New Rate</div><div class="kpi-value">10.96%</div><div class="kpi-sub">Of total 18.4M GCI universe</div></div>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:10px">What does "Net New" mean?</h3>
+      <p style="font-size:14px;color:var(--grey);line-height:1.8">Net new contacts are GCIs that did not exist in the previous pipeline run — representing <strong>newly discovered people</strong> introduced through the latest data ingestion cycle. This could be new Salesforce contacts, new event attendees, new email subscribers, or new ZoomInfo records surfaced since the last run. A 10.96% net new rate indicates healthy, ongoing data growth in CDW's contact universe.</p>
+    </div>
+  </div>
+
+  <!-- Summary table -->
+  <div class="sec">Full Statistics Summary</div>
+  <div class="card" style="margin-bottom:24px">
+    <table style="width:100%;border-collapse:collapse;font-size:14px">
+      <thead>
+        <tr style="background:var(--dark);color:#fff">
+          <th style="padding:10px 14px;text-align:left;font-weight:600;border-radius:0">Category</th>
+          <th style="padding:10px 14px;text-align:left;font-weight:600">Metric</th>
+          <th style="padding:10px 14px;text-align:right;font-weight:600">Value</th>
+          <th style="padding:10px 14px;text-align:right;font-weight:600">Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#fafafa"><td style="padding:9px 14px;color:var(--grey);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px" colspan="4">Contact Resolution</td></tr>
+        <tr><td style="padding:8px 14px;border-bottom:1px solid var(--border)"></td><td style="padding:8px 14px;border-bottom:1px solid var(--border)">Starting Contact Count</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;font-weight:600">21,589,760</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;color:var(--grey)">—</td></tr>
+        <tr><td style="padding:8px 14px;border-bottom:1px solid var(--border)"></td><td style="padding:8px 14px;border-bottom:1px solid var(--border)">Total GCIs Created</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;font-weight:600">18,440,888</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;color:var(--grey)">—</td></tr>
+        <tr><td style="padding:8px 14px;border-bottom:1px solid var(--border)"></td><td style="padding:8px 14px;border-bottom:1px solid var(--border)">Contact Reduction</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;font-weight:600">3,148,872</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;color:var(--red);font-weight:600">14.59%</td></tr>
+        <tr><td style="padding:8px 14px;border-bottom:1px solid var(--border)"></td><td style="padding:8px 14px;border-bottom:1px solid var(--border)">Average Collapse Ratio</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;font-weight:600">1.10x</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;color:var(--grey)">—</td></tr>
+        <tr style="background:#fafafa"><td style="padding:9px 14px;color:var(--grey);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px" colspan="4">Blocking Effectiveness</td></tr>
+        <tr><td style="padding:8px 14px;border-bottom:1px solid var(--border)"></td><td style="padding:8px 14px;border-bottom:1px solid var(--border)">Records with EntityID</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;font-weight:600">20,145,794</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;color:#1a7a3a;font-weight:600">99.73%</td></tr>
+        <tr><td style="padding:8px 14px;border-bottom:1px solid var(--border)"></td><td style="padding:8px 14px;border-bottom:1px solid var(--border)">Records without EntityID</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;font-weight:600">54,206</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;color:var(--grey)">0.27%</td></tr>
+        <tr style="background:#fafafa"><td style="padding:9px 14px;color:var(--grey);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px" colspan="4">Data Coverage</td></tr>
+        <tr><td style="padding:8px 14px;border-bottom:1px solid var(--border)"></td><td style="padding:8px 14px;border-bottom:1px solid var(--border)">GCIs with Titles</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;font-weight:600">6,489,536</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;color:var(--red);font-weight:600">35.19%</td></tr>
+        <tr><td style="padding:8px 14px;border-bottom:1px solid var(--border)"></td><td style="padding:8px 14px;border-bottom:1px solid var(--border)">GCIs with Personas</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;font-weight:600">4,880,130</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;color:var(--red);font-weight:600">26.46%</td></tr>
+        <tr><td style="padding:8px 14px;border-bottom:1px solid var(--border)"></td><td style="padding:8px 14px;border-bottom:1px solid var(--border)">Enriched with ZoomInfo</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;font-weight:600">6,282,826</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;color:var(--red);font-weight:600">34.07%</td></tr>
+        <tr style="background:#fafafa"><td style="padding:9px 14px;color:var(--grey);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px" colspan="4">Data Quality</td></tr>
+        <tr><td style="padding:8px 14px;border-bottom:1px solid var(--border)"></td><td style="padding:8px 14px;border-bottom:1px solid var(--border)">GCIs with Clean Data</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;font-weight:600">17,910,333</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;color:#1a7a3a;font-weight:600">97.12%</td></tr>
+        <tr><td style="padding:8px 14px;border-bottom:1px solid var(--border)"></td><td style="padding:8px 14px;border-bottom:1px solid var(--border)">GCIs with Collisions</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;font-weight:600">530,555</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;color:var(--grey)">2.88%</td></tr>
+        <tr style="background:#fafafa"><td style="padding:9px 14px;color:var(--grey);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px" colspan="4">Net New Contacts</td></tr>
+        <tr><td style="padding:8px 14px;border-bottom:1px solid var(--border)"></td><td style="padding:8px 14px;border-bottom:1px solid var(--border)">Net New Contacts</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;font-weight:600">2,020,367</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;color:var(--red);font-weight:600">10.96%</td></tr>
+      </tbody>
+    </table>
   </div>
 
 </div>
