@@ -518,7 +518,7 @@
       <div class="sec">Incremental vs. Full Run</div>
       <p style="font-size:14px;color:var(--grey);line-height:1.7;margin-bottom:12px">Zingg determines whether to run as a <strong>first run</strong> or <strong>incremental run</strong> by checking whether the model output table path already exists in the GCI Lakehouse. If the path doesn't exist, it's treated as a first run and rebuilds all clusters from scratch.</p>
       <p style="font-size:14px;color:var(--grey);line-height:1.7;margin-bottom:12px"><strong>Critical:</strong> The model output table path in the utils notebook must be accurate at all times. An incorrect path causes the pipeline to run as a first run, overwriting existing clusters.</p>
-      <p style="font-size:14px;color:var(--grey);line-height:1.7">The current dataset (full run) produced the bridge table with <strong>~10.2M rows</strong>. Future incremental runs will process only new/changed records and merge results into the existing cluster state.</p>
+      <p style="font-size:14px;color:var(--grey);line-height:1.7">The current dataset (full run) produced the bridge table with <strong>~18.4M rows</strong>. Future incremental runs will process only new/changed records and merge results into the existing cluster state.</p>
     </div>
     <div class="card">
       <div class="sec">Performance Benchmarks</div>
@@ -868,8 +868,8 @@ const wfData = [
   {label:'Source Records', table:'inputData', n:21589760},
   {label:'After Cleaning', table:'inputData (clean)', n:19420000},
   {label:'ZI Enriched', table:'Staged_ZoomInfo', n:6282826},
-  {label:'Zingg Clusters', table:'ContactMasterIDBridge', n:10200000},
-  {label:'Golden Records', table:'Dimension_ContactMaster', n:10200000},
+  {label:'Zingg Clusters', table:'ContactMasterIDBridge', n:18440888},
+  {label:'Golden Records', table:'Dimension_ContactMaster', n:18440888},
   {label:'With Persona', table:'PersonaContactMaster', n:4880130},
 ];
 const wfEl = document.getElementById('waterfall-home');
