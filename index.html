@@ -193,6 +193,29 @@
     .badge{display:inline-block;padding:2px 9px;border-radius:4px;font-size:11px;font-weight:600}
     .badge-red{background:rgba(204,0,0,0.1);color:var(--red)}
     .badge-grey{background:#f0eaea;color:var(--grey)}
+
+    /* ── Modal ── */
+    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(21,4,4,0.55);z-index:900;align-items:center;justify-content:center;padding:20px}
+    .modal-overlay.open{display:flex}
+    .modal-box{background:#fff;border-radius:18px;padding:36px 40px;max-width:520px;width:100%;box-shadow:0 24px 60px rgba(0,0,0,0.18);position:relative;animation:modalIn .2s ease}
+    @keyframes modalIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    .modal-close{position:absolute;top:16px;right:20px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--grey);line-height:1}
+    .modal-close:hover{color:var(--red)}
+    .modal-tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--red);margin-bottom:8px}
+    .modal-title{font-family:'Poppins',Verdana,sans-serif;font-size:26px;font-weight:700;color:var(--dark);margin-bottom:4px;line-height:1.1}
+    .modal-sub{font-size:13px;color:var(--grey);margin-bottom:18px}
+    .modal-body{font-size:14px;color:#3a3030;line-height:1.8}
+    .modal-body strong{color:var(--dark)}
+    .modal-stat-row{display:flex;gap:18px;margin-top:18px;flex-wrap:wrap}
+    .modal-stat{background:var(--bg);border-radius:10px;padding:12px 18px;flex:1;min-width:100px}
+    .modal-stat-val{font-family:'Poppins',Verdana,sans-serif;font-size:20px;font-weight:700;color:var(--dark)}
+    .modal-stat-lbl{font-size:11px;color:var(--grey);margin-top:2px}
+
+    /* ── Clickable nums ── */
+    .clickable{cursor:pointer;transition:opacity .15s}
+    .clickable:hover{opacity:0.75}
+    .click-hint{font-size:10px;color:rgba(255,255,255,0.4);margin-top:3px;letter-spacing:0.3px}
+    .kpi .click-hint{color:var(--grey);opacity:0.7}
   </style>
 </head>
 <body>
@@ -235,20 +258,23 @@
     <div class="hero-title">One Trusted Identity<br>Across Every CDW Contact</div>
     <div class="hero-desc">The Golden Contact Identifier (GCI) is CDW's enterprise identity resolution pipeline — resolving 21 million raw contact records from 4 source systems into a single, deduplicated master contact record enriched with ZoomInfo data, standardized job titles, and persona-based buyer intelligence.</div>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="hero-num">21.6M</div><div class="hero-lbl">Total records processed</div></div>
-      <div class="hero-stat"><div class="hero-num">18.4M</div><div class="hero-lbl">Unique golden contacts</div></div>
-      <div class="hero-stat"><div class="hero-num">4</div><div class="hero-lbl">Source systems unified</div></div>
-      <div class="hero-stat"><div class="hero-num">32</div><div class="hero-lbl">Pipeline tables</div></div>
+      <div class="hero-stat clickable" onclick="openModal('m-raw')"><div class="hero-num">21.6M</div><div class="hero-lbl">Total records processed</div><div class="click-hint">click for details</div></div>
+      <div class="hero-stat clickable" onclick="openModal('m-gci')"><div class="hero-num">18.4M</div><div class="hero-lbl">Unique golden contacts</div><div class="click-hint">click for details</div></div>
+      <div class="hero-stat clickable" onclick="openModal('m-sources')"><div class="hero-num">4</div><div class="hero-lbl">Source systems unified</div><div class="click-hint">click for details</div></div>
+      <div class="hero-stat clickable" onclick="openModal('m-tables')"><div class="hero-num">32</div><div class="hero-lbl">Pipeline tables</div><div class="click-hint">click for details</div></div>
     </div>
   </div>
 
   <div class="kpi-row">
-    <div class="kpi"><div class="kpi-lbl">Source Records In</div><div class="kpi-value">21.6M</div><div class="kpi-sub">Salesforce, eAccount, Attendee, Subscriber</div></div>
-    <div class="kpi"><div class="kpi-lbl">Golden Contacts Out</div><div class="kpi-value">18.4M</div><div class="kpi-sub">After Zingg ML deduplication — 14.59% reduction</div></div>
-    <div class="kpi"><div class="kpi-lbl">ZoomInfo Enriched</div><div class="kpi-value">34.07%</div><div class="kpi-sub">6.28M GCIs enriched with ZoomInfo data</div></div>
-    <div class="kpi"><div class="kpi-lbl">Title Match Coverage</div><div class="kpi-value">35.19%</div><div class="kpi-sub">6.49M of 18.4M GCIs have titles</div></div>
-    <div class="kpi"><div class="kpi-lbl">Personas Defined</div><div class="kpi-value">7</div><div class="kpi-sub">Decision Maker through User</div></div>
-    <div class="kpi"><div class="kpi-lbl">Solution Categories</div><div class="kpi-value">8</div><div class="kpi-sub">Cloud to Transactional</div></div>
+    <div class="kpi clickable" onclick="openModal('m-raw')"><div class="kpi-lbl">Source Records In</div><div class="kpi-value">21.6M</div><div class="kpi-sub">Salesforce, eAccount, Attendee, Subscriber</div><div class="click-hint">click for details</div></div>
+    <div class="kpi clickable" onclick="openModal('m-gci')"><div class="kpi-lbl">Golden Contacts Out</div><div class="kpi-value">18.4M</div><div class="kpi-sub">After Zingg ML deduplication — 14.59% reduction</div><div class="click-hint">click for details</div></div>
+    <div class="kpi clickable" onclick="openModal('m-zi')"><div class="kpi-lbl">ZoomInfo Enriched</div><div class="kpi-value">34.10%</div><div class="kpi-sub">6.28M GCIs enriched with ZoomInfo data</div><div class="click-hint">click for details</div></div>
+    <div class="kpi clickable" onclick="openModal('m-titles')"><div class="kpi-lbl">Title Match Coverage</div><div class="kpi-value">35.19%</div><div class="kpi-sub">6.49M of 18.4M GCIs have standardized titles</div><div class="click-hint">click for details</div></div>
+    <div class="kpi clickable" onclick="openModal('m-email')"><div class="kpi-lbl">Email Coverage</div><div class="kpi-value">77.5%</div><div class="kpi-sub">Of all golden contacts have a valid email</div><div class="click-hint">click for details</div></div>
+    <div class="kpi clickable" onclick="openModal('m-phone')"><div class="kpi-lbl">Phone Coverage</div><div class="kpi-value">24.3%</div><div class="kpi-sub">Of all golden contacts have a phone number</div><div class="click-hint">click for details</div></div>
+    <div class="kpi clickable" onclick="openModal('m-personas')"><div class="kpi-lbl">Personas Defined</div><div class="kpi-value">7</div><div class="kpi-sub">Decision Maker through User</div><div class="click-hint">click for details</div></div>
+    <div class="kpi clickable" onclick="openModal('m-solcat')"><div class="kpi-lbl">Solution Categories</div><div class="kpi-value">8</div><div class="kpi-sub">Cloud to Transactional</div><div class="click-hint">click for details</div></div>
+    <div class="kpi clickable" onclick="openModal('m-dm')"><div class="kpi-lbl">IT Decision Makers</div><div class="kpi-value">668,772</div><div class="kpi-sub">3.62% of total GCI universe — IT &amp; Engineering titles</div><div class="click-hint">click for details</div></div>
   </div>
 
   <div class="g2">
@@ -1066,6 +1092,174 @@ if (techEl) {
     </div>`).join('');
 }
 
+</script>
+
+<!-- ════════════ MODALS ════════════ -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalOutside(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">&#x2715;</button>
+    <div class="modal-tag" id="modal-tag"></div>
+    <div class="modal-title" id="modal-title"></div>
+    <div class="modal-sub" id="modal-sub"></div>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-stat-row" id="modal-stats"></div>
+  </div>
+</div>
+
+<script>
+const MODALS = {
+  'm-raw': {
+    tag: 'Source Data',
+    title: '21,589,760',
+    sub: 'Total raw contact records processed',
+    body: 'CDW\'s contact database contained <strong>21.6 million raw contact records</strong> spread across four disconnected source systems — Salesforce, eAccount, event Attendees, and email Subscribers. Many of these records represented the same person, with no common key linking them across systems. Every record entered the GCI pipeline for cleaning, deduplication, and enrichment.',
+    stats: [
+      {val:'Salesforce', lbl:'Primary CRM'},
+      {val:'eAccount', lbl:'E-commerce'},
+      {val:'Attendee', lbl:'Events'},
+      {val:'Subscriber', lbl:'Email lists'},
+    ]
+  },
+  'm-gci': {
+    tag: 'Output',
+    title: '18,440,888',
+    sub: 'Unique golden contacts created',
+    body: 'After ML-based deduplication using the Zingg model, <strong>21.6M raw records resolved into 18.4M unique golden contacts</strong> — eliminating 3,148,872 duplicate records (a 14.59% reduction). The average collapse ratio of <strong>1.10x</strong> means each golden contact maps to 1.1 source records on average. This is healthy — CDW\'s contact universe is largely unique, with duplication concentrated at cross-system overlap.',
+    stats: [
+      {val:'3.1M', lbl:'Duplicates removed'},
+      {val:'14.59%', lbl:'Reduction rate'},
+      {val:'1.10x', lbl:'Collapse ratio'},
+      {val:'97.12%', lbl:'Clean data rate'},
+    ]
+  },
+  'm-sources': {
+    tag: 'Source Systems',
+    title: '4',
+    sub: 'Distinct systems unified into one identity',
+    body: 'The GCI pipeline ingests contacts from <strong>four source systems</strong>, each with its own schema, quality level, and update cadence. Survivorship logic determines which system "wins" when field values conflict: <strong>Salesforce → eAccount → Attendee → Subscriber</strong>. Salesforce is the highest-trust source for contact fields; Subscriber is the lowest.',
+    stats: [
+      {val:'#1', lbl:'Salesforce (highest trust)'},
+      {val:'#2', lbl:'eAccount'},
+      {val:'#3', lbl:'Attendee'},
+      {val:'#4', lbl:'Subscriber'},
+    ]
+  },
+  'm-tables': {
+    tag: 'Pipeline Architecture',
+    title: '32',
+    sub: 'Tables spanning the full GCI pipeline',
+    body: 'The GCI pipeline produces and consumes <strong>32 tables</strong> across four categories: Source/Input tables (raw ingestion feeds), Model/Zingg tables (identity resolution outputs), Target/Output tables (the golden record layer), and Personas & Interactions tables (buyer signals and event history). All tables are managed in Microsoft Fabric\'s OneLake and orchestrated from a single entry point — <strong>main_dev_v1</strong>.',
+    stats: [
+      {val:'4', lbl:'Source/Input tables'},
+      {val:'8', lbl:'Model/Zingg tables'},
+      {val:'6', lbl:'Target/Output tables'},
+      {val:'14', lbl:'Personas & Interactions'},
+    ]
+  },
+  'm-zi': {
+    tag: 'ZoomInfo Enrichment',
+    title: '34.10%',
+    sub: '6.28M GCIs enriched with ZoomInfo data',
+    body: '<strong>6,282,826 golden contacts</strong> received full ZoomInfo enrichment — including verified email, phone, standardized job title, department, management level, NAICS code, and company data. Match rate is gated by contact quality: records without a valid email or name cannot be matched. The 34% rate is consistent with industry benchmarks for B2B contact enrichment at this scale. An additional 30.7% received company-level data only (no person-level fields).',
+    stats: [
+      {val:'6.28M', lbl:'Person match (full)'},
+      {val:'6.5M', lbl:'Company match only'},
+      {val:'3.8M', lbl:'No match'},
+      {val:'34.10%', lbl:'Person match rate'},
+    ]
+  },
+  'm-titles': {
+    tag: 'Title Standardization',
+    title: '35.19%',
+    sub: '6.49M GCIs with a standardized canonical title',
+    body: 'CDW\'s raw title data contained <strong>790,226 unique, uncleaned job title strings</strong> — abbreviations, typos, and inconsistent formatting. A two-phase matching approach resolved these against 745 canonical titles: <strong>Phase 1 (TF-IDF cosine similarity)</strong> matched 33.9% of records at ≥60% confidence. <strong>Phase 2 (keyword hierarchy fallback)</strong> recovered an additional 7.4%. Of all GCIs with a CDW title, 94% were successfully standardized.',
+    stats: [
+      {val:'6.89M', lbl:'GCIs with raw CDW title'},
+      {val:'6.49M', lbl:'Standardized titles'},
+      {val:'94%', lbl:'Standardization rate'},
+      {val:'745', lbl:'Canonical title targets'},
+    ]
+  },
+  'm-email': {
+    tag: 'Contact Reachability',
+    title: '77.5%',
+    sub: 'Of all golden contacts have a valid email address',
+    body: '<strong>77.5% of the 18.4M golden contacts</strong> have an email address on file — making email the primary reachability channel for CDW\'s contact universe. This rate reflects the combined coverage across all four source systems and ZoomInfo enrichment. The remaining 22.5% without email are typically contacts sourced from event attendance or subscriber lists where email capture was incomplete.',
+    stats: [
+      {val:'~14.3M', lbl:'GCIs with email'},
+      {val:'~4.1M', lbl:'GCIs without email'},
+      {val:'77.5%', lbl:'Email coverage rate'},
+    ]
+  },
+  'm-phone': {
+    tag: 'Contact Reachability',
+    title: '24.3%',
+    sub: 'Of all golden contacts have a phone number',
+    body: '<strong>24.3% of the 18.4M golden contacts</strong> have a phone number on file — reflecting the lower availability of direct phone data across CDW\'s contact sources. Phone coverage is primarily driven by ZoomInfo enrichment and Salesforce CRM data. The gap between email (77.5%) and phone (24.3%) coverage underscores email as the dominant outreach channel for this contact universe.',
+    stats: [
+      {val:'~4.5M', lbl:'GCIs with phone'},
+      {val:'~13.9M', lbl:'GCIs without phone'},
+      {val:'24.3%', lbl:'Phone coverage rate'},
+    ]
+  },
+  'm-personas': {
+    tag: 'Persona Framework',
+    title: '7',
+    sub: 'Buyer personas assigned across the GCI universe',
+    body: 'The GCI pipeline assigns one of <strong>7 buyer personas</strong> to each contact based on job title, industry, and company size: Decision Maker, Executive Sponsor, Approver, Champions, Technical Advisor, Technical Delivery, and User. Personas are assigned per solution category — a single contact can hold different personas across different CDW solution areas. <strong>4,880,130 GCIs (26.46%)</strong> have at least one confident, usable persona assigned.',
+    stats: [
+      {val:'4.88M', lbl:'GCIs with persona'},
+      {val:'26.46%', lbl:'Persona coverage'},
+      {val:'7', lbl:'Defined personas'},
+      {val:'8', lbl:'Solution categories'},
+    ]
+  },
+  'm-solcat': {
+    tag: 'Solution Categories',
+    title: '8',
+    sub: 'CDW solution areas mapped to each persona',
+    body: 'Personas are assigned at the <strong>solution category level</strong> — not just at the contact level. The 8 categories reflect CDW\'s core go-to-market areas: <strong>Cloud, Hybrid Infrastructure, Artificial Intelligence, Data, Digital Engagement, Security & Continuity, Workplace Modernization,</strong> and <strong>Transactional/Core Products</strong>. Industry rules (High/Medium/Low relevance per sector) and company size gating determine which categories apply to each contact.',
+    stats: [
+      {val:'Cloud', lbl:'Category 1'},
+      {val:'AI & Data', lbl:'Categories 3 & 4'},
+      {val:'Security', lbl:'Category 6'},
+      {val:'Workplace', lbl:'Category 7'},
+    ]
+  },
+  'm-dm': {
+    tag: 'Decision Maker Universe',
+    title: '668,772',
+    sub: '3.62% of total GCIs — IT & Engineering titles with buying authority',
+    body: 'Starting from the universe of GCIs with IT or Engineering job titles or departments, <strong>668,772 contacts carry titles associated with decision-making authority</strong>. These span C-Suite (CIO, CTO, CFO), VP-level, Director-level, Manager-level, Owners, Founders, and other senior leadership roles. This population represents CDW\'s most actionable audience for technology sales outreach.',
+    stats: [
+      {val:'478,764', lbl:'Manager Level (71.6%)'},
+      {val:'132,473', lbl:'C-Suite (19.8%)'},
+      {val:'3.62%', lbl:'Of total GCI universe'},
+      {val:'668,772', lbl:'Total DM contacts'},
+    ]
+  },
+};
+
+function openModal(id) {
+  const m = MODALS[id];
+  if (!m) return;
+  document.getElementById('modal-tag').textContent = m.tag;
+  document.getElementById('modal-title').textContent = m.title;
+  document.getElementById('modal-sub').textContent = m.sub;
+  document.getElementById('modal-body').innerHTML = m.body;
+  const sr = document.getElementById('modal-stats');
+  sr.innerHTML = (m.stats||[]).map(s=>`<div class="modal-stat"><div class="modal-stat-val">${s.val}</div><div class="modal-stat-lbl">${s.lbl}</div></div>`).join('');
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 </script>
 </body>
 </html>
