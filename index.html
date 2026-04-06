@@ -218,9 +218,10 @@
     .kpi .click-hint{color:var(--grey);opacity:0.7}
 
     /* ── DM Badge (header left) ── */
-    .dm-badge{display:flex;gap:0;background:var(--red);border-radius:8px;overflow:hidden;margin-left:18px}
-    .dm-badge .hs{padding:6px 14px}
-    @media(max-width:900px){.dm-badge{display:none}}
+    .right-stats{display:flex;align-items:center;gap:10px}
+    .dm-badge{display:flex;gap:0;background:var(--red);border-radius:8px;overflow:hidden}
+    .dm-badge .hs{padding:8px 16px}
+    @media(max-width:900px){.dm-badge{display:none}.right-stats{display:none}}
 
     /* ── ITDM page ── */
     .itdm-hero-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:28px}
@@ -248,15 +249,17 @@
       <p>Identity Resolution &amp; Persona Intelligence &middot; March 2026</p>
     </div>
   </div>
-  <div class="dm-badge">
-    <div class="hs"><div class="hs-val">4,153,365</div><div class="hs-lbl">IT DM Contacts</div></div>
-    <div class="hs"><div class="hs-val">1,765,049</div><div class="hs-lbl">IT DM Orgs</div></div>
-  </div>
-  <div class="header-stats">
-    <div class="hs"><div class="hs-val">18.4M</div><div class="hs-lbl">Golden Contacts</div></div>
-    <div class="hs"><div class="hs-val">41.3%</div><div class="hs-lbl">Title Coverage</div></div>
-    <div class="hs"><div class="hs-val">77.5%</div><div class="hs-lbl">Email Coverage</div></div>
-    <div class="hs"><div class="hs-val">24.3%</div><div class="hs-lbl">Phone Coverage</div></div>
+  <div class="right-stats">
+    <div class="dm-badge">
+      <div class="hs"><div class="hs-val">23%</div><div class="hs-lbl">IT DM Contacts</div></div>
+      <div class="hs"><div class="hs-val">22%</div><div class="hs-lbl">IT DM Orgs</div></div>
+    </div>
+    <div class="header-stats">
+      <div class="hs"><div class="hs-val">18.4M</div><div class="hs-lbl">Golden Contacts</div></div>
+      <div class="hs"><div class="hs-val">41.3%</div><div class="hs-lbl">Title Coverage</div></div>
+      <div class="hs"><div class="hs-val">77.5%</div><div class="hs-lbl">Email Coverage</div></div>
+      <div class="hs"><div class="hs-val">24.3%</div><div class="hs-lbl">Phone Coverage</div></div>
+    </div>
   </div>
 </header>
 
@@ -297,8 +300,8 @@
     <div class="kpi clickable" onclick="openModal('m-email')"><div class="kpi-lbl">Email Coverage</div><div class="kpi-value">77.5%</div><div class="kpi-sub">Of all golden contacts have a valid email</div><div class="click-hint">click for details</div></div>
     <div class="kpi clickable" onclick="openModal('m-phone')"><div class="kpi-lbl">Phone Coverage</div><div class="kpi-value">24.3%</div><div class="kpi-sub">Of all golden contacts have a phone number</div><div class="click-hint">click for details</div></div>
     <div class="kpi clickable" onclick="openModal('m-personas')"><div class="kpi-lbl">Personas Defined</div><div class="kpi-value">7</div><div class="kpi-sub">Decision Maker through User</div><div class="click-hint">click for details</div></div>
-    <div class="kpi clickable" onclick="openModal('m-dm-contacts')"><div class="kpi-lbl">IT DM Contacts</div><div class="kpi-value">4,153,365</div><div class="kpi-sub">23% of total contacts are IT decision makers</div><div class="click-hint">click for details</div></div>
-    <div class="kpi clickable" onclick="openModal('m-dm-orgs')"><div class="kpi-lbl">IT DM Organizations</div><div class="kpi-value">1,765,049</div><div class="kpi-sub">22% of all unique accounts have an IT decision maker</div><div class="click-hint">click for details</div></div>
+    <div class="kpi clickable" onclick="openModal('m-dm-contacts')"><div class="kpi-lbl">IT DM Contacts</div><div class="kpi-value">23%</div><div class="kpi-sub">4,153,365 contacts identified as IT decision makers</div><div class="click-hint">click for details</div></div>
+    <div class="kpi clickable" onclick="openModal('m-dm-orgs')"><div class="kpi-lbl">IT DM Organizations</div><div class="kpi-value">22%</div><div class="kpi-sub">1,765,049 unique accounts with an IT decision maker</div><div class="click-hint">click for details</div></div>
     <div class="kpi clickable" onclick="openModal('m-entityid')"><div class="kpi-lbl">EntityID Coverage</div><div class="kpi-value">99.7%</div><div class="kpi-sub">Of all records eligible for ML deduplication</div><div class="click-hint">click for details</div></div>
   </div>
 
@@ -857,24 +860,24 @@
 
   <div class="itdm-hero-row">
     <div class="itdm-stat">
-      <div class="itdm-stat-lbl">Total IT DM Contacts</div>
+      <div class="itdm-stat-lbl">IT DM Contacts</div>
       <div class="itdm-stat-val">4,153,365</div>
       <div class="itdm-stat-pct">23% of 18.4M contacts</div>
     </div>
     <div class="itdm-stat">
-      <div class="itdm-stat-lbl">ZoomInfo Matched</div>
-      <div class="itdm-stat-val">668,772</div>
-      <div class="itdm-stat-pct">16.1% of DM total</div>
-    </div>
-    <div class="itdm-stat">
-      <div class="itdm-stat-lbl">Non-ZoomInfo Matched</div>
-      <div class="itdm-stat-val">3,484,593</div>
-      <div class="itdm-stat-pct">83.9% of DM total</div>
-    </div>
-    <div class="itdm-stat">
-      <div class="itdm-stat-lbl">Orgs with IT DM</div>
+      <div class="itdm-stat-lbl">IT DM Organizations</div>
       <div class="itdm-stat-val">1,765,049</div>
       <div class="itdm-stat-pct">22% of 7.98M orgs</div>
+    </div>
+    <div class="itdm-stat">
+      <div class="itdm-stat-lbl">Total GCI Contacts</div>
+      <div class="itdm-stat-val">18,440,888</div>
+      <div class="itdm-stat-pct">Full golden contact universe</div>
+    </div>
+    <div class="itdm-stat">
+      <div class="itdm-stat-lbl">Total Organizations</div>
+      <div class="itdm-stat-val">7,977,988</div>
+      <div class="itdm-stat-pct">Unique orgs in GCI</div>
     </div>
   </div>
 
@@ -921,36 +924,16 @@
     </div>
   </div>
 
-  <div class="g3">
+  <div class="g2">
     <div class="card">
-      <h3 style="margin-bottom:8px;font-weight:700">Total Contacts</h3>
-      <div class="kpi-value" style="font-size:28px;margin-bottom:4px">18,440,888</div>
-      <div style="font-size:13px;color:var(--grey)">Total unique golden contacts in GCI</div>
-    </div>
-    <div class="card">
-      <h3 style="margin-bottom:8px;font-weight:700">Total Organizations</h3>
-      <div class="kpi-value" style="font-size:28px;margin-bottom:4px">7,977,988</div>
-      <div style="font-size:13px;color:var(--grey)">Unique organizations across all golden contacts</div>
-    </div>
-    <div class="card">
-      <h3 style="margin-bottom:8px;font-weight:700">IT DM Contact Rate</h3>
-      <div class="kpi-value" style="font-size:28px;margin-bottom:4px">23%</div>
-      <div style="font-size:13px;color:var(--grey)">4,153,365 of 18.4M contacts identified as IT decision makers</div>
-    </div>
-    <div class="card">
-      <h3 style="margin-bottom:8px;font-weight:700">IT DM Org Rate</h3>
-      <div class="kpi-value" style="font-size:28px;margin-bottom:4px">22%</div>
-      <div style="font-size:13px;color:var(--grey)">1,765,049 of 7.98M orgs have at least one IT decision maker</div>
-    </div>
-    <div class="card">
-      <h3 style="margin-bottom:8px;font-weight:700">ZI Matched DMs</h3>
+      <h3 style="margin-bottom:8px;font-weight:700">ZI Matched DM Contacts</h3>
       <div class="kpi-value" style="font-size:28px;margin-bottom:4px">668,772</div>
-      <div style="font-size:13px;color:var(--grey)">Classified via ZoomInfo job function + management title + LLM</div>
+      <div style="font-size:13px;color:var(--grey)">16.1% of total IT DMs — classified via ZoomInfo job function + management title + LLM</div>
     </div>
     <div class="card">
-      <h3 style="margin-bottom:8px;font-weight:700">Non-ZI Matched DMs</h3>
+      <h3 style="margin-bottom:8px;font-weight:700">Non-ZI Matched DM Contacts</h3>
       <div class="kpi-value" style="font-size:28px;margin-bottom:4px">3,484,593</div>
-      <div style="font-size:13px;color:var(--grey)">Classified via raw job title analysis using LLM</div>
+      <div style="font-size:13px;color:var(--grey)">83.9% of total IT DMs — classified via raw job title analysis using LLM</div>
     </div>
   </div>
 
