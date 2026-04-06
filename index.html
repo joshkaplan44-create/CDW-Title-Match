@@ -301,7 +301,7 @@
     <div class="kpi clickable" onclick="openModal('m-email')"><div class="kpi-lbl">Email Coverage</div><div class="kpi-value">77.5%</div><div class="kpi-sub">Of all golden contacts have a valid email</div><div class="click-hint">click for details</div></div>
     <div class="kpi clickable" onclick="openModal('m-phone')"><div class="kpi-lbl">Phone Coverage</div><div class="kpi-value">24.3%</div><div class="kpi-sub">Of all golden contacts have a phone number</div><div class="click-hint">click for details</div></div>
     <div class="kpi clickable" onclick="openModal('m-personas')"><div class="kpi-lbl">Personas Defined</div><div class="kpi-value">7</div><div class="kpi-sub">Decision Maker through User</div><div class="click-hint">click for details</div></div>
-<div class="kpi clickable" onclick="openModal('m-entityid')"><div class="kpi-lbl">EntityID Coverage</div><div class="kpi-value">99.7%</div><div class="kpi-sub">Of all records eligible for ML deduplication</div><div class="click-hint">click for details</div></div>
+    <div class="kpi clickable" onclick="openModal('m-tables')"><div class="kpi-lbl">Pipeline Tables</div><div class="kpi-value">32</div><div class="kpi-sub">Microsoft Fabric tables powering the GCI pipeline</div><div class="click-hint">click for details</div></div>
   </div>
 
   <div class="g2">
@@ -384,16 +384,9 @@
   </div>
 
   <!-- 2. Blocking Effectiveness -->
-  <div class="sec">2 &mdash; Blocking Effectiveness (EntityID)</div>
-  <div class="g2" style="margin-bottom:24px">
-    <div class="kpi-row" style="margin-bottom:0;grid-template-columns:1fr 1fr">
-      <div class="kpi" style="border-left-color:#1a7a3a"><div class="kpi-lbl">Records With EntityID</div><div class="kpi-value" style="color:#1a7a3a">20,145,794</div><div class="kpi-sub">99.73% — fully eligible for ML blocking</div></div>
-      <div class="kpi" style="border-left-color:#b0b0b0"><div class="kpi-lbl">Records Without EntityID</div><div class="kpi-value" style="color:#888">54,206</div><div class="kpi-sub">0.27% — excluded from deduplication pairing</div></div>
-    </div>
-    <div class="card">
-      <h3 style="margin-bottom:10px">What is EntityID?</h3>
-      <p style="font-size:14px;color:var(--grey);line-height:1.8">EntityID is the <strong>primary blocking key</strong> used to group candidate record pairs before ML comparison. Rather than comparing every record to every other record (computationally infeasible at 21M scale), Zingg uses EntityID to narrow down which pairs are even candidates. <strong>99.73% coverage</strong> means virtually all records participated in deduplication — the 54K without an EntityID were isolated and could not be matched or merged.</p>
-    </div>
+  <div class="sec">2 &mdash; Blocking Effectiveness</div>
+  <div class="card" style="margin-bottom:24px">
+    <p style="font-size:14px;color:var(--grey);line-height:1.8">Zingg uses a <strong>blocking key</strong> to group candidate record pairs before ML comparison — rather than comparing every record to every other record (computationally infeasible at 21M scale). This blocking strategy narrows down which pairs are even candidates for matching, dramatically reducing compute requirements while preserving recall. Virtually all source records participated in the deduplication process, with only a small fraction excluded due to missing key fields.</p>
   </div>
 
   <!-- 3. Data Coverage -->
@@ -475,9 +468,6 @@
         <tr><td style="padding:8px 14px;border-bottom:1px solid var(--border)"></td><td style="padding:8px 14px;border-bottom:1px solid var(--border)">Total GCIs Created</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;font-weight:600">18,440,888</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;color:var(--grey)">—</td></tr>
         <tr><td style="padding:8px 14px;border-bottom:1px solid var(--border)"></td><td style="padding:8px 14px;border-bottom:1px solid var(--border)">Contact Reduction</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;font-weight:600">3,148,872</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;color:var(--red);font-weight:600">14.59%</td></tr>
         <tr><td style="padding:8px 14px;border-bottom:1px solid var(--border)"></td><td style="padding:8px 14px;border-bottom:1px solid var(--border)">Average Collapse Ratio</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;font-weight:600">1.10x</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;color:var(--grey)">—</td></tr>
-        <tr style="background:#fafafa"><td style="padding:9px 14px;color:var(--grey);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px" colspan="4">Blocking Effectiveness</td></tr>
-        <tr><td style="padding:8px 14px;border-bottom:1px solid var(--border)"></td><td style="padding:8px 14px;border-bottom:1px solid var(--border)">Records with EntityID</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;font-weight:600">20,145,794</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;color:#1a7a3a;font-weight:600">99.73%</td></tr>
-        <tr><td style="padding:8px 14px;border-bottom:1px solid var(--border)"></td><td style="padding:8px 14px;border-bottom:1px solid var(--border)">Records without EntityID</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;font-weight:600">54,206</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;color:var(--grey)">0.27%</td></tr>
         <tr style="background:#fafafa"><td style="padding:9px 14px;color:var(--grey);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px" colspan="4">Data Coverage</td></tr>
         <tr><td style="padding:8px 14px;border-bottom:1px solid var(--border)"></td><td style="padding:8px 14px;border-bottom:1px solid var(--border)">GCIs with Titles</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;font-weight:600">6,489,536</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;color:var(--red);font-weight:600">35.19%</td></tr>
         <tr><td style="padding:8px 14px;border-bottom:1px solid var(--border)"></td><td style="padding:8px 14px;border-bottom:1px solid var(--border)">GCIs with Personas</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;font-weight:600">4,880,130</td><td style="padding:8px 14px;border-bottom:1px solid var(--border);text-align:right;color:var(--red);font-weight:600">26.46%</td></tr>
@@ -1402,10 +1392,10 @@ const MODALS = {
       {val:'2.88%', lbl:'Collision rate (inverse)'},
     ]
   },
-  'm-entityid': {
-    tag: 'Blocking Effectiveness',
-    title: '99.7%',
-    sub: '20,145,794 of 21.6M records eligible for ML deduplication',
+  '_unused': {
+    tag: '',
+    title: '',
+    sub: '',
     body: '<strong>EntityID is the primary blocking key</strong> used by the Zingg ML model to group candidate record pairs before comparison. Rather than comparing every record against every other record — computationally infeasible at 21M scale — Zingg uses EntityID to narrow down which pairs are even candidates for a match. <strong>99.7% coverage</strong> means virtually all records participated in deduplication. The remaining 54,206 records (0.27%) had no EntityID and were isolated — they could not be matched or merged.',
     stats: [
       {val:'20,145,794', lbl:'Records with EntityID'},
