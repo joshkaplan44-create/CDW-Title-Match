@@ -229,11 +229,11 @@
     </div>
   </div>
   <div class="header-stats">
-    <div class="hs"><div class="hs-val">21.6M</div><div class="hs-lbl">Records</div></div>
     <div class="hs"><div class="hs-val">18.4M</div><div class="hs-lbl">Golden Contacts</div></div>
-    <div class="hs"><div class="hs-val">35.19%</div><div class="hs-lbl">Title Coverage</div></div>
-    <div class="hs"><div class="hs-val">7</div><div class="hs-lbl">Personas</div></div>
-    <div class="hs"><div class="hs-val">8</div><div class="hs-lbl">Solution Cats</div></div>
+    <div class="hs"><div class="hs-val">41.3%</div><div class="hs-lbl">Title Coverage</div></div>
+    <div class="hs"><div class="hs-val">668,772</div><div class="hs-lbl">IT Decision Makers</div></div>
+    <div class="hs"><div class="hs-val">77.5%</div><div class="hs-lbl">Email Coverage</div></div>
+    <div class="hs"><div class="hs-val">24.3%</div><div class="hs-lbl">Phone Coverage</div></div>
   </div>
 </header>
 
@@ -269,11 +269,10 @@
     <div class="kpi clickable" onclick="openModal('m-raw')"><div class="kpi-lbl">Source Records In</div><div class="kpi-value">21.6M</div><div class="kpi-sub">Salesforce, eAccount, Attendee, Subscriber</div><div class="click-hint">click for details</div></div>
     <div class="kpi clickable" onclick="openModal('m-gci')"><div class="kpi-lbl">Golden Contacts Out</div><div class="kpi-value">18.4M</div><div class="kpi-sub">After Zingg ML deduplication — 14.59% reduction</div><div class="click-hint">click for details</div></div>
     <div class="kpi clickable" onclick="openModal('m-zi')"><div class="kpi-lbl">ZoomInfo Enriched</div><div class="kpi-value">34.10%</div><div class="kpi-sub">6.28M GCIs enriched with ZoomInfo data</div><div class="click-hint">click for details</div></div>
-    <div class="kpi clickable" onclick="openModal('m-titles')"><div class="kpi-lbl">Title Match Coverage</div><div class="kpi-value">35.19%</div><div class="kpi-sub">6.49M of 18.4M GCIs have standardized titles</div><div class="click-hint">click for details</div></div>
+    <div class="kpi clickable" onclick="openModal('m-titles')"><div class="kpi-lbl">Title Match Coverage</div><div class="kpi-value">41.3%</div><div class="kpi-sub">TF-IDF (33.9%) + Hierarchy matching (7.4%)</div><div class="click-hint">click for details</div></div>
     <div class="kpi clickable" onclick="openModal('m-email')"><div class="kpi-lbl">Email Coverage</div><div class="kpi-value">77.5%</div><div class="kpi-sub">Of all golden contacts have a valid email</div><div class="click-hint">click for details</div></div>
     <div class="kpi clickable" onclick="openModal('m-phone')"><div class="kpi-lbl">Phone Coverage</div><div class="kpi-value">24.3%</div><div class="kpi-sub">Of all golden contacts have a phone number</div><div class="click-hint">click for details</div></div>
     <div class="kpi clickable" onclick="openModal('m-personas')"><div class="kpi-lbl">Personas Defined</div><div class="kpi-value">7</div><div class="kpi-sub">Decision Maker through User</div><div class="click-hint">click for details</div></div>
-    <div class="kpi clickable" onclick="openModal('m-solcat')"><div class="kpi-lbl">Solution Categories</div><div class="kpi-value">8</div><div class="kpi-sub">Cloud to Transactional</div><div class="click-hint">click for details</div></div>
     <div class="kpi clickable" onclick="openModal('m-dm')"><div class="kpi-lbl">IT Decision Makers</div><div class="kpi-value">668,772</div><div class="kpi-sub">8.4% of all orgs have an IT decision maker identified</div><div class="click-hint">click for details</div></div>
     <div class="kpi clickable" onclick="openModal('m-entityid')"><div class="kpi-lbl">EntityID Coverage</div><div class="kpi-value">99.7%</div><div class="kpi-sub">Of all records eligible for ML deduplication</div><div class="click-hint">click for details</div></div>
   </div>
@@ -1171,14 +1170,14 @@ const MODALS = {
   },
   'm-titles': {
     tag: 'Title Standardization',
-    title: '35.19%',
-    sub: '6.49M GCIs with a standardized canonical title',
-    body: 'CDW\'s raw title data contained <strong>790,226 unique, uncleaned job title strings</strong> — abbreviations, typos, and inconsistent formatting. A two-phase matching approach resolved these against 745 canonical titles: <strong>Phase 1 (TF-IDF cosine similarity)</strong> matched 33.9% of records at ≥60% confidence. <strong>Phase 2 (keyword hierarchy fallback)</strong> recovered an additional 7.4%. Of all GCIs with a CDW title, 94% were successfully standardized.',
+    title: '41.3%',
+    sub: 'Combined TF-IDF (33.9%) + Hierarchy matching (7.4%) of 790K title corpus',
+    body: 'CDW\'s raw title data contained <strong>790,226 unique, uncleaned job title strings</strong> — abbreviations, typos, and inconsistent formatting. A two-phase matching approach resolved these against 745 canonical titles: <strong>Phase 1 (TF-IDF cosine similarity)</strong> matched 33.9% of records at ≥60% confidence (267,816 records). <strong>Phase 2 (keyword hierarchy fallback)</strong> recovered an additional 7.4% (58,737 records). Combined, <strong>41.3% of the title corpus</strong> was matched — translating to 6,489,536 GCIs (35.19%) with a standardized title. Of all GCIs with a CDW title, 94% were successfully standardized.',
     stats: [
-      {val:'6.89M', lbl:'GCIs with raw CDW title'},
-      {val:'6.49M', lbl:'Standardized titles'},
-      {val:'94%', lbl:'Standardization rate'},
-      {val:'745', lbl:'Canonical title targets'},
+      {val:'33.9%', lbl:'Phase 1 — TF-IDF match'},
+      {val:'7.4%', lbl:'Phase 2 — Hierarchy match'},
+      {val:'41.3%', lbl:'Combined coverage'},
+      {val:'94%', lbl:'Standardization rate on titled GCIs'},
     ]
   },
   'm-email': {
