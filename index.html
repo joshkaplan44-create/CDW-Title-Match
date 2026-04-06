@@ -256,6 +256,7 @@
     </div>
     <div class="header-stats">
       <div class="hs"><div class="hs-val">18.4M</div><div class="hs-lbl">Golden Contacts</div></div>
+      <div class="hs"><div class="hs-val">97.12%</div><div class="hs-lbl">Clean Data Rate</div></div>
       <div class="hs"><div class="hs-val">41.3%</div><div class="hs-lbl">Title Coverage</div></div>
       <div class="hs"><div class="hs-val">77.5%</div><div class="hs-lbl">Email Coverage</div></div>
       <div class="hs"><div class="hs-val">24.3%</div><div class="hs-lbl">Phone Coverage</div></div>
@@ -290,6 +291,7 @@
       <div class="hero-stat clickable" onclick="openModal('m-dm-contacts')"><div class="hero-num">23%</div><div class="hero-lbl">ITDM Contacts</div><div class="click-hint">click for details</div></div>
       <div class="hero-stat clickable" onclick="openModal('m-dm-orgs')"><div class="hero-num">22%</div><div class="hero-lbl">ITDM Organizations</div><div class="click-hint">click for details</div></div>
       <div class="hero-stat clickable" onclick="openModal('m-titles')"><div class="hero-num">41.3%</div><div class="hero-lbl">Title Match Coverage</div><div class="click-hint">click for details</div></div>
+      <div class="hero-stat clickable" onclick="openModal('m-clean')"><div class="hero-num">97.12%</div><div class="hero-lbl">Clean Data Rate</div><div class="click-hint">click for details</div></div>
     </div>
   </div>
 
@@ -1386,6 +1388,18 @@ const MODALS = {
       {val:'19,493', lbl:'ZI matched orgs'},
       {val:'1,765,049', lbl:'Combined total'},
       {val:'22%', lbl:'Of total org universe'},
+    ]
+  },
+  'm-clean': {
+    tag: 'Data Quality',
+    title: '97.12%',
+    sub: '17,910,333 of 18.4M golden contacts are collision-free',
+    body: 'The <strong>clean data rate</strong> measures the share of golden contacts that were resolved without any conflicting source record merges. A GCI is considered "clean" when it represents either a single unique source record or a confirmed merge where all contributing records clearly represent the same person — with no ambiguity or contradiction between them.<br><br>The inverse is the <strong>collision rate (2.88%)</strong> — the share of GCIs where two or more source records were merged but appear to represent different people. Collisions are false positive merges: the model believed they were the same person, but field-level conflicts suggest otherwise. At 2.88%, CDW\'s collision rate is well within acceptable thresholds for ML-based identity resolution at this scale. Collision records are flagged for review rather than auto-corrected, preserving full auditability.',
+    stats: [
+      {val:'17,910,333', lbl:'Clean GCIs (no collision)'},
+      {val:'530,555', lbl:'GCIs with collisions'},
+      {val:'97.12%', lbl:'Clean data rate'},
+      {val:'2.88%', lbl:'Collision rate (inverse)'},
     ]
   },
   'm-entityid': {
