@@ -274,7 +274,8 @@
     <div class="kpi clickable" onclick="openModal('m-phone')"><div class="kpi-lbl">Phone Coverage</div><div class="kpi-value">24.3%</div><div class="kpi-sub">Of all golden contacts have a phone number</div><div class="click-hint">click for details</div></div>
     <div class="kpi clickable" onclick="openModal('m-personas')"><div class="kpi-lbl">Personas Defined</div><div class="kpi-value">7</div><div class="kpi-sub">Decision Maker through User</div><div class="click-hint">click for details</div></div>
     <div class="kpi clickable" onclick="openModal('m-solcat')"><div class="kpi-lbl">Solution Categories</div><div class="kpi-value">8</div><div class="kpi-sub">Cloud to Transactional</div><div class="click-hint">click for details</div></div>
-    <div class="kpi clickable" onclick="openModal('m-dm')"><div class="kpi-lbl">IT Decision Makers</div><div class="kpi-value">668,772</div><div class="kpi-sub">3.62% of total GCI universe — IT &amp; Engineering titles</div><div class="click-hint">click for details</div></div>
+    <div class="kpi clickable" onclick="openModal('m-dm')"><div class="kpi-lbl">IT Decision Makers</div><div class="kpi-value">668,772</div><div class="kpi-sub">8.4% of all orgs have an IT decision maker identified</div><div class="click-hint">click for details</div></div>
+    <div class="kpi clickable" onclick="openModal('m-entityid')"><div class="kpi-lbl">EntityID Coverage</div><div class="kpi-value">99.7%</div><div class="kpi-sub">Of all records eligible for ML deduplication</div><div class="click-hint">click for details</div></div>
   </div>
 
   <div class="g2">
@@ -1229,13 +1230,25 @@ const MODALS = {
   'm-dm': {
     tag: 'Decision Maker Universe',
     title: '668,772',
-    sub: '3.62% of total GCIs — IT & Engineering titles with buying authority',
-    body: 'Starting from the universe of GCIs with IT or Engineering job titles or departments, <strong>668,772 contacts carry titles associated with decision-making authority</strong>. These span C-Suite (CIO, CTO, CFO), VP-level, Director-level, Manager-level, Owners, Founders, and other senior leadership roles. This population represents CDW\'s most actionable audience for technology sales outreach.',
+    sub: '8.4% of all organizations have an IT decision maker identified',
+    body: 'Starting from the universe of GCIs with IT or Engineering job titles or departments, <strong>668,772 contacts carry titles associated with decision-making authority</strong>. Across CDW\'s <strong>7,977,988 total organizations</strong>, 8.4% have at least one contactable IT decision maker in the database. These contacts span C-Suite (CIO, CTO, CFO), VP-level, Director-level, Manager-level, Owners, Founders, and other senior leadership roles — representing CDW\'s most actionable audience for technology sales outreach.',
     stats: [
       {val:'478,764', lbl:'Manager Level (71.6%)'},
       {val:'132,473', lbl:'C-Suite (19.8%)'},
-      {val:'3.62%', lbl:'Of total GCI universe'},
-      {val:'668,772', lbl:'Total DM contacts'},
+      {val:'7.98M', lbl:'Total organizations'},
+      {val:'8.4%', lbl:'Orgs with a DM identified'},
+    ]
+  },
+  'm-entityid': {
+    tag: 'Blocking Effectiveness',
+    title: '99.7%',
+    sub: '20,145,794 of 21.6M records eligible for ML deduplication',
+    body: '<strong>EntityID is the primary blocking key</strong> used by the Zingg ML model to group candidate record pairs before comparison. Rather than comparing every record against every other record — computationally infeasible at 21M scale — Zingg uses EntityID to narrow down which pairs are even candidates for a match. <strong>99.7% coverage</strong> means virtually all records participated in deduplication. The remaining 54,206 records (0.27%) had no EntityID and were isolated — they could not be matched or merged.',
+    stats: [
+      {val:'20,145,794', lbl:'Records with EntityID'},
+      {val:'54,206', lbl:'Records without EntityID'},
+      {val:'99.73%', lbl:'Coverage rate'},
+      {val:'0.27%', lbl:'Excluded from dedup'},
     ]
   },
 };
